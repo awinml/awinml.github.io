@@ -2,10 +2,9 @@
 title: "An Introduction to GitHub and Git"
 date: "2023-02-23"
 description: "Learn about the fundamentals of Git and GitHub in this introductory article, including what they are, how they work, and how they can benefit your development workflow."
-author: "Ashwin Mathur"
 draft: false
 tags: ["git", "github", "commands"]
-weight: 101
+weight: 200
 categories: ["git", "github", "commands"]
 cover: 
     image: "/blog/1-git/cover.jpg"
