@@ -183,6 +183,8 @@ The fine tuned recommendation system using the custom candidate retrival method 
 
 ## Run Locally
 
+The code to run the project can be found here: [H&M Personalized Product Recommendations Github](https://github.com/awinml/hm-recsys).
+
 1. Install required libraries:
    ```bash
      pip install -r requirements.txt

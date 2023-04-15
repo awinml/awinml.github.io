@@ -71,6 +71,8 @@ The results from all the models have been summarized below:
 
 ## Run Locally
 
+The code to run the project can be found here: [Jigsaw - Multilingual Toxic Comment Classification Github](https://github.com/awinml/jigsaw-toxic-comment-clf).
+
 1. Install required libraries:
    ```bash
      pip install -r requirements.txt

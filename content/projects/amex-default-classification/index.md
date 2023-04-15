@@ -132,6 +132,8 @@ The results from all the models have been summarized below:
 
 ## Run Locally
 
+The code to run the project can be found here: [American Express - Default Prediction Github](https://github.com/awinml/amex-default-classification).
+
 1. Install required libraries:
    ```bash
      pip install -r requirements.txt

@@ -32,7 +32,7 @@ The dataset is a collection of images representing **100 different types of Spor
 
 - There are 13572 train, 500 test, 500 validation images.
 
-The dataset can be downloaded from [here](https://www.kaggle.com/datasets/gpiosenka/sports-classification).
+The dataset can be downloaded from [Kaggle](https://www.kaggle.com/datasets/gpiosenka/sports-classification).
 
 ## Experiments:
 
@@ -79,6 +79,8 @@ The results from all the models have been summarized below:
 | **EfficientNetB3** _\(fine-tuned\)_ |    92.72     |    91.76     | 96.92              |
 
 ## Run Locally
+
+The code to run the project can be found here: [Sports Image Classification Github](https://github.com/awinml/sports-image-classification).
 
 1. Install required libraries:
    ```bash

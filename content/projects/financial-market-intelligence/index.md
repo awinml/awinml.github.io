@@ -34,6 +34,13 @@ TocOpen: false
 
 The app can be viewed here: [Financial Dashboard](https://awinml-financial-market-intelligence-app-q6lj0g.streamlit.app/)
 
+
+## **Motivation**
+In the current data driven world, it is essential to have access to the right information for impactful decision making. All publicly listed companies have to file annual reports to the government. These consolidated statements allow investors, financial analysts, business owners and other interested parties to get a complete overview of the company. Companies all over the world make key financial decisions based on annually released public filings. 
+
+These corporate filings are rife with complicated legal and financial jargon and make it practically impossible for a layman to understand. In most cases these documents have to be manually read and decoded by people with expert financial and legal understanding. The goal of this project is to develop a tool that automates this tedious procedure and makes it easier to acquire crucial financial information.
+
+
 ## **Data**
 To extract the text from the SEC filing, the SEC’s ExtractorAPI was used. The API can extract any text section from 10-Q, 10-K, and 8-K SEC filings, and returns the extracted content in cleaned and standardized text or HTML format.
 The twelve companies for which the data has been collected as listed below organized by sector:
@@ -86,15 +93,7 @@ The T5, DistilPEGASUS and DistilBART models were fine-tuned for summarization. T
 RAKE NLTK was used to identify important keywords from the generated summaries.
 
 
+## **Code**:
 
-<!---
-## Why do we need a consolidated Financial Dashboard?
-In the current data driven world, it is essential to have access to the right information for impactful decision making. All publicly listed companies have to file annual reports to the government. These consolidated statements allow investors, financial analysts, business owners and other interested parties to get a complete overview of the company. Companies all over the world make key financial decisions based on annually released public filings. 
-
-These corporate filings are rife with complicated legal and financial jargon and make it practically impossible for a layman to understand. In most cases these documents have to be manually read and decoded by people with expert financial and legal understanding. The goal of this project is to develop a tool that automates this tedious procedure and makes it easier to acquire crucial financial information.
-
-The results of the modelling can be found here:
-
--->
-
+The code to run the project can be found here: [Financial Dashboard for Market Intelligence Github](https://github.com/awinml/financial-market-intelligence).
 
