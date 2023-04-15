@@ -14,13 +14,13 @@ menu:
       name: About
       url: /about
       weight: 10
-    - identifier: projects
-      name: Projects
-      url: /projects/
-      weight: 20
     - identifier: blog
       name: Blog
       url: /blog/
+      weight: 20
+    - identifier: projects
+      name: Projects
+      url: /projects/
       weight: 30
     #- identifier: resume
     #  name: Resume
@@ -68,9 +68,9 @@ params:
   
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   
-  title: Ashwin Mathur
-  description: "Ashwin Mathur Portfolio"
-  keywords: [Ashwin Mathur, Ashwin Mathur Blog, Ashwin Mathur Portfolio, Ashwin Mathur Data Science, Ashwin Mathur awinml]
+  title: Ashwin Mathur Portfolio
+  description: "Ashwin Mathur Portfolio Website and Blog"
+  keywords: [Ashwin Mathur, Ashwin Mathur Blog, Ashwin Mathur Portfolio, Ashwin Mathur Data Science, Ashwin Mathur awinml, awinml, data science, nlp, LLM, natural language processing]
   author: Ashwin Mathur
   images: ["/home/profile-pic.png"]
   DateFormat: "January 2, 2006"
@@ -99,10 +99,9 @@ params:
   # profile-mode
   profileMode:
     enabled: True # needs to be explicitly set
-    title: Ashwin Mathur
+    title: Hey there! I'm Ashwin.
     subtitle: |
-      I am a final year postgraduate student currently pursuing a Masters in Data Science from Fergusson College, Pune. I am interested in working on researching and implementing Natural Language Processing and Machine Learning solutions, with applications to the finance domain.
-
+      I am a skilled AI Research Engineer with expertise in Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision. I specialise in the enhancement and development of applications based on Large Language Models (LLMs) for various natural language processing (NLP) tasks. I am extremely passionate about open-source initiatives. I actively contribute to Scikit-learn, HuggingFace Transformers, and Evaluate. I work with other developers to gain valuable experience while also giving back to the community. Feel free to contact me for any AI-related discussions or queries. I would be happy to connect.
 
 
     imageUrl: "/home/profile-pic.png"

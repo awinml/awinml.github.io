@@ -1,15 +1,15 @@
 ---
-title: Hi there, I'm Ashwin Mathur!
+title: About
 ShowToc: False
 TocOpen: False
-ShowShareButtons: false
+ShowShareButtons: False
 ---
 
-I am a final year postgraduate student currently pursuing a Masters in Data Science from Fergusson College, Pune. 
+I am a skilled AI Research Engineer with expertise in Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision. I specialise in the enhancement and development of applications based on Large Language Models (LLMs) for various natural language processing (NLP) tasks.
 
-I am interested in working on researching and implementing Natural Language Processing and Machine Learning solutions, with applications to the finance domain.
+I enjoy implementing research ideas, incorporating them into practical applications, and communicating my implementation details through articles. My technical skills include Python, SQL, Statistical Analysis, Machine Learning, Deep Learning, and NLP. 
 
-I am skilled in Machine Learning and applications of Deep Learning to Natural Language Processing and Computer Vision. Some of the projects that I have worked on are:
+Some of the projects that I have worked on in the past are:
 
 - **[Financial Dashboard for Market Intelligence:](https://github.com/awinml/financial-market-intelligence)**
  Built an end-to-end financial dashboard that collects and consolidates all of a business's critical observations in one place using the information obtained from the annual 10-K SEC Filings.
@@ -26,8 +26,8 @@ I am skilled in Machine Learning and applications of Deep Learning to Natural La
 - **[Sports Image Classification:](https://github.com/awinml/sports-image-classification)**
  Built an image classification model and Streamlit App to predict the sport that is being represented in an image, using a collection of images representing 100 different types of Sports and Activities.
  
+I am passionate about open-source initiatives, and I actively contribute to Scikit-learn, HuggingFace Transformers, and Evaluate, collaborating with others to gain valuable experience and give back to the community.
 
-I am an active contributor to multiple popular ML open-source projects like Scikit-learn, Keras and HuggingFace. Contributing allows me to work in a collaborative environment and provides a fantastic learning experience. 
 
 **Open Source Contributions**:
   - **[scikit-learn](https://github.com/scikit-learn/scikit-learn/) :** [Merged PRs](https://github.com/scikit-learn/scikit-learn/pulls?q=is%3Apr+author%3Aawinml+is%3Aclosed+sort%3Acomments-desc)
@@ -40,11 +40,12 @@ I am an active contributor to multiple popular ML open-source projects like Scik
 <a href="https://github.com/awinml"><img src="https://ghchart.rshah.org/awinml" alt="awinml's' Github chart" /></a>
 
  <!-- - **[imbalanced-learn](https://github.com/scikit-learn-contrib/imbalanced-learn) :** [Merged PRs](https://github.com/scikit-learn-contrib/imbalanced-learn/pulls?q=is%3Apr+is%3Aclosed+author%3Aawinml)-->
-Feel free to reach out to me:  &nbsp;
 
-<a href="https://www.linkedin.com/in/ashwin-mathur-ds/"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=LinkedIn" alt="LinkedIn" href="https://www.linkedin.com/in/ashwin-mathur-ds/"></a> 
+Feel free to contact me for any AI-related discussions or queries. I would be happy to connect.
 
 <a href="mailto:ashwinm400@gmail.com"><img src="https://img.shields.io/badge/Email-grey?style=for-the-badge&logo=Gmail" alt="Email" href="mailto:ashwinm400@gmail.com"></a>
+
+<a href="https://www.linkedin.com/in/ashwin-mathur-ds/"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=LinkedIn" alt="LinkedIn" href="https://www.linkedin.com/in/ashwin-mathur-ds/"></a> 
 
 
 
