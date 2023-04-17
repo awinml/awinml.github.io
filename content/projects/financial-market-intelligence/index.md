@@ -4,7 +4,7 @@ description: "Built a end-to-end financial dashboard that collects and consolida
 draft: false
 tags: ["Financial Dashboard", "Market Intelligence", "transformers", "BERT", "RoBERTa", "FinBERT", "DistilBERT"]
 weight: 100
-categories: ["Financial Dashboard", "Market Intelligence", "transformers", "BERT", "RoBERTa", "FinBERT", "DistilBERT"]
+categories: ["Project", "NLP", "Natural Language Processing", "LLMS", "Generative AI"]
 cover: 
     image: "fin_dash_cover.png"
 

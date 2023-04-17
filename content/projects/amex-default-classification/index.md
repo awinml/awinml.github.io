@@ -2,9 +2,9 @@
 title: "American Express - Default Prediction"
 description: "Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express."
 draft: false
-tags: ["American Express", "Credit Default", "Classification", "XGBoost", "LightGBM", "Ensemble"]
+tags: ["American Express", "Credit Default", "Default Classification", "Fraud Classification", "Credit Classification", "XGBoost", "LightGBM", "Ensemble"]
 weight: 200
-categories: ["American Express", "Credit Default", "Classification", "XGBoost", "LightGBM", "Ensemble"]
+categories: ["Project", "Machine Learning", "ML", "Classification"]
 cover: 
     image: "amex_cover.jpg"
 

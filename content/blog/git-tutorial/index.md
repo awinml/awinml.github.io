@@ -5,7 +5,7 @@ description: "Learn about the fundamentals of Git and GitHub in this introductor
 draft: false
 tags: ["git", "github", "commands"]
 weight: 200
-categories: ["git", "github", "commands"]
+categories: ["Blog", "Tutorial", "Guide"]
 cover: 
     image: "/blog/1-git/cover.jpg"
 

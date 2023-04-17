@@ -2,9 +2,9 @@
 title: "H&M Personalized Product Recommendations"
 description: "Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&M."
 draft: false
-tags: ["H&M", "Product Recommendation", "Recommendation System", "LightGBM", "Ranking"]
+tags: ["H&M", "Product Recommendation", "Recommendation System", "LightGBM", "Ranking System", "Time Series", "Ranking and Recommendation"]
 weight: 300
-categories: ["H&M", "Product Recommendation", "Recommendation System", "LightGBM", "Ranking"]
+categories: ["Project", "Recommendation", "Ranking"]
 cover: 
     image: "hm_recsys_cover.jpg"
 

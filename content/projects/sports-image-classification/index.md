@@ -4,7 +4,7 @@ description: "Built a image classification model to predict the sport that is be
 draft: false
 tags: ["Image Classification", "CNN", "Inception", "ResNet", "MobileNet", "EfficientNet"]
 weight: 500
-categories: ["Image Classification", "CNN", "Inception", "ResNet", "MobileNet", "EfficientNet"]
+categories: ["Computer Vision", "Classification"]
 cover: 
     image: "sports_img_clf_cover.png"
 

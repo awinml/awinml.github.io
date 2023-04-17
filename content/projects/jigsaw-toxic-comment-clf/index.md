@@ -4,7 +4,7 @@ description: "Built a multilingual text classification model to predict the prob
 draft: false
 tags: ["Text Classification", "Multilingual", "BERT", "XLMRoBERTa"]
 weight: 400
-categories: ["Text Classification", "Multilingual", "BERT", "XLMRoBERTa"]
+categories: ["Project", "NLP", "Natural Language Processing", "Classification"]
 cover: 
     image: "jigsaw_clf_cover.jpg"
 
