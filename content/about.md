@@ -41,7 +41,7 @@ I am passionate about open-source initiatives, and I actively contribute to Scik
 
  <!-- - **[imbalanced-learn](https://github.com/scikit-learn-contrib/imbalanced-learn) :** [Merged PRs](https://github.com/scikit-learn-contrib/imbalanced-learn/pulls?q=is%3Apr+is%3Aclosed+author%3Aawinml)-->
 
-Feel free to contact me for any AI-related discussions or queries. I would be happy to connect.
+I'm best reached via Email or LinkedIn. I'm always open to interesting conversations and collaboration.
 
 <a href="mailto:ashwinm400@gmail.com"><img src="https://img.shields.io/badge/Email-grey?style=for-the-badge&logo=Gmail" alt="Email" href="mailto:ashwinm400@gmail.com"></a>
 

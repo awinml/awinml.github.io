@@ -5,7 +5,7 @@ TocOpen: False
 ShowShareButtons: False
 ---
 
-Feel free to contact me for any AI-related discussions or queries. I would be happy to connect.
+I'm best reached via Email or LinkedIn. I'm always open to interesting conversations and collaboration.
 
 - **Email:** <a href="mailto:ashwinm400@gmail.com"> ashwinm400@gmail.com </a>
 

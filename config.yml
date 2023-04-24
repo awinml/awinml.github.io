@@ -105,7 +105,7 @@ params:
     enabled: True # needs to be explicitly set
     title: Hey there! I'm Ashwin.
     subtitle: |
-      I am a skilled AI Research Engineer with expertise in Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision. I specialise in the enhancement and development of applications based on Large Language Models (LLMs) for various natural language processing (NLP) tasks. I am extremely passionate about open-source initiatives. I actively contribute to Scikit-learn, HuggingFace Transformers, and Evaluate. I work with other developers to gain valuable experience while also giving back to the community. Feel free to contact me for any AI-related discussions or queries. I would be happy to connect.
+      I am a skilled AI Research Engineer with expertise in Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision. I specialise in the enhancement and development of applications based on Large Language Models (LLMs) for various natural language processing (NLP) tasks. I am extremely passionate about open-source initiatives. I actively contribute to Scikit-learn, HuggingFace Transformers, and Evaluate. I work with other developers to gain valuable experience while also giving back to the community. I'm always open to interesting conversations and collaboration.
 
 
     imageUrl: "/home/profile-pic.png"
