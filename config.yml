@@ -72,11 +72,13 @@ params:
   
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   
-  title: Ashwin Mathur Portfolio
+  
+  # Open Graph Information (Shows while sharing the link)
+  title: awinml.github.io
   description: "Ashwin Mathur Portfolio Website and Blog"
-  keywords: [Ashwin Mathur, Ashwin Mathur Blog, Ashwin Mathur Portfolio, Ashwin Mathur Data Science, Ashwin Mathur awinml, awinml, data science, nlp, LLM, natural language processing]
+  keywords: [Ashwin Mathur, Ashwin Mathur Blog, Ashwin Mathur Portfolio, Ashwin Mathur Data Science, Ashwin Mathur awinml, Data Science Portfolio, awinml, data science, nlp, LLM, natural language processing]
   author: Ashwin Mathur
-  images: ["/home/profile-pic.png"]
+  images: ["/home/portfolio-home.jpg"]
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: True
