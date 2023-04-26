@@ -75,7 +75,7 @@ params:
   
   # Open Graph Information (Shows while sharing the link)
   title: awinml.github.io
-  description: "Ashwin Mathur - Portfolio Website and Blog"
+  description: "AI Research, NLP, Open-Source"
   keywords: [Ashwin Mathur, Ashwin Mathur Blog, Ashwin Mathur Portfolio, Ashwin Mathur Data Science, Ashwin Mathur website Ashwin Mathur awinml, Data Science Portfolio, awinml, data science, nlp, LLM, natural language processing]
   author: Ashwin Mathur
   images: ["/home/portfolio-home.jpg"]
