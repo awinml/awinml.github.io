@@ -104,7 +104,7 @@ params:
 
   # profile-mode
   profileMode:
-    enabled: True # needs to be explicitly set
+    enabled: false # needs to be explicitly set
     title: Hey there! I'm Ashwin.
     subtitle: |
       I am a skilled AI Research Engineer with expertise in Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision. I specialise in the enhancement and development of applications based on Large Language Models (LLMs) for various natural language processing (NLP) tasks. I am extremely passionate about open-source initiatives. I actively contribute to Scikit-learn, HuggingFace Transformers, and Evaluate. I work with other developers to gain valuable experience while also giving back to the community. I'm always open to interesting conversations and collaboration.
@@ -119,6 +119,17 @@ params:
         url: blog
       - name: Projects
         url: projects
+
+  # home-info mode
+  homeInfoParams:
+    Title: Ashwin Mathur
+
+    Content: |
+        ### **AI Research | NLP | Open-Source @ [Scikit-learn](https://github.com/scikit-learn/scikit-learn/), [HuggingFace](https://github.com/huggingface/transformers)**
+        
+        
+        <div align='center'><img src="/home/profile-pic.png" alt="" width="180" height="180" hspace="0" vspace="20"> </div>
+        AI Research Engineer with expertise in the enhancement and development of applications based on Large Language Models (LLMs). Extremely passionate about open-source initiatives. Actively contribute to Scikit-learn, HuggingFace Transformers, and Evaluate. Always open to interesting conversations and collaboration.
 
 
   socialIcons:
