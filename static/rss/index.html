@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Ashwin Mathur]]></title><description><![CDATA[AI Research, NLP, Open-Source]]></description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>Ashwin Mathur</title><link>http://localhost:2368/</link></image><generator>Ghost 5.49</generator><lastBuildDate>Thu, 01 Jun 2023 21:09:25 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Financial Dashboard for Market Intelligence]]></title><description><![CDATA[Built a end-to-end financial dashboard that collects and consolidates all of a business's critical observations in one place using the information obtained from the annual 10-K SEC Filings of 12 companies.]]></description><link>http://localhost:2368/financial-dashboard-for-market-intelligence/</link><guid isPermaLink="false">64790593edcff63646236d5e</guid><category><![CDATA[Projects]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:56:49 GMT</pubDate><media:content url="http://localhost:2368/content/images/2023/06/fin_dash_cover.png" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><ul>
+<li>
+<img src="http://localhost:2368/content/images/2023/06/fin_dash_cover.png" alt="Financial Dashboard for Market Intelligence"><p>Built a end-to-end financial dashboard that collects and consolidates all of a business&apos;s critical observations in one place using the information obtained from the annual 10-K SEC Filings of 12 companies.</p>
+</li>
+<li>
+<p>Collected text data from 10-K filings from SEC EDGAR using the <a href="https://sec-api.io/?ref=localhost">SEC ExtractorAPI</a>.</p>
+</li>
+<li>
+<p>The filings of 12 companies spanning 5 sectors were collected for the duration of 2017 to 2021. Each filing had over 34,000 words.</p>
+</li>
+<li>
+<p>The data was cleaned and transformed for Sentiment Analysis and Summarization. The data was manually labelled for both the tasks.</p>
+</li>
+<li>
+<p>The <strong>RoBERTa, FinBERT and DistilBERT</strong> models were fine-tuned for sentiment analysis. The best results were obtained using the fine-tuned DistilBERT model. It achieved an <strong>Accuracy of 91.11% and an ROC-AUC Score of 0.972.</strong></p>
+</li>
+<li>
+<p>The <strong>T5, DistilPEGASUS and DistilBART</strong> models were fine-tuned for summarization. The best results were obtained using the fine-tuned DistilBART model. It achieved an <strong>ROUGE-L Score of 67.7%.</strong></p>
+</li>
+<li>
+<p>RAKE NLTK was used to identify important keywords from the generated summaries.</p>
+</li>
+<li>
+<p>The Financial Dashboard was deployed as a web-app using Streamlit. It contains:</p>
+<ul>
+<li><strong>Insights and summaries</strong> for different sections from annual corporate filings.</li>
+<li>Identification of <strong>important keywords</strong> mentioned in the report.</li>
+<li><strong>Sentiment-based score</strong> that measures the company&apos;s performance over a certain time period.</li>
+</ul>
+</li>
+</ul>
+<p>The app can be viewed here: <a href="https://awinml-financial-market-intelligence-app-q6lj0g.streamlit.app/?ref=localhost">Financial Dashboard</a></p>
+<!--kg-card-end: markdown--><h2 id="motivation"><strong>Motivation</strong></h2><p>In the current data driven world, it is essential to have access to the right information for impactful decision making. All publicly listed companies have to file annual reports to the government. These consolidated statements allow investors, financial analysts, business owners and other interested parties to get a complete overview of the company. Companies all over the world make key financial decisions based on annually released public filings.</p><p>These corporate filings are rife with complicated legal and financial jargon and make it practically impossible for a layman to understand. In most cases these documents have to be manually read and decoded by people with expert financial and legal understanding. The goal of this project is to develop a tool that automates this tedious procedure and makes it easier to acquire crucial financial information.</p><h2 id="data"><strong>Data</strong></h2><p>To extract the text from the SEC filing, the SEC&#x2019;s ExtractorAPI was used. The API can extract any text section from 10-Q, 10-K, and 8-K SEC filings, and returns the extracted content in cleaned and standardized text or HTML format.<br>The twelve companies for which the data has been collected as listed below organized by sector:</p><ol><li>Pharmaceutical:<br>Abbvie, Pfizer, Merck</li><li>Technology:<br>Alphabet, Meta, Microsoft</li><li>Retail:<br>Costco</li><li>Oil and Natural Gas:<br>Chevron</li><li>Food and Beverages:<br>Coca Cola, Pepsico</li></ol><p>Snapshot of the data:</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/data_snap.png" class="kg-image" alt="Financial Dashboard for Market Intelligence" loading="lazy" width="1330" height="602" srcset="http://localhost:2368/content/images/size/w600/2023/06/data_snap.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/data_snap.png 1000w, http://localhost:2368/content/images/2023/06/data_snap.png 1330w" sizes="(min-width: 720px) 720px"></figure><h2 id="sentiment-analysis"><strong>Sentiment Analysis</strong></h2><p>A local cross validation split was created by randomly sampling rows from the records of 12 companies across sectors like Technology, Finance, Retail and Pharma. <a href="https://github.com/awinml/financial-market-intelligence/blob/main/meta_10K.pdf?ref=localhost">A sample 10k report for Meta can be viewed here</a>.</p><p>The RoBERTa, FinBERT and DistilBERT models were fine-tuned for sentiment analysis. The best results were obtained using the fine-tuned <strong>DistilBERT</strong> model. It achieved an Accuracy of 91.11% and an ROC-AUC Score of 0.972.</p><!--kg-card-begin: html--><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Accuracy</th>
+<th>F1</th>
+<th>AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roberta</td>
+<td>0.662</td>
+<td>0.656</td>
+<td>0.628</td>
+</tr>
+<tr>
+<td>FinBERT</td>
+<td>0.746</td>
+<td>0.682</td>
+<td>0.721</td>
+</tr>
+<tr>
+<td>DistilBERT</td>
+<td>0.911</td>
+<td>0.914</td>
+<td>0.972</td>
+</tr>
+</tbody>
+</table><!--kg-card-end: html--><h2 id="summarization"><strong>Summarization</strong></h2><p>For the summarization task, the data of Pfizer, Costco and Meta was labeled and used. A local cross validation split was created by randomly sampling rows from the records of these companies.<br>Text summarization was carried out using these three transformers models:</p><p>The T5, DistilPEGASUS and DistilBART models were fine-tuned for summarization. The best results were obtained using the fine-tuned <strong>DistilBART</strong> model. It achieved an ROUGE-L Score of 67.7%.</p><!--kg-card-begin: html--><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>ROUGUE-1</th>
+<th>ROUGUE-2</th>
+<th>ROUGUE-L</th>
+<th>ROUGUE-LSUM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T5</td>
+<td>32.22</td>
+<td>28.5</td>
+<td>31.5</td>
+<td>31.5</td>
+</tr>
+<tr>
+<td>DistilPEGASUS</td>
+<td>48.32</td>
+<td>34.48</td>
+<td>43.51</td>
+<td>31.50</td>
+</tr>
+<tr>
+<td>DistilBART</td>
+<td>72.28</td>
+<td>61.15</td>
+<td>67.70</td>
+<td>71</td>
+</tr>
+</tbody>
+</table><!--kg-card-end: html--><h2 id="identifying-important-keywords"><strong>Identifying Important Keywords</strong></h2><p>RAKE NLTK was used to identify important keywords from the generated summaries.</p><h2 id="code"><strong>Code</strong>:</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/financial-market-intelligence?ref=localhost">Financial Dashboard for Market Intelligence - Github</a>.</p>]]></content:encoded></item><item><title><![CDATA[American Express - Default Prediction]]></title><description><![CDATA[Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.]]></description><link>http://localhost:2368/american-express-default-prediction/</link><guid isPermaLink="false">6479043fedcff63646236d20</guid><category><![CDATA[Projects]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:53:59 GMT</pubDate><media:content url="http://localhost:2368/content/images/2023/06/amex_cover.jpg" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><ul>
+<li>
+<img src="http://localhost:2368/content/images/2023/06/amex_cover.jpg" alt="American Express - Default Prediction"><p>Built a <strong>classification model</strong> to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.</p>
+</li>
+<li>
+<p>The data was particularly challenging to deal with as it had <strong>5.5 million records</strong> and <strong>191 anonymized features</strong>. <strong>122 features</strong> had more than <strong>10% missing values</strong>. The target variable had <strong>severe class imbalance</strong>.</p>
+</li>
+<li>
+<p>Engineered new features by taking different aggregations over time which helped <strong>increase model accuracy by 12%</strong>.</p>
+</li>
+<li>
+<p><strong>Optimized XGBoost and LightGBM Classifiers using RandomSearchCV</strong> to reach the best model.</p>
+</li>
+<li>
+<p>A Soft-Voting Ensemble of the best performing XGBoost and LightGBM Models was used to make final predictions which yielded an <strong>Accuracy of 94.48%, an F1-Score of 96.71% and an ROC-AUC Score of 96.40%.</strong></p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><h2 id="data">Data</h2><p>Credit default prediction is central to managing risk in a consumer lending business. Credit default prediction allows lenders to optimize lending decisions, which leads to a better customer experience and sound business economics.</p><p>The dataset contains profile features for each customer at each statement date. Features are anonymized and normalized, and fall into the following general categories:</p><pre><code>D_* = Delinquency variables
+S_* = Spend variables
+P_* = Payment variables
+B_* = Balance variables
+R_* = Risk variables
+</code></pre><p>with the following features being categorical:</p><p>&apos;B_30&apos;, &apos;B_38&apos;, &apos;D_114&apos;, &apos;D_116&apos;, &apos;D_117&apos;, &apos;D_120&apos;, &apos;D_126&apos;, &apos;D_63&apos;, &apos;D_64&apos;, &apos;D_66&apos;, &apos;D_68&apos;</p><p>The dataset can be downloaded from <a href="https://www.kaggle.com/competitions/amex-default-prediction?ref=localhost">here</a>.</p><h2 id="analysis">Analysis</h2><p>The complete analysis can be viewed <a href="https://nbviewer.org/github/awinml/amex-default-classification/blob/main/amex-eda.ipynb?ref=localhost">here</a>.</p><h3 id="target-distribution">Target Distribution</h3><ul><li>In the data present we observe that <strong>25.9% of records have defaulted</strong> on their credit card payments whereas <strong>74.1% have paid</strong> their bills on time.</li><li>This distribution shows us that there is <strong>severe class imbalance</strong> present.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/0_target_dist.png" class="kg-image" alt="American Express - Default Prediction" loading="lazy" width="452" height="343"></figure><h3 id="distribution-of-number-of-defaults-per-day-for-the-first-month">Distribution of Number of Defaults per day for the first Month:</h3><p>The <strong>proportion of customers that defualt is consistent across each day</strong> in the data, with a slight <strong>weekly seasonal trend</strong> influenced by the day when the customers receive their statements.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/0.1_statements_default.png" class="kg-image" alt="American Express - Default Prediction" loading="lazy" width="1303" height="432" srcset="http://localhost:2368/content/images/size/w600/2023/06/0.1_statements_default.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/0.1_statements_default.png 1000w, http://localhost:2368/content/images/2023/06/0.1_statements_default.png 1303w" sizes="(min-width: 720px) 720px"></figure><h3 id="frequency-of-customer-statements-for-the-first-month">Frequency of Customer Statements for the first month:</h3><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/1_statements_over_time.png" class="kg-image" alt="American Express - Default Prediction" loading="lazy" width="725" height="458" srcset="http://localhost:2368/content/images/size/w600/2023/06/1_statements_over_time.png 600w, http://localhost:2368/content/images/2023/06/1_statements_over_time.png 725w" sizes="(min-width: 720px) 720px"></figure><ul><li>There is <strong>weekly seasonal pattern</strong> observed in the number of statements received per day.</li><li>As seen above this trend does not seem to be significantly affecting the proportion of default.</li></ul><h3 id="distribution-of-values-of-payment-variables">Distribution of values of Payment Variables:</h3><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/3_distribution_payment.png" class="kg-image" alt="American Express - Default Prediction" loading="lazy" width="1144" height="286" srcset="http://localhost:2368/content/images/size/w600/2023/06/3_distribution_payment.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/3_distribution_payment.png 1000w, http://localhost:2368/content/images/2023/06/3_distribution_payment.png 1144w" sizes="(min-width: 720px) 720px"></figure><ul><li>We notice that <strong>Payment 2 is heavily negatively skewed (left skewed).</strong></li><li>Even though Payment 4 have continuous values between 0 and 1, most of the density is <strong>clustered around 0 and 1</strong>.</li><li>This tells us that there may be some <strong>Gaussian Noise present</strong>. The noise can be removed and into a binary variable.</li></ul><h3 id="correlation-of-features-with-target-variable">Correlation of Features with Target Variable:</h3><ul><li><strong>Payment 2</strong> is <strong>negatively correlated</strong> with the target with a correlation of <strong>-0.67.</strong></li><li><strong>Delinquency 48</strong> is <strong>positively correlated</strong> with the target with a correlation of <strong>0.61.</strong></li></ul><h3 id="correlation-of-payment-variables-with-target">Correlation of Payment Variables with Target</h3><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/4_payment_corr.png" class="kg-image" alt="American Express - Default Prediction" loading="lazy" width="417" height="383"></figure><ul><li>We observe that Payment 2 and Target are <strong>highly negatively correlated</strong>.</li><li>This could be probably be due to the fact that people paying their bill have a less chance of default.</li></ul><h2 id="experiments">Experiments:</h2><!--kg-card-begin: markdown--><ul>
+<li>
+<p>There is a substantial number of missing values in the data. These cannot be imputed since the features are anonymized and there is no clear rationale behind imputation. This constraint forces us to choose models that can handle missing values.</p>
+</li>
+<li>
+<p>There is a <strong>high cardinality of features ie. 191 features</strong> in the data. The presence of missing values restricts the usage of traditional dimensionality reduction techniques like PCA as well as feature selection methods like RFE.</p>
+</li>
+<li>
+<p>Instead we have engineer new features using aggregations over the time dimension. As the aggregations ignore missing values, the engineered features are dense and can be used for modelling.</p>
+</li>
+<li>
+<p>Some of the prominent models that are used for classification and accept inputs with missing values are XGBoost, LightGBM, and CatBoost. They all internally impute the data depending on whatever imputation technique delivers the greatest performance benefit.</p>
+</li>
+<li>
+<p>A baseline was created using a XGBoost model with default hyperparameters which yielded an <strong>Accuracy of 78.84%, an F1-Score of 54.64% and an ROC-AUC Score of 65.72%.</strong></p>
+</li>
+<li>
+<p>The LightGBM model with default hyperparameters was tried after that and improved <strong>Accuracy by 1%, F1-Score by 12% and ROC-AUC Score by 6%.</strong></p>
+</li>
+<li>
+<p>A <strong>Randomized Grid Search</strong> with 5 Cross Validation folds was carried out to fine tune the XGBoost and LightGBM models.</p>
+</li>
+<li>
+<p>Hyperparameters of the XGBoost model such as <code>n_estimators</code>, <code>max_depth</code> and <code>learning_rate</code> were tuned to improve <strong>Accuracy by 9%, F1-Score by 18% and ROC-AUC Score by 3%.</strong></p>
+</li>
+<li>
+<p>Hyperparameters of the LightGBM model such as <code>n_estimators</code>, <code>feature_fraction</code> and <code>learning_rate</code> were tuned to improve <strong>Accuracy by 0.1%, F1-Score by 6% and ROC-AUC Score by 10%.</strong></p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><h2 id="results">Results:</h2><p>A <strong>Soft Voting Classifier</strong> was used to create a ensemble of both the models and was used for generating the final predictions. It achieved an <strong>Accuracy of 94.48%, an F1-Score of 96.71% and an ROC-AUC Score of 96.40%.</strong></p><p>The results from all the models have been summarized below:</p><!--kg-card-begin: html--><table>
+<thead>
+<tr>
+<th style="text-align: center"><strong>Model</strong></th>
+<th style="text-align: center"><strong>Accuracy</strong></th>
+<th style="text-align: center"><strong>F1-Score</strong></th>
+<th style="text-align: center"><strong>ROC-AUC Score</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center"><strong>XGBoost</strong> <em>(default)</em></td>
+<td style="text-align: center">78.84</td>
+<td style="text-align: center">54.64</td>
+<td style="text-align: center">65.72</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>LightGBM</strong> <em>(default)</em></td>
+<td style="text-align: center">79.84</td>
+<td style="text-align: center">62.92</td>
+<td style="text-align: center">71.86</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>XGBoost</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">88.61</td>
+<td style="text-align: center">80.74</td>
+<td style="text-align: center">74.96</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>LightGBM</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">88.72</td>
+<td style="text-align: center">86.42</td>
+<td style="text-align: center">84.22</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>Voting Classifier</strong> <em>(XGB + LGBM)</em></td>
+<td style="text-align: center"><strong>94.48</strong></td>
+<td style="text-align: center"><strong>96.72</strong></td>
+<td style="text-align: center"><strong>96.40</strong></td>
+</tr>
+</tbody>
+</table><!--kg-card-end: html--><h2 id="run-locally">Run Locally</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/amex-default-classification?ref=localhost">American Express - Default Prediction Github</a>.</p><ol><li>Install required libraries:</li></ol><pre><code class="language-bash">  pip install -r requirements.txt
+</code></pre><ol><li>Generate features:</li></ol><pre><code class="language-bash">  python amex-feature-engg.py
+</code></pre><ol><li>Fine-tune models:</li></ol><pre><code class="language-bash">  python amex-fine-tuning.py
+</code></pre><ol><li>Generate predictions:</li></ol><pre><code class="language-bash">  python amex-final-prediction.py
+</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>]]></content:encoded></item><item><title><![CDATA[H&M Personalized Product Recommendations]]></title><description><![CDATA[Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&M.]]></description><link>http://localhost:2368/h-m-personalized-product-recommendations/</link><guid isPermaLink="false">6478fc81edcff63646236cd6</guid><category><![CDATA[Projects]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:24:21 GMT</pubDate><media:content url="http://localhost:2368/content/images/2023/06/hm_recsys_cover-1.jpg" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><ul>
+<li>
+<img src="http://localhost:2368/content/images/2023/06/hm_recsys_cover-1.jpg" alt="H&amp;M Personalized Product Recommendations"><p>Built a <strong>product recommendation system</strong> to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&amp;M.</p>
+</li>
+<li>
+<p>The data contains <strong>1,05,542 unique products</strong> with information on <strong>24 characteristics</strong> for each product.</p>
+</li>
+<li>
+<p>The data contains information on <strong>13,71,980 consumers</strong> and <strong>3,17,88,324 client transactions</strong> from 2018 to 2020.</p>
+</li>
+<li>
+<p>A custom lightweight candidate retrieval method was created using a combination of retrieval of candidates that were purchased together in the last week as well as<br>
+most popular candidates based on age group.</p>
+</li>
+<li>
+<p>The candidates were ranked using a LightGBM model based on features created using the frequency of product purchase as well as the percentage of customers that purchased that product.</p>
+</li>
+<li>
+<p>A fine tuned recommendation system using a custom candidate retrieval method and LightGBM Ranking model was used to make final predictions which yielded an <strong>MAP@12 score of 0.345 and an overall AUC of 0.76.</strong></p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><h2 id="data">Data</h2><p>The purchase history of customers across time, along with supporting metadata has been provided. The goal is to predict what articles each customer will purchase in the 7-day period immediately after the training data ends.</p><p>Files provided:</p><ul><li>articles.csv - detailed metadata for each article_id available for purchase</li><li>customers.csv - metadata for each customer_id in dataset</li><li>transactions.csv - data consisting of the purchases each customer for each date, as well as additional information. Duplicate rows correspond to multiple purchases of the same item.</li></ul><p>The dataset can be downloaded from <a href="https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations?ref=localhost">here</a>.</p><h2 id="analysis">Analysis</h2><p>The complete analysis can be viewed <a href="https://nbviewer.org/github/awinml/hm-recsys/blob/main/hm-eda.ipynb?ref=localhost">here</a>.</p><h3 id="distribution-of-number-of-transactions-per-day">Distribution of number of Transactions per day:</h3><ul><li>October 2019 recorded the highest number of transactions in duration of 2018 to 2020.</li><li>There is a quarterly seasonal spike of tranactions.</li><li>There tends to be a large number of transactions in the month of December every year.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/9_daily_transactions.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="1189" height="387" srcset="http://localhost:2368/content/images/size/w600/2023/06/9_daily_transactions.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/9_daily_transactions.png 1000w, http://localhost:2368/content/images/2023/06/9_daily_transactions.png 1189w" sizes="(min-width: 720px) 720px"></figure><h3 id="distribution-of-number-of-transactions-per-day-grouped-by-sales-channel">Distribution of number of Transactions per day grouped by Sales Channel:</h3><ul><li>Sales Channel 1 has faily consistent number of transactions per day with rarely any large spikes.</li><li>Sales Channel 2 consistently outperforms Sales Channel 1 throughout 2018 to 2020.</li><li>The quarterly seasonal spike of tranactions is caused by transactions through Sales Channel 2.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/10_daily_transactions_sales_channel.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="966" height="387" srcset="http://localhost:2368/content/images/size/w600/2023/06/10_daily_transactions_sales_channel.png 600w, http://localhost:2368/content/images/2023/06/10_daily_transactions_sales_channel.png 966w" sizes="(min-width: 720px) 720px"></figure><h3 id="distribution-of-number-of-unique-articles-sold-per-day-grouped-by-sales-channel">Distribution of number of unique Articles sold per day grouped by Sales Channel:</h3><ul><li>Sales Channel 1 has faily consistent number of unique Articles sold per day with rarely any spikes.</li><li>Sales Channel 2 consistently sells more unique products per day than Sales Channel 1 throughout 2018 to 2020.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/11_daily_transactions_sales_channel_unique_articles.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="959" height="387" srcset="http://localhost:2368/content/images/size/w600/2023/06/11_daily_transactions_sales_channel_unique_articles.png 600w, http://localhost:2368/content/images/2023/06/11_daily_transactions_sales_channel_unique_articles.png 959w" sizes="(min-width: 720px) 720px"></figure><p>After seeing the distrubtion of transactions and unique articles sold per day, we get the intuition that Sales Channel 1 customers are more consistent and conservative buyers.</p><p>On the other hand, customers that use Sales Channel 2 are ready to try out new products and also purchase products only in specific months during the year.</p><h3 id="distribution-of-customers-across-age-group">Distribution of Customers across Age Group:</h3><ul><li>The highest number of customers are aged 21 years.</li><li>A large proportion of the customer demographic are young adults aged 19 to 26.</li><li>There is also a significant customer base that is aged 46 to 56 years.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/7_customer_age_distribution.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="1182" height="399" srcset="http://localhost:2368/content/images/size/w600/2023/06/7_customer_age_distribution.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/7_customer_age_distribution.png 1000w, http://localhost:2368/content/images/2023/06/7_customer_age_distribution.png 1182w" sizes="(min-width: 720px) 720px"></figure><h3 id="distribution-of-customers-who-have-subscribed-for-fashion-news-alerts">Distribution of Customers who have subscribed for Fashion News Alerts:</h3><ul><li>67% of all the customers have not subscribed for Fashion News Alerts.</li><li>32% of the customers have subscribed for regular updates.</li><li>1% of the customers have subscribed for monthly updates</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/8_customers_fashion_news.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="410" height="387"></figure><h3 id="product-groups-with-the-highest-number-of-product-types">Product Groups with the highest number of Product Types:</h3><p>The product group &apos;Accessories&apos; has the highest number of product types followed by &apos;Shoes&apos; and &apos;Upper Body Garments&apos;.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/1_product_types.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="600" height="387" srcset="http://localhost:2368/content/images/2023/06/1_product_types.png 600w"></figure><h3 id="product-types-with-the-highest-number-of-unique-articles">Product Types with the highest number of unique articles:</h3><p>The product type &apos;Trousers&apos; has the highest number of unique articles closely followed by &apos;Dress&apos;.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/2_popular_articles.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="1277" height="876" srcset="http://localhost:2368/content/images/size/w600/2023/06/2_popular_articles.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/2_popular_articles.png 1000w, http://localhost:2368/content/images/2023/06/2_popular_articles.png 1277w" sizes="(min-width: 720px) 720px"></figure><h3 id="product-departments-with-the-highest-number-of-unique-articles">Product Departments with the highest number of unique articles:</h3><p>The product type &apos;Jersey&apos; has the highest number of unique articles closely followed by &apos;Knitwear&apos;.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/3_highest_articles_dept.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="1045" height="876" srcset="http://localhost:2368/content/images/size/w600/2023/06/3_highest_articles_dept.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/3_highest_articles_dept.png 1000w, http://localhost:2368/content/images/2023/06/3_highest_articles_dept.png 1045w" sizes="(min-width: 720px) 720px"></figure><h3 id="product-graphical-appearance-names-with-the-highest-number-of-unique-articles">Product Graphical Appearance Names with the highest number of unique articles:</h3><p>The highest number of articles are of &apos;Solid&apos; appearance followed by &apos;All over pattern&apos;.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/4_highest_articles_name.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="1024" height="876" srcset="http://localhost:2368/content/images/size/w600/2023/06/4_highest_articles_name.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/4_highest_articles_name.png 1000w, http://localhost:2368/content/images/2023/06/4_highest_articles_name.png 1024w" sizes="(min-width: 720px) 720px"></figure><h3 id="product-index-with-the-highest-number-of-unique-articles">Product Index with the highest number of unique articles:</h3><p>The index named &apos;Ladiesear&apos; has the highest number of unique articles closely followed by &apos;Divided&apos;.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/5_highest_articles_index_name-1.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="643" height="387" srcset="http://localhost:2368/content/images/size/w600/2023/06/5_highest_articles_index_name-1.png 600w, http://localhost:2368/content/images/2023/06/5_highest_articles_index_name-1.png 643w"></figure><h3 id="product-colour-group-names-with-the-highest-number-of-unique-articles">Product Colour Group Names with the highest number of unique articles:</h3><p>The highest number of articles are of &apos;Black&apos; colour group followed by &apos;Dark Blue&apos; and &apos;White&apos;.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/6_highest_articles_color_group.png" class="kg-image" alt="H&amp;M Personalized Product Recommendations" loading="lazy" width="784" height="931" srcset="http://localhost:2368/content/images/size/w600/2023/06/6_highest_articles_color_group.png 600w, http://localhost:2368/content/images/2023/06/6_highest_articles_color_group.png 784w" sizes="(min-width: 720px) 720px"></figure><h2 id="experiments">Experiments:</h2><p>Intuition behind the custom retrieval strategy can be found <a href="https://nbviewer.org/github/awinml/hm-recsys/blob/main/hm-similar-items-explore.ipynb?ref=localhost">here.</a></p><h3 id="candidate-retrieval">Candidate Retrieval</h3><p>A lightweight candidate retrieval method was created that was a combination of the following retrieval strategies.</p><!--kg-card-begin: markdown--><ul>
+<li>
+<p>Recommend Items Purchased Together in the last week:</p>
+<ul>
+<li>Get 5 pairs of each article that were sold in the past week.</li>
+<li>Ignore any article that wasn&apos;t sold within the past week.</li>
+<li>Ignored any pair purchased by less than 2 customers.</li>
+</ul>
+</li>
+<li>
+<p>Recommend Items Purchased Together in the last few weeks:</p>
+<ul>
+<li>The number of previous weeks was tuned.</li>
+</ul>
+</li>
+<li>
+<p>Recommend most popular items based on age group</p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><p>This is a manual, time-aware collaborative filtering method so it includes trend information as well.</p><h3 id="candidate-ranking">Candidate Ranking:</h3><p>Feature creation for ranking based on:</p><ul><li>Percentage of customers the pair was based on.</li><li>How recently the article was purchased.</li><li>Number of times the pair of products was purchased.</li></ul><p>A LightGBM ranking model was used to rank the candidates.</p><ul><li>Hyperparameters of the LightGBM model such as <code>n_estimators</code>, and <code>num_leaves</code> were tuned.</li></ul><h2 id="results">Results:</h2><p>The fine tuned recommendation system using the custom candidate retrival method and LightGBM Ranking model was used to make final predictions which yielded an <strong>MAP@12 score of 0.345 and a overall AUC of 0.76.</strong></p><h2 id="run-locally">Run Locally</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/hm-recsys?ref=localhost">H&amp;M Personalized Product Recommendations Github</a>.</p><ol><li>Install required libraries:</li></ol><pre><code class="language-bash">  pip install -r requirements.txt
+</code></pre><ol><li>Generate local cv:</li></ol><pre><code class="language-bash">  python hm-cv.py
+</code></pre><ol><li>Fine-tune models and generate predictions:</li></ol><pre><code class="language-bash">  python hm-custom-retrieval-pred.py.py
+</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>]]></content:encoded></item><item><title><![CDATA[Jigsaw - Multilingual Toxic Comment Classification]]></title><description><![CDATA[Built a multilingual text classification model to predict the probability that a comment is toxic using the data provided by Google Jigsaw.]]></description><link>http://localhost:2368/jigsaw-multilingual-toxic-comment-classification/</link><guid isPermaLink="false">6478fb9eedcff63646236cbe</guid><category><![CDATA[Projects]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:14:29 GMT</pubDate><media:content url="http://localhost:2368/content/images/2023/06/jigsaw_clf_cover.jpg" medium="image"/><content:encoded><![CDATA[<ul><li>Built a <strong>multilingual text classification model</strong> to predict the probability that a comment is toxic using the data provided by Google Jigsaw.</li><li>The data had <strong>4,35,775</strong> text comments in <strong>7 different languages</strong>. </li><li>A RNN model was used as a baseline. The <strong>BERT-Multilingual-base and XLMRoBERTa</strong> models were fine-tuned to get the best results. </li><li>The best results were obtained using the fine-tuned XLMRoberta model. It achieved an <strong>Accuracy of 96.24% and an ROC-AUC Score of 93.92%.</strong></li></ul><h2 id="data">Data</h2><img src="http://localhost:2368/content/images/2023/06/jigsaw_clf_cover.jpg" alt="Jigsaw - Multilingual Toxic Comment Classification"><p>It only takes one toxic comment to sour an online discussion. Toxicity is defined as anything rude, disrespectful or otherwise likely to make someone leave a discussion. If these toxic contributions can be identified, we could have a safer, more collaborative internet. </p><p>The goal is to find the probability that a comment is toxic.</p><h4 id="columns-in-the-dataset">Columns in the dataset:</h4><pre><code>id - identifier within each file.
+comment_text - the text of the comment to be classified.
+lang - the language of the comment.
+toxic - whether or not the comment is classified as toxic.
+</code></pre><p>The comments are composed of multiple non-English languages and come either from Civil Comments or Wikipedia talk page edits.</p><p>The dataset can be downloaded from <a href="https://www.kaggle.com/competitions/jigsaw-multilingual-toxic-comment-classification?ref=localhost">here</a>.</p><h2 id="experiments">Experiments:</h2><h4 id="rnn"><strong>RNN:</strong></h4><ul><li>A baseline was created using the RNN model. An <strong>embedding layer of size 64</strong> was used. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>5 epochs</strong> yielded an <strong>Accuracy of 83.68% and an ROC-AUC Score of 55.72%.</strong></li></ul><h4 id="bert-multilingual-base"><strong>BERT-Multilingual-base:</strong></h4><ul><li>The BERT-Multilingual-base was fine tuned on the data. A <strong>hidden layer of 1024 neurons</strong> was added to the model. Training the model with an <strong>Adam optimizer with learning rate of 0.001, weight decay of 1e-6</strong> for <strong>10 epochs</strong> yielded an <strong>Accuracy of 93.92% and an ROC-AUC Score of 89.55%.</strong></li></ul><h4 id="xlm-roberta"><strong>XLM RoBERTa:</strong></h4><ul><li>The XLMRoberta model was fine tuned on the data. Training the model with an <strong>AdamW optimizer with learning rate of 1e-5, weight decay of 1e-5</strong> for <strong>7 epochs</strong> yielded an <strong>Accuracy of 96.24% and an ROC-AUC Score of 93.92%.</strong></li></ul><p>For all the models that were fine-tuned:</p><ul><li>Batch size of 64 was used for training.</li><li>Binary Cross-Entropy was used as the loss function.</li></ul><h2 id="results">Results:</h2><p>The best results were obtained using a fine-tuned XLMRoberta model. It was used for generating the final predictions. It achieved an <strong>Accuracy of 96.24% and an ROC-AUC Score of 93.92%.</strong></p><p>The results from all the models have been summarized below:</p><!--kg-card-begin: html--><table>
+<thead>
+<tr>
+<th style="text-align: center"><strong>Model</strong></th>
+<th style="text-align: center"><strong>Accuracy</strong></th>
+<th style="text-align: center"><strong>ROC-AUC Score</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center"><strong>RNN</strong></td>
+<td style="text-align: center">83.68</td>
+<td style="text-align: center">55.72</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>BERT-Multilingual-base</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">93.92</td>
+<td style="text-align: center">89.55</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>XLM RoBERTa</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center"><strong>96.24</strong></td>
+<td style="text-align: center"><strong>93.92</strong></td>
+</tr>
+</tbody>
+</table><!--kg-card-end: html--><h2 id="run-locally">Run Locally</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/jigsaw-toxic-comment-clf?ref=localhost">Jigsaw - Multilingual Toxic Comment Classification Github</a>.</p><ol><li>Install required libraries:</li></ol><pre><code class="language-bash">  pip install -r requirements.txt
+</code></pre><ol><li>Baseline model:</li></ol><pre><code class="language-bash">  python toxic-baseline-rnn.py
+</code></pre><ol><li>Fine-tune models:</li></ol><pre><code class="language-bash">  python toxic-bertm-base.py
+  python toxic-xlm-roberta.py
+</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>]]></content:encoded></item><item><title><![CDATA[Sports Image Classification]]></title><description><![CDATA[Built a image classification model to predict the sport that is being represented in the image.]]></description><link>http://localhost:2368/sports-image-classification/</link><guid isPermaLink="false">6478fa5eedcff63646236ca9</guid><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:10:03 GMT</pubDate><media:content url="http://localhost:2368/content/images/2023/06/sports_img_clf_cover.png" medium="image"/><content:encoded><![CDATA[<ul><li>Built a <strong>image classification model</strong> to predict the sport that is being represented in the image.</li><li>Compared five different CNN architectures ie. a <strong>custom CNN, InceptionV3, ResNet50V2, MobileNetV2 and EfficientNetB3</strong> based on model performance on this dataset.</li><li>A fine-tuned <strong>EfficientNetB3</strong> model was used for generating the final predictions which yielded an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></li><li>A <strong>web app was made using Streamlit</strong> to make predict the sport for new images using the best model.</li></ul><h2 id="streamlit-app">Streamlit App</h2><img src="http://localhost:2368/content/images/2023/06/sports_img_clf_cover.png" alt="Sports Image Classification"><p>The live app can be viewed <a href="https://huggingface.co/spaces/awinml/sports_classification?ref=localhost">here</a>.</p><h2 id="data">Data</h2><p>The dataset is a collection of images representing <strong>100 different types of Sports and activities</strong>. The sports range from traditional sports like &quot;archery&quot;, &quot;arm wrestling&quot;, &quot;bowling&quot;, &quot;football&quot;, &quot;water polo&quot;, &quot;weightlifting&quot; to non-traditional ones like &quot;wingsuit flying&quot; and &quot;nascar racing&quot;. The goal is the predict the correct sport based on the image.</p><p>Each image is of size 224 x 224 pixels.</p><p>The images have been segregated into train, test and valid directories.</p><p>There are 13572 train, 500 test, 500 validation images.</p><p>The dataset can be downloaded from <a href="https://www.kaggle.com/datasets/gpiosenka/sports-classification?ref=localhost">Kaggle</a>.</p><h2 id="experiments">Experiments:</h2><h4 id="custom-cnn">Custom CNN:</h4><ul><li>A baseline was created using a custom CNN model with 3 convolution layers and 3 dense layers. A <strong>kernel of size 3 x 3</strong> was used for all the convolution layers. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>47 epochs</strong> yielded an <strong>Accuracy of 56.44%, F1-Score of 48.48% and an ROC-AUC Score of 49.46%.</strong></li></ul><h4 id="inceptionv3">InceptionV3:</h4><ul><li>The <strong>InceptionV3</strong> model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>22 epochs</strong> yielded an <strong>Accuracy of 68.92%, F1-Score of 64.92% and an ROC-AUC Score of 66.64.</strong></li></ul><h4 id="resnet50v2">ResNet50V2:</h4><ul><li>The <strong>ResNet50V2</strong> model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>16 epochs</strong> yielded an <strong>Accuracy of 72.88%, F1-Score of 70.67% and an ROC-AUC Score of 69.72.</strong></li></ul><h4 id="mobilenetv2">MobileNetV2:</h4><ul><li>The <strong>MobileNetV2</strong> model was initialized with pre-trained ImageNet weights and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>8 epochs</strong> yielded an <strong>Accuracy of 86.68%, F1-Score of 86.79% and an ROC-AUC Score of 88.36.</strong></li></ul><h4 id="efficientnetb3">EfficientNetB3:</h4><ul><li>The <strong>EfficientNetB3</strong> model was initialized with pre-trained ImageNet weights and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>18 epochs</strong> yielded an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></li></ul><p>For all the models that were fine-tuned:</p><ul><li>Two hidden layers of 256 and 128 neurons respectively were added with leaky-relu activations.</li><li>Dropout Layers with p=0.1 were added to prevent overfitting.</li><li>Number of epochs was 50 with Early stopping with patience parameter as 2 epochs.</li><li>Batch size of 32 was used for training.</li><li>Sparse Categorical Cross-Entropy was used as the loss function.</li></ul><h2 id="results">Results:</h2><p>The best results were obtained using a fine-tuned EfficientNetB3 model. It was used for generating the final predictions. It achieved an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></p><p>The results from all the models have been summarized below:</p><!--kg-card-begin: html--><table>
+<thead>
+<tr>
+<th style="text-align: center"><strong>Model</strong></th>
+<th style="text-align: center"><strong>Accuracy</strong></th>
+<th style="text-align: center"><strong>F1-Score</strong></th>
+<th><strong>ROC-AUC Score</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center"><strong>Custom CNN</strong></td>
+<td style="text-align: center">56.44</td>
+<td style="text-align: center">48.48</td>
+<td>49.46</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>InceptionV3</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">68.92</td>
+<td style="text-align: center">64.92</td>
+<td>66.64</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>ResNet50V2</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">72.88</td>
+<td style="text-align: center">70.67</td>
+<td>69.72</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>MobileNetV2</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">86.68</td>
+<td style="text-align: center">86.79</td>
+<td>88.36</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>EfficientNetB3</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">92.72</td>
+<td style="text-align: center">91.76</td>
+<td>96.92</td>
+</tr>
+</tbody>
+</table><!--kg-card-end: html--><h2 id="run-locally">Run Locally</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/sports-image-classification?ref=localhost">Sports Image Classification Github</a>.</p><ol><li>Install required libraries:</li></ol><pre><code class="language-bash">  pip install -r streamlit/requirements.txt
+</code></pre><ol><li>Fine-tune models:</li></ol><pre><code class="language-bash">  python sports-clf-custom-cnn.py
+  python sports-clf-inception.py
+  python sports-clf-resnet.py
+  python sports-clf-mobilenet.py
+  python sports-clf-efficientnet.py
+</code></pre><ol><li>Generate predictions:</li></ol><pre><code class="language-bash">  python sports-clf-final-predictions.py
+</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>]]></content:encoded></item><item><title><![CDATA[An Introduction to GitHub and Git]]></title><description><![CDATA[Learn about the fundamentals of Git and GitHub in this introductory article, including what they are, how they work, and how they can benefit your development workflow.]]></description><link>http://localhost:2368/an-introduction-to-github-and-git/</link><guid isPermaLink="false">6478f396edcff63646236c7d</guid><category><![CDATA[Blog]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 19:45:48 GMT</pubDate><media:content url="http://localhost:2368/content/images/2023/06/cover.jpg" medium="image"/><content:encoded><![CDATA[<img src="http://localhost:2368/content/images/2023/06/cover.jpg" alt="An Introduction to GitHub and Git"><p>If you are interested in software development, you have likely heard of GitHub and Git. GitHub is a web-based platform that provides hosting for version control using Git. Git, on the other hand, is a distributed version control system used by millions of developers worldwide to manage their codebases. This article aims to introduce you to both GitHub and Git, their purpose, and how they are used.</p><h2 id="what-is-git">What is Git?</h2><p>Git is a free, open-source distributed version control system designed to manage codebases of all sizes. It was created by Linus Torvalds in 2005 to help manage the Linux kernel&apos;s development. Git enables developers to track changes made to code, work collaboratively on projects, and manage multiple versions of codebases. With Git, developers can create branches to work on specific features or bug fixes and merge them back into the main branch once the changes are complete.</p><p>Git works by creating a local repository on the developer&apos;s machine, allowing them to make changes and commit them to the repository&apos;s history. Developers can then push these changes to a remote repository, such as one hosted on GitHub, where other developers can review and contribute to the codebase.</p><h2 id="what-is-github">What is GitHub?</h2><p>GitHub is a web-based platform that provides hosting for Git repositories. It was founded in 2008 by Chris Wanstrath, Tom Preston-Werner, and PJ Hyett. GitHub allows developers to host their Git repositories for free or at a cost, depending on the features they need. It provides a web-based interface for managing code, issues, pull requests, and more.</p><p>GitHub is not just a hosting platform. It also offers a suite of tools and services to help developers collaborate and manage their codebases. For example, GitHub provides a feature called &quot;forking,&quot; which allows developers to create a copy of a repository and make changes without affecting the original codebase. They can then submit a pull request to the original repository owner, asking them to merge their changes.</p><p>GitHub also provides an issue tracking system, enabling developers to create, assign, and prioritize tasks and bugs. Additionally, GitHub offers a wiki feature, which can be used to create documentation for a project.</p><h2 id="how-are-git-and-github-used-together">How are Git and GitHub used together?</h2><p>Git and GitHub are often used together to manage codebases collaboratively. Developers create a local Git repository on their machine, make changes, and commit them to the repository&apos;s history. They can then push these changes to a remote Git repository hosted on GitHub, where other developers can review and contribute to the codebase.</p><p>Developers can collaborate on code changes by creating branches and merging them back into the main branch once the changes are complete. They can also use pull requests to propose changes to the original repository owner and ask them to merge the changes.<br>Conclusion</p><p>Git and GitHub are essential tools for developers working collaboratively on codebases. Git provides a distributed version control system that allows developers to track changes and manage multiple versions of codebases. GitHub provides a web-based platform for hosting Git repositories and offers a suite of tools and services to help developers collaborate on code, track issues, and manage documentation. If you are interested in software development, learning Git and GitHub is a must.</p><h2 id="important-git-commands">Important Git Commands</h2><p>Here are some important Git commands with examples:</p><!--kg-card-begin: markdown--><ul>
+<li>
+<p><code>git init</code> - Initializes a new Git repository.</p>
+<p>Example: <code>git init</code></p>
+</li>
+<li>
+<p><code>git clone</code> - Creates a copy of an existing Git repository.</p>
+<p>Example: <code>git clone https://github.com/user/repo.git</code></p>
+</li>
+<li>
+<p><code>git add</code> - Adds changes to the staging area.</p>
+<p>Example: <code>git add filename.txt</code></p>
+</li>
+<li>
+<p><code>git commit</code> - Commits changes to the repository with a message.</p>
+<p>Example: <code>git commit -m &quot;added new feature&quot;</code></p>
+</li>
+<li>
+<p><code>git push</code> - Pushes committed changes to a remote repository.</p>
+<p>Example: <code>git push origin main</code></p>
+</li>
+<li>
+<p><code>git pull</code> - Pulls changes from a remote repository to a local one.</p>
+<p>Example: <code>git pull origin main</code></p>
+</li>
+<li>
+<p><code>git branch</code> - Lists existing branches or creates a new one.</p>
+<p>Example: <code>git branch new-feature</code></p>
+</li>
+<li>
+<p><code>git checkout</code> - Switches to a different branch or commit.</p>
+<p>Example: <code>git checkout new-feature</code></p>
+</li>
+<li>
+<p><code>git merge</code> - Merges changes from one branch into another.</p>
+<p>Example: <code>git merge new-feature</code></p>
+</li>
+<li>
+<p><code>git status</code> - Shows the current status of the repository.</p>
+<p>Example: <code>git status</code></p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><p>These are just a few of the many Git commands available. Learning and mastering these commands can help you effectively manage your Git repositories and collaborate with other developers.</p>]]></content:encoded></item></channel></rss>

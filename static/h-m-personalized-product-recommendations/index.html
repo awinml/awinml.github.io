@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="auto-color">
+<head>
+
+    <title>H&amp;M Personalized Product Recommendations</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=e38ea076ac" />
+
+    <meta name="description" content="Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&amp;M.">
+    <link rel="canonical" href="http://localhost:2368/h-m-personalized-product-recommendations/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="http://localhost:2368/h-m-personalized-product-recommendations/amp/">
+    
+    <meta property="og:site_name" content="Ashwin Mathur">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="H&amp;M Personalized Product Recommendations">
+    <meta property="og:description" content="Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&amp;M.">
+    <meta property="og:url" content="http://localhost:2368/h-m-personalized-product-recommendations/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2023/06/hm_recsys_cover-1.jpg">
+    <meta property="article:published_time" content="2023-06-01T20:24:21.000Z">
+    <meta property="article:modified_time" content="2023-06-01T20:24:21.000Z">
+    <meta property="article:tag" content="Projects">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="H&amp;M Personalized Product Recommendations">
+    <meta name="twitter:description" content="Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&amp;M.">
+    <meta name="twitter:url" content="http://localhost:2368/h-m-personalized-product-recommendations/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2023/06/hm_recsys_cover-1.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Ashwin Mathur">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Projects">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1222">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ashwin Mathur",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ashwin Mathur",
+        "url": "http://localhost:2368/author/ashwin/",
+        "sameAs": []
+    },
+    "headline": "H&amp;M Personalized Product Recommendations",
+    "url": "http://localhost:2368/h-m-personalized-product-recommendations/",
+    "datePublished": "2023-06-01T20:24:21.000Z",
+    "dateModified": "2023-06-01T20:24:21.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2023/06/hm_recsys_cover-1.jpg",
+        "width": 1920,
+        "height": 1222
+    },
+    "keywords": "Projects",
+    "description": "Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&amp;M.",
+    "mainEntityOfPage": "http://localhost:2368/h-m-personalized-product-recommendations/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.49">
+    <link rel="alternate" type="application/rss+xml" title="Ashwin Mathur" href="http://localhost:2368/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.32/umd/portal.min.js" data-i18n="false" data-ghost="http://localhost:2368/" data-key="3f8153ddbf039121b27e361e3a" data-api="http://localhost:2368/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost:2368/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="http://localhost:2368/" data-api-url="http://localhost:2368/members/api/announcement/" crossorigin="anonymous"></script>
+    <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=e38ea076ac"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=e38ea076ac">
+    <script defer src="/public/member-attribution.min.js?v=e38ea076ac"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8005664633543622"
+     crossorigin="anonymous"></script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TQJMQLKYQ9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TQJMQLKYQ9');
+</script>
+
+<!-- Social Media Icons -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .gh-head-menu .nav-email a,
+    .gh-head-menu .nav-github a,
+    .gh-head-menu .nav-linkedin a {
+        font-size: 0 !important;
+    }
+
+    .gh-head-menu .nav-email a::before {
+        font-family: "Font Awesome 6 Free";
+        display: inline-block;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+ 
+    .gh-head-menu .nav-github a::before,
+    .gh-head-menu .nav-linkedin a::before {
+        font-family: "Font Awesome 6 Brands";
+        display: inline-block;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .gh-head-menu .nav-email a::before {content: "\f0e0"}
+    .gh-head-menu .nav-github a::before {content: "\f09b"}
+    .gh-head-menu .nav-linkedin a::before {content: "\f08c"}
+</style>
+
+<style>:root {--ghost-accent-color: #023e8a;}</style>
+
+</head>
+<body class="post-template tag-projects is-head-left-logo has-cover">
+<div class="viewport">
+
+    <header id="gh-head" class="gh-head outer">
+        <div class="gh-head-inner inner">
+            <div class="gh-head-brand">
+                <a class="gh-head-logo no-image" href="http://localhost:2368">
+                        Ashwin Mathur
+                </a>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="http://localhost:2368/">Home</a></li>
+    <li class="nav-about"><a href="http://localhost:2368/about/">About</a></li>
+    <li class="nav-blog"><a href="http://localhost:2368/tag/blog/">Blog</a></li>
+    <li class="nav-projects"><a href="http://localhost:2368/tag/projects/">Projects</a></li>
+    <li class="nav-contact"><a href="http://localhost:2368/contact/">Contact</a></li>
+    <li class="nav-email"><a href="mailto:ashwinm400@gmail.com">Email</a></li>
+    <li class="nav-github"><a href="https://github.com/awinml">GitHub</a></li>
+    <li class="nav-linkedin"><a href="https://www.linkedin.com/in/ashwin-mathur-ds/">LinkedIn</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-content">
+        
+
+
+
+<main id="site-main" class="site-main">
+<article class="article post tag-projects image-small">
+
+    <header class="article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+                <span class="post-card-primary-tag">
+                    <a href="/tag/projects/">Projects</a>
+                </span>
+        </div>
+
+        <h1 class="article-title">H&amp;M Personalized Product Recommendations</h1>
+
+            <p class="article-excerpt">Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&amp;M.</p>
+
+        <div class="article-byline">
+        <section class="article-byline-content">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="/author/ashwin/" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+</a>
+                </li>
+            </ul>
+
+            <div class="article-byline-meta">
+                <h4 class="author-name"><a href="/author/ashwin/">Ashwin Mathur</a></h4>
+                <div class="byline-meta-content">
+                    <time class="byline-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                        <span class="byline-reading-time"><span class="bull">&bull;</span> 5 min read</span>
+                </div>
+            </div>
+
+        </section>
+        </div>
+
+            <figure class="article-image">
+                <img
+                    srcset="/content/images/size/w300/2023/06/hm_recsys_cover-1.jpg 300w,
+                            /content/images/size/w600/2023/06/hm_recsys_cover-1.jpg 600w,
+                            /content/images/size/w1000/2023/06/hm_recsys_cover-1.jpg 1000w,
+                            /content/images/size/w2000/2023/06/hm_recsys_cover-1.jpg 2000w"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
+                    src="/content/images/size/w2000/2023/06/hm_recsys_cover-1.jpg"
+                    alt="H&amp;M Personalized Product Recommendations"
+                />
+                    <figcaption>H&amp;M Personalized Product Recommendations</figcaption>
+            </figure>
+
+    </header>
+
+    <section class="gh-content gh-canvas">
+        <!--kg-card-begin: markdown--><ul>
+<li>
+<p>Built a <strong>product recommendation system</strong> to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&amp;M.</p>
+</li>
+<li>
+<p>The data contains <strong>1,05,542 unique products</strong> with information on <strong>24 characteristics</strong> for each product.</p>
+</li>
+<li>
+<p>The data contains information on <strong>13,71,980 consumers</strong> and <strong>3,17,88,324 client transactions</strong> from 2018 to 2020.</p>
+</li>
+<li>
+<p>A custom lightweight candidate retrieval method was created using a combination of retrieval of candidates that were purchased together in the last week as well as<br>
+most popular candidates based on age group.</p>
+</li>
+<li>
+<p>The candidates were ranked using a LightGBM model based on features created using the frequency of product purchase as well as the percentage of customers that purchased that product.</p>
+</li>
+<li>
+<p>A fine tuned recommendation system using a custom candidate retrieval method and LightGBM Ranking model was used to make final predictions which yielded an <strong>MAP@12 score of 0.345 and an overall AUC of 0.76.</strong></p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><h2 id="data">Data</h2><p>The purchase history of customers across time, along with supporting metadata has been provided. The goal is to predict what articles each customer will purchase in the 7-day period immediately after the training data ends.</p><p>Files provided:</p><ul><li>articles.csv - detailed metadata for each article_id available for purchase</li><li>customers.csv - metadata for each customer_id in dataset</li><li>transactions.csv - data consisting of the purchases each customer for each date, as well as additional information. Duplicate rows correspond to multiple purchases of the same item.</li></ul><p>The dataset can be downloaded from <a href="https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations?ref=localhost">here</a>.</p><h2 id="analysis">Analysis</h2><p>The complete analysis can be viewed <a href="https://nbviewer.org/github/awinml/hm-recsys/blob/main/hm-eda.ipynb?ref=localhost">here</a>.</p><h3 id="distribution-of-number-of-transactions-per-day">Distribution of number of Transactions per day:</h3><ul><li>October 2019 recorded the highest number of transactions in duration of 2018 to 2020.</li><li>There is a quarterly seasonal spike of tranactions.</li><li>There tends to be a large number of transactions in the month of December every year.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/9_daily_transactions.png" class="kg-image" alt loading="lazy" width="1189" height="387" srcset="http://localhost:2368/content/images/size/w600/2023/06/9_daily_transactions.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/9_daily_transactions.png 1000w, http://localhost:2368/content/images/2023/06/9_daily_transactions.png 1189w" sizes="(min-width: 720px) 720px"></figure><h3 id="distribution-of-number-of-transactions-per-day-grouped-by-sales-channel">Distribution of number of Transactions per day grouped by Sales Channel:</h3><ul><li>Sales Channel 1 has faily consistent number of transactions per day with rarely any large spikes.</li><li>Sales Channel 2 consistently outperforms Sales Channel 1 throughout 2018 to 2020.</li><li>The quarterly seasonal spike of tranactions is caused by transactions through Sales Channel 2.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/10_daily_transactions_sales_channel.png" class="kg-image" alt loading="lazy" width="966" height="387" srcset="http://localhost:2368/content/images/size/w600/2023/06/10_daily_transactions_sales_channel.png 600w, http://localhost:2368/content/images/2023/06/10_daily_transactions_sales_channel.png 966w" sizes="(min-width: 720px) 720px"></figure><h3 id="distribution-of-number-of-unique-articles-sold-per-day-grouped-by-sales-channel">Distribution of number of unique Articles sold per day grouped by Sales Channel:</h3><ul><li>Sales Channel 1 has faily consistent number of unique Articles sold per day with rarely any spikes.</li><li>Sales Channel 2 consistently sells more unique products per day than Sales Channel 1 throughout 2018 to 2020.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/11_daily_transactions_sales_channel_unique_articles.png" class="kg-image" alt loading="lazy" width="959" height="387" srcset="http://localhost:2368/content/images/size/w600/2023/06/11_daily_transactions_sales_channel_unique_articles.png 600w, http://localhost:2368/content/images/2023/06/11_daily_transactions_sales_channel_unique_articles.png 959w" sizes="(min-width: 720px) 720px"></figure><p>After seeing the distrubtion of transactions and unique articles sold per day, we get the intuition that Sales Channel 1 customers are more consistent and conservative buyers.</p><p>On the other hand, customers that use Sales Channel 2 are ready to try out new products and also purchase products only in specific months during the year.</p><h3 id="distribution-of-customers-across-age-group">Distribution of Customers across Age Group:</h3><ul><li>The highest number of customers are aged 21 years.</li><li>A large proportion of the customer demographic are young adults aged 19 to 26.</li><li>There is also a significant customer base that is aged 46 to 56 years.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/7_customer_age_distribution.png" class="kg-image" alt loading="lazy" width="1182" height="399" srcset="http://localhost:2368/content/images/size/w600/2023/06/7_customer_age_distribution.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/7_customer_age_distribution.png 1000w, http://localhost:2368/content/images/2023/06/7_customer_age_distribution.png 1182w" sizes="(min-width: 720px) 720px"></figure><h3 id="distribution-of-customers-who-have-subscribed-for-fashion-news-alerts">Distribution of Customers who have subscribed for Fashion News Alerts:</h3><ul><li>67% of all the customers have not subscribed for Fashion News Alerts.</li><li>32% of the customers have subscribed for regular updates.</li><li>1% of the customers have subscribed for monthly updates</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/8_customers_fashion_news.png" class="kg-image" alt loading="lazy" width="410" height="387"></figure><h3 id="product-groups-with-the-highest-number-of-product-types">Product Groups with the highest number of Product Types:</h3><p>The product group 'Accessories' has the highest number of product types followed by 'Shoes' and 'Upper Body Garments'.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/1_product_types.png" class="kg-image" alt loading="lazy" width="600" height="387" srcset="http://localhost:2368/content/images/2023/06/1_product_types.png 600w"></figure><h3 id="product-types-with-the-highest-number-of-unique-articles">Product Types with the highest number of unique articles:</h3><p>The product type 'Trousers' has the highest number of unique articles closely followed by 'Dress'.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/2_popular_articles.png" class="kg-image" alt loading="lazy" width="1277" height="876" srcset="http://localhost:2368/content/images/size/w600/2023/06/2_popular_articles.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/2_popular_articles.png 1000w, http://localhost:2368/content/images/2023/06/2_popular_articles.png 1277w" sizes="(min-width: 720px) 720px"></figure><h3 id="product-departments-with-the-highest-number-of-unique-articles">Product Departments with the highest number of unique articles:</h3><p>The product type 'Jersey' has the highest number of unique articles closely followed by 'Knitwear'.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/3_highest_articles_dept.png" class="kg-image" alt loading="lazy" width="1045" height="876" srcset="http://localhost:2368/content/images/size/w600/2023/06/3_highest_articles_dept.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/3_highest_articles_dept.png 1000w, http://localhost:2368/content/images/2023/06/3_highest_articles_dept.png 1045w" sizes="(min-width: 720px) 720px"></figure><h3 id="product-graphical-appearance-names-with-the-highest-number-of-unique-articles">Product Graphical Appearance Names with the highest number of unique articles:</h3><p>The highest number of articles are of 'Solid' appearance followed by 'All over pattern'.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/4_highest_articles_name.png" class="kg-image" alt loading="lazy" width="1024" height="876" srcset="http://localhost:2368/content/images/size/w600/2023/06/4_highest_articles_name.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/4_highest_articles_name.png 1000w, http://localhost:2368/content/images/2023/06/4_highest_articles_name.png 1024w" sizes="(min-width: 720px) 720px"></figure><h3 id="product-index-with-the-highest-number-of-unique-articles">Product Index with the highest number of unique articles:</h3><p>The index named 'Ladiesear' has the highest number of unique articles closely followed by 'Divided'.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/5_highest_articles_index_name-1.png" class="kg-image" alt loading="lazy" width="643" height="387" srcset="http://localhost:2368/content/images/size/w600/2023/06/5_highest_articles_index_name-1.png 600w, http://localhost:2368/content/images/2023/06/5_highest_articles_index_name-1.png 643w"></figure><h3 id="product-colour-group-names-with-the-highest-number-of-unique-articles">Product Colour Group Names with the highest number of unique articles:</h3><p>The highest number of articles are of 'Black' colour group followed by 'Dark Blue' and 'White'.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/6_highest_articles_color_group.png" class="kg-image" alt loading="lazy" width="784" height="931" srcset="http://localhost:2368/content/images/size/w600/2023/06/6_highest_articles_color_group.png 600w, http://localhost:2368/content/images/2023/06/6_highest_articles_color_group.png 784w" sizes="(min-width: 720px) 720px"></figure><h2 id="experiments">Experiments:</h2><p>Intuition behind the custom retrieval strategy can be found <a href="https://nbviewer.org/github/awinml/hm-recsys/blob/main/hm-similar-items-explore.ipynb?ref=localhost">here.</a></p><h3 id="candidate-retrieval">Candidate Retrieval</h3><p>A lightweight candidate retrieval method was created that was a combination of the following retrieval strategies.</p><!--kg-card-begin: markdown--><ul>
+<li>
+<p>Recommend Items Purchased Together in the last week:</p>
+<ul>
+<li>Get 5 pairs of each article that were sold in the past week.</li>
+<li>Ignore any article that wasn't sold within the past week.</li>
+<li>Ignored any pair purchased by less than 2 customers.</li>
+</ul>
+</li>
+<li>
+<p>Recommend Items Purchased Together in the last few weeks:</p>
+<ul>
+<li>The number of previous weeks was tuned.</li>
+</ul>
+</li>
+<li>
+<p>Recommend most popular items based on age group</p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><p>This is a manual, time-aware collaborative filtering method so it includes trend information as well.</p><h3 id="candidate-ranking">Candidate Ranking:</h3><p>Feature creation for ranking based on:</p><ul><li>Percentage of customers the pair was based on.</li><li>How recently the article was purchased.</li><li>Number of times the pair of products was purchased.</li></ul><p>A LightGBM ranking model was used to rank the candidates.</p><ul><li>Hyperparameters of the LightGBM model such as <code>n_estimators</code>, and <code>num_leaves</code> were tuned.</li></ul><h2 id="results">Results:</h2><p>The fine tuned recommendation system using the custom candidate retrival method and LightGBM Ranking model was used to make final predictions which yielded an <strong>MAP@12 score of 0.345 and a overall AUC of 0.76.</strong></p><h2 id="run-locally">Run Locally</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/hm-recsys?ref=localhost">H&amp;M Personalized Product Recommendations Github</a>.</p><ol><li>Install required libraries:</li></ol><pre><code class="language-bash">  pip install -r requirements.txt
+</code></pre><ol><li>Generate local cv:</li></ol><pre><code class="language-bash">  python hm-cv.py
+</code></pre><ol><li>Fine-tune models and generate predictions:</li></ol><pre><code class="language-bash">  python hm-custom-retrieval-pred.py.py
+</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>
+    </section>
+
+
+</article>
+</main>
+
+    <section class="footer-cta outer">
+        <div class="inner">
+            <h2 class="footer-cta-title">Sign up for more like this.</h2>
+            <a class="footer-cta-button" href="#/portal" data-portal>
+                <div class="footer-cta-input">Enter your email</div>
+                <span>Subscribe</span>
+            </a>
+        </div>
+    </section>
+
+
+
+            <aside class="read-more-wrap outer">
+                <div class="read-more inner">
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/financial-dashboard-for-market-intelligence/">
+
+        <img class="post-card-image"
+            srcset="/content/images/size/w300/2023/06/fin_dash_cover.png 300w,
+                    /content/images/size/w600/2023/06/fin_dash_cover.png 600w,
+                    /content/images/size/w1000/2023/06/fin_dash_cover.png 1000w,
+                    /content/images/size/w2000/2023/06/fin_dash_cover.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/content/images/size/w600/2023/06/fin_dash_cover.png"
+            alt="Financial Dashboard for Market Intelligence"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/financial-dashboard-for-market-intelligence/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Financial Dashboard for Market Intelligence
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Built a end-to-end financial dashboard that collects and consolidates all of a business's critical observations in one place using the information obtained from the annual 10-K SEC Filings of 12 companies.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                <span class="post-card-meta-length">3 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/american-express-default-prediction/">
+
+        <img class="post-card-image"
+            srcset="/content/images/size/w300/2023/06/amex_cover.jpg 300w,
+                    /content/images/size/w600/2023/06/amex_cover.jpg 600w,
+                    /content/images/size/w1000/2023/06/amex_cover.jpg 1000w,
+                    /content/images/size/w2000/2023/06/amex_cover.jpg 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/content/images/size/w600/2023/06/amex_cover.jpg"
+            alt="American Express - Default Prediction"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/american-express-default-prediction/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    American Express - Default Prediction
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                <span class="post-card-meta-length">4 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/jigsaw-multilingual-toxic-comment-classification/">
+
+        <img class="post-card-image"
+            srcset="/content/images/size/w300/2023/06/jigsaw_clf_cover.jpg 300w,
+                    /content/images/size/w600/2023/06/jigsaw_clf_cover.jpg 600w,
+                    /content/images/size/w1000/2023/06/jigsaw_clf_cover.jpg 1000w,
+                    /content/images/size/w2000/2023/06/jigsaw_clf_cover.jpg 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/content/images/size/w600/2023/06/jigsaw_clf_cover.jpg"
+            alt="Jigsaw - Multilingual Toxic Comment Classification"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/jigsaw-multilingual-toxic-comment-classification/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Jigsaw - Multilingual Toxic Comment Classification
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Built a multilingual text classification model to predict the probability that a comment is toxic using the data provided by Google Jigsaw.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                <span class="post-card-meta-length">2 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                </div>
+            </aside>
+
+
+
+    </div>
+
+    <footer class="site-footer outer">
+        <div class="inner">
+            <section class="copyright"><a href="http://localhost:2368">Ashwin Mathur</a> &copy; 2023</section>
+            <nav class="site-footer-nav">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+            <div class="gh-powered-by"><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </div>
+    </footer>
+
+</div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="/assets/built/casper.js?v=e38ea076ac"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
+    });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
+</script>
+
+
+
+</body>
+</html>

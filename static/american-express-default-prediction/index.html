@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" class="auto-color">
+<head>
+
+    <title>American Express - Default Prediction</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=e38ea076ac" />
+
+    <meta name="description" content="Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.">
+    <link rel="canonical" href="http://localhost:2368/american-express-default-prediction/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="http://localhost:2368/american-express-default-prediction/amp/">
+    
+    <meta property="og:site_name" content="Ashwin Mathur">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="American Express - Default Prediction">
+    <meta property="og:description" content="Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.">
+    <meta property="og:url" content="http://localhost:2368/american-express-default-prediction/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2023/06/amex_cover.jpg">
+    <meta property="article:published_time" content="2023-06-01T20:53:59.000Z">
+    <meta property="article:modified_time" content="2023-06-01T20:53:59.000Z">
+    <meta property="article:tag" content="Projects">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="American Express - Default Prediction">
+    <meta name="twitter:description" content="Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.">
+    <meta name="twitter:url" content="http://localhost:2368/american-express-default-prediction/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2023/06/amex_cover.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Ashwin Mathur">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Projects">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ashwin Mathur",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ashwin Mathur",
+        "url": "http://localhost:2368/author/ashwin/",
+        "sameAs": []
+    },
+    "headline": "American Express - Default Prediction",
+    "url": "http://localhost:2368/american-express-default-prediction/",
+    "datePublished": "2023-06-01T20:53:59.000Z",
+    "dateModified": "2023-06-01T20:53:59.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2023/06/amex_cover.jpg",
+        "width": 1920,
+        "height": 1080
+    },
+    "keywords": "Projects",
+    "description": "Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.",
+    "mainEntityOfPage": "http://localhost:2368/american-express-default-prediction/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.49">
+    <link rel="alternate" type="application/rss+xml" title="Ashwin Mathur" href="http://localhost:2368/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.32/umd/portal.min.js" data-i18n="false" data-ghost="http://localhost:2368/" data-key="3f8153ddbf039121b27e361e3a" data-api="http://localhost:2368/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost:2368/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="http://localhost:2368/" data-api-url="http://localhost:2368/members/api/announcement/" crossorigin="anonymous"></script>
+    <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=e38ea076ac"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=e38ea076ac">
+    <script defer src="/public/member-attribution.min.js?v=e38ea076ac"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8005664633543622"
+     crossorigin="anonymous"></script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TQJMQLKYQ9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TQJMQLKYQ9');
+</script>
+
+<!-- Social Media Icons -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .gh-head-menu .nav-email a,
+    .gh-head-menu .nav-github a,
+    .gh-head-menu .nav-linkedin a {
+        font-size: 0 !important;
+    }
+
+    .gh-head-menu .nav-email a::before {
+        font-family: "Font Awesome 6 Free";
+        display: inline-block;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+ 
+    .gh-head-menu .nav-github a::before,
+    .gh-head-menu .nav-linkedin a::before {
+        font-family: "Font Awesome 6 Brands";
+        display: inline-block;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .gh-head-menu .nav-email a::before {content: "\f0e0"}
+    .gh-head-menu .nav-github a::before {content: "\f09b"}
+    .gh-head-menu .nav-linkedin a::before {content: "\f08c"}
+</style>
+
+<style>:root {--ghost-accent-color: #023e8a;}</style>
+
+</head>
+<body class="post-template tag-projects is-head-left-logo has-cover">
+<div class="viewport">
+
+    <header id="gh-head" class="gh-head outer">
+        <div class="gh-head-inner inner">
+            <div class="gh-head-brand">
+                <a class="gh-head-logo no-image" href="http://localhost:2368">
+                        Ashwin Mathur
+                </a>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="http://localhost:2368/">Home</a></li>
+    <li class="nav-about"><a href="http://localhost:2368/about/">About</a></li>
+    <li class="nav-blog"><a href="http://localhost:2368/tag/blog/">Blog</a></li>
+    <li class="nav-projects"><a href="http://localhost:2368/tag/projects/">Projects</a></li>
+    <li class="nav-contact"><a href="http://localhost:2368/contact/">Contact</a></li>
+    <li class="nav-email"><a href="mailto:ashwinm400@gmail.com">Email</a></li>
+    <li class="nav-github"><a href="https://github.com/awinml">GitHub</a></li>
+    <li class="nav-linkedin"><a href="https://www.linkedin.com/in/ashwin-mathur-ds/">LinkedIn</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-content">
+        
+
+
+
+<main id="site-main" class="site-main">
+<article class="article post tag-projects image-small">
+
+    <header class="article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+                <span class="post-card-primary-tag">
+                    <a href="/tag/projects/">Projects</a>
+                </span>
+        </div>
+
+        <h1 class="article-title">American Express - Default Prediction</h1>
+
+            <p class="article-excerpt">Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.</p>
+
+        <div class="article-byline">
+        <section class="article-byline-content">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="/author/ashwin/" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+</a>
+                </li>
+            </ul>
+
+            <div class="article-byline-meta">
+                <h4 class="author-name"><a href="/author/ashwin/">Ashwin Mathur</a></h4>
+                <div class="byline-meta-content">
+                    <time class="byline-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                        <span class="byline-reading-time"><span class="bull">&bull;</span> 4 min read</span>
+                </div>
+            </div>
+
+        </section>
+        </div>
+
+            <figure class="article-image">
+                <img
+                    srcset="/content/images/size/w300/2023/06/amex_cover.jpg 300w,
+                            /content/images/size/w600/2023/06/amex_cover.jpg 600w,
+                            /content/images/size/w1000/2023/06/amex_cover.jpg 1000w,
+                            /content/images/size/w2000/2023/06/amex_cover.jpg 2000w"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
+                    src="/content/images/size/w2000/2023/06/amex_cover.jpg"
+                    alt="American Express - Default Prediction"
+                />
+            </figure>
+
+    </header>
+
+    <section class="gh-content gh-canvas">
+        <!--kg-card-begin: markdown--><ul>
+<li>
+<p>Built a <strong>classification model</strong> to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.</p>
+</li>
+<li>
+<p>The data was particularly challenging to deal with as it had <strong>5.5 million records</strong> and <strong>191 anonymized features</strong>. <strong>122 features</strong> had more than <strong>10% missing values</strong>. The target variable had <strong>severe class imbalance</strong>.</p>
+</li>
+<li>
+<p>Engineered new features by taking different aggregations over time which helped <strong>increase model accuracy by 12%</strong>.</p>
+</li>
+<li>
+<p><strong>Optimized XGBoost and LightGBM Classifiers using RandomSearchCV</strong> to reach the best model.</p>
+</li>
+<li>
+<p>A Soft-Voting Ensemble of the best performing XGBoost and LightGBM Models was used to make final predictions which yielded an <strong>Accuracy of 94.48%, an F1-Score of 96.71% and an ROC-AUC Score of 96.40%.</strong></p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><h2 id="data">Data</h2><p>Credit default prediction is central to managing risk in a consumer lending business. Credit default prediction allows lenders to optimize lending decisions, which leads to a better customer experience and sound business economics.</p><p>The dataset contains profile features for each customer at each statement date. Features are anonymized and normalized, and fall into the following general categories:</p><pre><code>D_* = Delinquency variables
+S_* = Spend variables
+P_* = Payment variables
+B_* = Balance variables
+R_* = Risk variables
+</code></pre><p>with the following features being categorical:</p><p>'B_30', 'B_38', 'D_114', 'D_116', 'D_117', 'D_120', 'D_126', 'D_63', 'D_64', 'D_66', 'D_68'</p><p>The dataset can be downloaded from <a href="https://www.kaggle.com/competitions/amex-default-prediction?ref=localhost">here</a>.</p><h2 id="analysis">Analysis</h2><p>The complete analysis can be viewed <a href="https://nbviewer.org/github/awinml/amex-default-classification/blob/main/amex-eda.ipynb?ref=localhost">here</a>.</p><h3 id="target-distribution">Target Distribution</h3><ul><li>In the data present we observe that <strong>25.9% of records have defaulted</strong> on their credit card payments whereas <strong>74.1% have paid</strong> their bills on time.</li><li>This distribution shows us that there is <strong>severe class imbalance</strong> present.</li></ul><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/0_target_dist.png" class="kg-image" alt loading="lazy" width="452" height="343"></figure><h3 id="distribution-of-number-of-defaults-per-day-for-the-first-month">Distribution of Number of Defaults per day for the first Month:</h3><p>The <strong>proportion of customers that defualt is consistent across each day</strong> in the data, with a slight <strong>weekly seasonal trend</strong> influenced by the day when the customers receive their statements.</p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/0.1_statements_default.png" class="kg-image" alt loading="lazy" width="1303" height="432" srcset="http://localhost:2368/content/images/size/w600/2023/06/0.1_statements_default.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/0.1_statements_default.png 1000w, http://localhost:2368/content/images/2023/06/0.1_statements_default.png 1303w" sizes="(min-width: 720px) 720px"></figure><h3 id="frequency-of-customer-statements-for-the-first-month">Frequency of Customer Statements for the first month:</h3><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/1_statements_over_time.png" class="kg-image" alt="Target Distribution" loading="lazy" width="725" height="458" srcset="http://localhost:2368/content/images/size/w600/2023/06/1_statements_over_time.png 600w, http://localhost:2368/content/images/2023/06/1_statements_over_time.png 725w" sizes="(min-width: 720px) 720px"></figure><ul><li>There is <strong>weekly seasonal pattern</strong> observed in the number of statements received per day.</li><li>As seen above this trend does not seem to be significantly affecting the proportion of default.</li></ul><h3 id="distribution-of-values-of-payment-variables">Distribution of values of Payment Variables:</h3><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/3_distribution_payment.png" class="kg-image" alt="Target Distribution" loading="lazy" width="1144" height="286" srcset="http://localhost:2368/content/images/size/w600/2023/06/3_distribution_payment.png 600w, http://localhost:2368/content/images/size/w1000/2023/06/3_distribution_payment.png 1000w, http://localhost:2368/content/images/2023/06/3_distribution_payment.png 1144w" sizes="(min-width: 720px) 720px"></figure><ul><li>We notice that <strong>Payment 2 is heavily negatively skewed (left skewed).</strong></li><li>Even though Payment 4 have continuous values between 0 and 1, most of the density is <strong>clustered around 0 and 1</strong>.</li><li>This tells us that there may be some <strong>Gaussian Noise present</strong>. The noise can be removed and into a binary variable.</li></ul><h3 id="correlation-of-features-with-target-variable">Correlation of Features with Target Variable:</h3><ul><li><strong>Payment 2</strong> is <strong>negatively correlated</strong> with the target with a correlation of <strong>-0.67.</strong></li><li><strong>Delinquency 48</strong> is <strong>positively correlated</strong> with the target with a correlation of <strong>0.61.</strong></li></ul><h3 id="correlation-of-payment-variables-with-target">Correlation of Payment Variables with Target</h3><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2023/06/4_payment_corr.png" class="kg-image" alt="Target Distribution" loading="lazy" width="417" height="383"></figure><ul><li>We observe that Payment 2 and Target are <strong>highly negatively correlated</strong>.</li><li>This could be probably be due to the fact that people paying their bill have a less chance of default.</li></ul><h2 id="experiments">Experiments:</h2><!--kg-card-begin: markdown--><ul>
+<li>
+<p>There is a substantial number of missing values in the data. These cannot be imputed since the features are anonymized and there is no clear rationale behind imputation. This constraint forces us to choose models that can handle missing values.</p>
+</li>
+<li>
+<p>There is a <strong>high cardinality of features ie. 191 features</strong> in the data. The presence of missing values restricts the usage of traditional dimensionality reduction techniques like PCA as well as feature selection methods like RFE.</p>
+</li>
+<li>
+<p>Instead we have engineer new features using aggregations over the time dimension. As the aggregations ignore missing values, the engineered features are dense and can be used for modelling.</p>
+</li>
+<li>
+<p>Some of the prominent models that are used for classification and accept inputs with missing values are XGBoost, LightGBM, and CatBoost. They all internally impute the data depending on whatever imputation technique delivers the greatest performance benefit.</p>
+</li>
+<li>
+<p>A baseline was created using a XGBoost model with default hyperparameters which yielded an <strong>Accuracy of 78.84%, an F1-Score of 54.64% and an ROC-AUC Score of 65.72%.</strong></p>
+</li>
+<li>
+<p>The LightGBM model with default hyperparameters was tried after that and improved <strong>Accuracy by 1%, F1-Score by 12% and ROC-AUC Score by 6%.</strong></p>
+</li>
+<li>
+<p>A <strong>Randomized Grid Search</strong> with 5 Cross Validation folds was carried out to fine tune the XGBoost and LightGBM models.</p>
+</li>
+<li>
+<p>Hyperparameters of the XGBoost model such as <code>n_estimators</code>, <code>max_depth</code> and <code>learning_rate</code> were tuned to improve <strong>Accuracy by 9%, F1-Score by 18% and ROC-AUC Score by 3%.</strong></p>
+</li>
+<li>
+<p>Hyperparameters of the LightGBM model such as <code>n_estimators</code>, <code>feature_fraction</code> and <code>learning_rate</code> were tuned to improve <strong>Accuracy by 0.1%, F1-Score by 6% and ROC-AUC Score by 10%.</strong></p>
+</li>
+</ul>
+<!--kg-card-end: markdown--><h2 id="results">Results:</h2><p>A <strong>Soft Voting Classifier</strong> was used to create a ensemble of both the models and was used for generating the final predictions. It achieved an <strong>Accuracy of 94.48%, an F1-Score of 96.71% and an ROC-AUC Score of 96.40%.</strong></p><p>The results from all the models have been summarized below:</p><!--kg-card-begin: html--><table>
+<thead>
+<tr>
+<th style="text-align: center"><strong>Model</strong></th>
+<th style="text-align: center"><strong>Accuracy</strong></th>
+<th style="text-align: center"><strong>F1-Score</strong></th>
+<th style="text-align: center"><strong>ROC-AUC Score</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center"><strong>XGBoost</strong> <em>(default)</em></td>
+<td style="text-align: center">78.84</td>
+<td style="text-align: center">54.64</td>
+<td style="text-align: center">65.72</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>LightGBM</strong> <em>(default)</em></td>
+<td style="text-align: center">79.84</td>
+<td style="text-align: center">62.92</td>
+<td style="text-align: center">71.86</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>XGBoost</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">88.61</td>
+<td style="text-align: center">80.74</td>
+<td style="text-align: center">74.96</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>LightGBM</strong> <em>(fine-tuned)</em></td>
+<td style="text-align: center">88.72</td>
+<td style="text-align: center">86.42</td>
+<td style="text-align: center">84.22</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>Voting Classifier</strong> <em>(XGB + LGBM)</em></td>
+<td style="text-align: center"><strong>94.48</strong></td>
+<td style="text-align: center"><strong>96.72</strong></td>
+<td style="text-align: center"><strong>96.40</strong></td>
+</tr>
+</tbody>
+</table><!--kg-card-end: html--><h2 id="run-locally">Run Locally</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/amex-default-classification?ref=localhost">American Express - Default Prediction Github</a>.</p><ol><li>Install required libraries:</li></ol><pre><code class="language-bash">  pip install -r requirements.txt
+</code></pre><ol><li>Generate features:</li></ol><pre><code class="language-bash">  python amex-feature-engg.py
+</code></pre><ol><li>Fine-tune models:</li></ol><pre><code class="language-bash">  python amex-fine-tuning.py
+</code></pre><ol><li>Generate predictions:</li></ol><pre><code class="language-bash">  python amex-final-prediction.py
+</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>
+    </section>
+
+
+</article>
+</main>
+
+    <section class="footer-cta outer">
+        <div class="inner">
+            <h2 class="footer-cta-title">Sign up for more like this.</h2>
+            <a class="footer-cta-button" href="#/portal" data-portal>
+                <div class="footer-cta-input">Enter your email</div>
+                <span>Subscribe</span>
+            </a>
+        </div>
+    </section>
+
+
+
+            <aside class="read-more-wrap outer">
+                <div class="read-more inner">
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/financial-dashboard-for-market-intelligence/">
+
+        <img class="post-card-image"
+            srcset="/content/images/size/w300/2023/06/fin_dash_cover.png 300w,
+                    /content/images/size/w600/2023/06/fin_dash_cover.png 600w,
+                    /content/images/size/w1000/2023/06/fin_dash_cover.png 1000w,
+                    /content/images/size/w2000/2023/06/fin_dash_cover.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/content/images/size/w600/2023/06/fin_dash_cover.png"
+            alt="Financial Dashboard for Market Intelligence"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/financial-dashboard-for-market-intelligence/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Financial Dashboard for Market Intelligence
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Built a end-to-end financial dashboard that collects and consolidates all of a business's critical observations in one place using the information obtained from the annual 10-K SEC Filings of 12 companies.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                <span class="post-card-meta-length">3 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/h-m-personalized-product-recommendations/">
+
+        <img class="post-card-image"
+            srcset="/content/images/size/w300/2023/06/hm_recsys_cover-1.jpg 300w,
+                    /content/images/size/w600/2023/06/hm_recsys_cover-1.jpg 600w,
+                    /content/images/size/w1000/2023/06/hm_recsys_cover-1.jpg 1000w,
+                    /content/images/size/w2000/2023/06/hm_recsys_cover-1.jpg 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/content/images/size/w600/2023/06/hm_recsys_cover-1.jpg"
+            alt="H&amp;M Personalized Product Recommendations"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/h-m-personalized-product-recommendations/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    H&amp;M Personalized Product Recommendations
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&M.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                <span class="post-card-meta-length">5 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/jigsaw-multilingual-toxic-comment-classification/">
+
+        <img class="post-card-image"
+            srcset="/content/images/size/w300/2023/06/jigsaw_clf_cover.jpg 300w,
+                    /content/images/size/w600/2023/06/jigsaw_clf_cover.jpg 600w,
+                    /content/images/size/w1000/2023/06/jigsaw_clf_cover.jpg 1000w,
+                    /content/images/size/w2000/2023/06/jigsaw_clf_cover.jpg 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/content/images/size/w600/2023/06/jigsaw_clf_cover.jpg"
+            alt="Jigsaw - Multilingual Toxic Comment Classification"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/jigsaw-multilingual-toxic-comment-classification/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Jigsaw - Multilingual Toxic Comment Classification
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Built a multilingual text classification model to predict the probability that a comment is toxic using the data provided by Google Jigsaw.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                <span class="post-card-meta-length">2 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                </div>
+            </aside>
+
+
+
+    </div>
+
+    <footer class="site-footer outer">
+        <div class="inner">
+            <section class="copyright"><a href="http://localhost:2368">Ashwin Mathur</a> &copy; 2023</section>
+            <nav class="site-footer-nav">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+            <div class="gh-powered-by"><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </div>
+    </footer>
+
+</div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="/assets/built/casper.js?v=e38ea076ac"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
+    });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
+</script>
+
+
+
+</body>
+</html>
