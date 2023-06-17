@@ -1,4 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Ashwin Mathur]]></title><description><![CDATA[AI Research, NLP, Open-Source]]></description><link>https://awinml.github.io/</link><image><url>https://awinml.github.io/favicon.png</url><title>Ashwin Mathur</title><link>https://awinml.github.io/</link></image><generator>Ghost 5.49</generator><lastBuildDate>Fri, 02 Jun 2023 11:50:27 GMT</lastBuildDate><atom:link href="https://awinml.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Financial Dashboard for Market Intelligence]]></title><description><![CDATA[Built a end-to-end financial dashboard that collects and consolidates all of a business's critical observations in one place using the information obtained from the annual 10-K SEC Filings of 12 companies.]]></description><link>https://awinml.github.io/financial-dashboard-for-market-intelligence/</link><guid isPermaLink="false">64790593edcff63646236d5e</guid><category><![CDATA[Projects]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:56:49 GMT</pubDate><media:content url="https://awinml.github.io/content/images/2023/06/fin_dash_cover.png" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><ul>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Ashwin Mathur]]></title><description><![CDATA[AI Research, NLP, Open-Source]]></description><link>https://awinml.github.io/</link><image><url>https://awinml.github.io/favicon.png</url><title>Ashwin Mathur</title><link>https://awinml.github.io/</link></image><generator>Ghost 5.49</generator><lastBuildDate>Sat, 17 Jun 2023 08:48:17 GMT</lastBuildDate><atom:link href="https://awinml.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Machine Learning Model Deployment: From Jupyter Notebook to the Cloud]]></title><description><![CDATA[Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.]]></description><link>https://awinml.github.io/ml-model-deployment/</link><guid isPermaLink="false">648d7155fdfec6286dfa89d9</guid><category><![CDATA[Blog]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Sat, 17 Jun 2023 08:46:10 GMT</pubDate><media:content url="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" medium="image"/><content:encoded><![CDATA[<img src="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="Machine Learning Model Deployment: From Jupyter Notebook to the Cloud"><p>Machine learning has become an essential tool for businesses and organizations to make data-driven decisions. However, building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.</p><h2 id="developing-the-model">Developing the Model</h2><p>The first step in deploying a machine learning model is to develop the model itself. This is typically done in a Jupyter Notebook, where data scientists can test various modeling strategies and fine-tune the model&apos;s parameters. Once the model is developed and tested, it&apos;s time to move on to the next step.</p><h2 id="migrating-the-code">Migrating the Code</h2><p>The second step in deploying a machine learning model is to migrate the code from the Jupyter Notebook into executable modules. The idea here is to have a way to automate the whole model building and prediction process, which cannot be done on Jupyter. This involves creating preprocess, train, and inference Python scripts.</p><pre><code class="language-python"># Example of a preprocess script using scikit-learn pipelines
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+
+preprocess_pipeline = Pipeline([
+    (&apos;imputer&apos;, SimpleImputer(strategy=&apos;median&apos;)),
+    (&apos;scaler&apos;, StandardScaler())
+])
+
+preprocessed_data = preprocess_pipeline.fit_transform(data)
+</code></pre><pre><code class="language-python"># Example of a train script using scikit-learn pipelines
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier
+
+train_pipeline = Pipeline([
+    (&apos;preprocess&apos;, preprocess_pipeline),
+    (&apos;classifier&apos;, RandomForestClassifier())
+])
+
+trained_model = train_pipeline.fit(X_train, y_train)
+</code></pre><pre><code class="language-python"># Example of an inference script
+def predict(model, data):
+    # Model prediction code here
+    preprocessed_data = preprocess_pipeline.transform(data)
+    prediction = model.predict(preprocessed_data)
+    return prediction
+</code></pre><h2 id="saving-the-model-pipelines">Saving the Model Pipelines</h2><p>It is important to save the model pipelines after they have been trained. This is because the pipelines contain the preprocessing steps and the trained model, which are required for making predictions on new data. Saving the pipelines also allows for easy reusability of the model in other applications.</p><pre><code class="language-python"># Example of saving the trained model pipeline
+import joblib
+
+joblib.dump(train_pipeline, &apos;trained_model_pipeline.joblib&apos;)
+</code></pre><pre><code class="language-python"># Example of loading the trained model pipeline
+import joblib
+
+trained_model_pipeline = joblib.load(&apos;trained_model_pipeline.joblib&apos;)
+</code></pre><h2 id="building-an-api">Building an API</h2><p>The third step in deploying a machine learning model is to build an API that will take real-time inputs, usually in the form of JSON. This API could be user-facing, such as a mobile or web app, or an internal API that connects to another application to fetch the data.</p><pre><code class="language-python"># Example of a Flask API endpoint
+@app.route(&apos;/predict&apos;, methods=[&apos;POST&apos;])
+def predict():
+    data = request.get_json()
+    prediction = predict(trained_model, data)
+    return jsonify(prediction.tolist())
+</code></pre><h2 id="building-a-model-prediction-endpoint">Building a Model Prediction Endpoint</h2><p>The fourth step in deploying a machine learning model is to build a model prediction endpoint on the API that invokes the model&apos;s prediction API, something like the common <code>.predict()</code> or <code>.generate()</code> methods. The way the prediction works is when the input hits the <code>/predict</code> API (prediction endpoint), the inputs are passed to the model, and the API retrieves the model prediction (also usually in the form of JSON) like this: <code>{id: 0001, prediction_score: 55}</code>.</p><pre><code class="language-python"># Example of a model prediction endpoint
+class ModelPredictionEndpoint:
+    def __init__(self, model):
+        self.model = model
+
+    def predict(self, data):
+        preprocessed_data = preprocess_pipeline.transform(data)
+        prediction = self.model.predict(preprocessed_data)
+        return prediction.tolist()
+</code></pre><h2 id="wrapping-the-api">Wrapping the API</h2><p>The fifth step in deploying a machine learning model is to wrap the API using a container service like Docker so that the code is agnostic to the environment. This ensures that the API can be deployed on any platform without any issues.</p><pre><code class="language-dockerfile"># Example of a Dockerfile
+FROM python:3.8-slim-buster
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD [&quot;python&quot;, &quot;app.py&quot;]
+</code></pre><h2 id="docker-and-kubernetes">Docker and Kubernetes</h2><p>Docker and Kubernetes are two popular tools used for deploying machine learning models to the cloud. Docker is a containerization platform that allows developers to package their applications and dependencies into a single container that can be run on any platform. Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.</p><p>Using Docker and Kubernetes can simplify the deployment process and make it more scalable. Instead of deploying the application on a single server, Docker and Kubernetes allow for the deployment of multiple instances of the application, which can be scaled up or down based on demand.</p><pre><code class="language-dockerfile"># Example of a Dockerfile for a machine learning model
+FROM python:3.8-slim-buster
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD [&quot;python&quot;, &quot;app.py&quot;]
+</code></pre><pre><code class="language-yaml"># Example of a Kubernetes deployment file for a machine learning model
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: my-registry/my-app:latest
+        ports:
+        - containerPort: 5000
+</code></pre><h2 id="deploying-to-the-cloud">Deploying to the Cloud</h2><p>With the model API container, you can now push this same API to any cloud provider and their service offerings: AWS EC2, Sagemaker, Beanstalk, GCP Vertex AI, App Engine. Here&apos;s an example of deploying the Docker container on AWS Elastic Beanstalk:</p><ol><li>Create an Elastic Beanstalk environment with a Docker platform.</li><li>Upload the Docker image to a container registry like Docker Hub or Amazon ECR.</li><li>Configure the Elastic Beanstalk environment to use the Docker image.</li><li>Deploy the application to the Elastic Beanstalk environment.</li></ol><pre><code class="language-bash"># Example of deploying the Docker container on AWS Elastic Beanstalk
+# Build the Docker image
+docker build -t my-app .
+
+# Tag the Docker image
+docker tag my-app:latest my-registry/my-app:latest
+
+# Push the Docker image to the container registry
+docker push my-registry/my-app:latest
+
+# Create an Elastic Beanstalk environment with a Docker platform
+eb create my-environment --platform &quot;Docker 20.10.7&quot;
+
+# Configure the Elastic Beanstalk environment to use the Docker image
+eb setenv DOCKER_IMAGE=my-registry/my-app:latest
+
+# Deploy the application to the Elastic Beanstalk environment
+eb deploy
+</code></pre><h2 id="conclusion">Conclusion</h2><p>In conclusion, deploying a machine learning model to the cloud involves several steps, including developing the model, migrating the code, building an API, building a model prediction endpoint, wrapping the API using a container service like Docker, and deploying to the cloud. Saving the model pipelines and using Docker and Kubernetes can simplify the deployment process and make it more scalable.</p>]]></content:encoded></item><item><title><![CDATA[Financial Dashboard for Market Intelligence]]></title><description><![CDATA[Built a end-to-end financial dashboard that collects and consolidates all of a business's critical observations in one place using the information obtained from the annual 10-K SEC Filings of 12 companies.]]></description><link>https://awinml.github.io/financial-dashboard-for-market-intelligence/</link><guid isPermaLink="false">64790593edcff63646236d5e</guid><category><![CDATA[Projects]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:56:49 GMT</pubDate><media:content url="https://awinml.github.io/content/images/2023/06/fin_dash_cover.png" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><ul>
 <li>
 <img src="https://awinml.github.io/content/images/2023/06/fin_dash_cover.png" alt="Financial Dashboard for Market Intelligence"><p>Built a end-to-end financial dashboard that collects and consolidates all of a business&apos;s critical observations in one place using the information obtained from the annual 10-K SEC Filings of 12 companies.</p>
 </li>
@@ -264,94 +366,186 @@ toxic - whether or not the comment is classified as toxic.
 </code></pre><ol><li>Baseline model:</li></ol><pre><code class="language-bash">  python toxic-baseline-rnn.py
 </code></pre><ol><li>Fine-tune models:</li></ol><pre><code class="language-bash">  python toxic-bertm-base.py
   python toxic-xlm-roberta.py
-</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>]]></content:encoded></item><item><title><![CDATA[Sports Image Classification]]></title><description><![CDATA[Built a image classification model to predict the sport that is being represented in the image.]]></description><link>https://awinml.github.io/sports-image-classification/</link><guid isPermaLink="false">6478fa5eedcff63646236ca9</guid><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:10:03 GMT</pubDate><media:content url="https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png" medium="image"/><content:encoded><![CDATA[<ul><li>Built a <strong>image classification model</strong> to predict the sport that is being represented in the image.</li><li>Compared five different CNN architectures ie. a <strong>custom CNN, InceptionV3, ResNet50V2, MobileNetV2 and EfficientNetB3</strong> based on model performance on this dataset.</li><li>A fine-tuned <strong>EfficientNetB3</strong> model was used for generating the final predictions which yielded an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></li><li>A <strong>web app was made using Streamlit</strong> to make predict the sport for new images using the best model.</li></ul><h2 id="streamlit-app">Streamlit App</h2><img src="https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png" alt="Sports Image Classification"><p>The live app can be viewed <a href="https://huggingface.co/spaces/awinml/sports_classification?ref=localhost">here</a>.</p><h2 id="data">Data</h2><p>The dataset is a collection of images representing <strong>100 different types of Sports and activities</strong>. The sports range from traditional sports like &quot;archery&quot;, &quot;arm wrestling&quot;, &quot;bowling&quot;, &quot;football&quot;, &quot;water polo&quot;, &quot;weightlifting&quot; to non-traditional ones like &quot;wingsuit flying&quot; and &quot;nascar racing&quot;. The goal is the predict the correct sport based on the image.</p><p>Each image is of size 224 x 224 pixels.</p><p>The images have been segregated into train, test and valid directories.</p><p>There are 13572 train, 500 test, 500 validation images.</p><p>The dataset can be downloaded from <a href="https://www.kaggle.com/datasets/gpiosenka/sports-classification?ref=localhost">Kaggle</a>.</p><h2 id="experiments">Experiments:</h2><h4 id="custom-cnn">Custom CNN:</h4><ul><li>A baseline was created using a custom CNN model with 3 convolution layers and 3 dense layers. A <strong>kernel of size 3 x 3</strong> was used for all the convolution layers. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>47 epochs</strong> yielded an <strong>Accuracy of 56.44%, F1-Score of 48.48% and an ROC-AUC Score of 49.46%.</strong></li></ul><h4 id="inceptionv3">InceptionV3:</h4><ul><li>The <strong>InceptionV3</strong> model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>22 epochs</strong> yielded an <strong>Accuracy of 68.92%, F1-Score of 64.92% and an ROC-AUC Score of 66.64.</strong></li></ul><h4 id="resnet50v2">ResNet50V2:</h4><ul><li>The <strong>ResNet50V2</strong> model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>16 epochs</strong> yielded an <strong>Accuracy of 72.88%, F1-Score of 70.67% and an ROC-AUC Score of 69.72.</strong></li></ul><h4 id="mobilenetv2">MobileNetV2:</h4><ul><li>The <strong>MobileNetV2</strong> model was initialized with pre-trained ImageNet weights and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>8 epochs</strong> yielded an <strong>Accuracy of 86.68%, F1-Score of 86.79% and an ROC-AUC Score of 88.36.</strong></li></ul><h4 id="efficientnetb3">EfficientNetB3:</h4><ul><li>The <strong>EfficientNetB3</strong> model was initialized with pre-trained ImageNet weights and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>18 epochs</strong> yielded an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></li></ul><p>For all the models that were fine-tuned:</p><ul><li>Two hidden layers of 256 and 128 neurons respectively were added with leaky-relu activations.</li><li>Dropout Layers with p=0.1 were added to prevent overfitting.</li><li>Number of epochs was 50 with Early stopping with patience parameter as 2 epochs.</li><li>Batch size of 32 was used for training.</li><li>Sparse Categorical Cross-Entropy was used as the loss function.</li></ul><h2 id="results">Results:</h2><p>The best results were obtained using a fine-tuned EfficientNetB3 model. It was used for generating the final predictions. It achieved an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></p><p>The results from all the models have been summarized below:</p><!--kg-card-begin: html--><table>
+</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>]]></content:encoded></item><item><title><![CDATA[Sports Image Classification]]></title><description><![CDATA[Built a image classification model to predict the sport that is being represented in the image.]]></description><link>https://awinml.github.io/sports-image-classification/</link><guid isPermaLink="false">6478fa5eedcff63646236ca9</guid><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 20:10:03 GMT</pubDate><media:content url="https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><img src="https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png" alt="Sports Image Classification"><p>Have you ever wondered how machines can recognize sports just by looking at images? Well, it&apos;s all thanks to the power of Convolutional Neural Networks (CNNs). In this article, we will explore how CNNs can be used to classify sports images and compare the performance of different CNN architectures.</p>
+<h2 id="dataset">Dataset</h2>
+<p>The dataset used for this project is a collection of images representing 100 different types of sports and activities. The sports range from traditional sports like &quot;archery&quot;, &quot;arm wrestling&quot;, &quot;bowling&quot;, &quot;football&quot;, &quot;water polo&quot;, &quot;weightlifting&quot; to non-traditional ones like &quot;wingsuit flying&quot; and &quot;nascar racing&quot;. The goal is to predict the correct sport based on the image.</p>
+<p>The dataset consists of 13572 train, 500 test, and 500 validation images. Each image is of size 224 x 224 pixels and has been segregated into train, test, and valid directories. The dataset can be downloaded from <a href="https://www.kaggle.com/datasets/gpiosenka/sports-classification?ref=localhost">Kaggle</a>.</p>
+<h2 id="experiments">Experiments</h2>
+<p>To classify the sports images, we compared the performance of five different CNN architectures: a custom CNN, InceptionV3, ResNet50V2, MobileNetV2, and EfficientNetB3. For each model, we fine-tuned the pre-trained ImageNet weights and added two hidden layers of 256 and 128 neurons respectively with leaky-relu activations. Dropout layers with p=0.1 were added to prevent overfitting. The number of epochs was 50 with early stopping with a patience parameter of 2 epochs. A batch size of 32 was used for training, and Sparse Categorical Cross-Entropy was used as the loss function.</p>
+<h3 id="custom-cnn">Custom CNN</h3>
+<p>We started with a baseline custom CNN model with 3 convolution layers and 3 dense layers. A kernel of size 3 x 3 was used for all the convolution layers. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 47 epochs yielded an Accuracy of 56.44%, F1-Score of 48.48%, and an ROC-AUC Score of 49.46%.</strong></p>
+<h3 id="inceptionv3">InceptionV3</h3>
+<p>The InceptionV3 model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 22 epochs yielded an Accuracy of 68.92%, F1-Score of 64.92%, and an ROC-AUC Score of 66.64%.</strong></p>
+<h3 id="resnet50v2">ResNet50V2</h3>
+<p>The ResNet50V2 model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 16 epochs yielded an Accuracy of 72.88%, F1-Score of 70.67%, and an ROC-AUC Score of 69.72%.</strong></p>
+<h3 id="mobilenetv2">MobileNetV2</h3>
+<p>The MobileNetV2 model was initialized with pre-trained ImageNet weights, and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 8 epochs yielded an Accuracy of 86.68%, F1-Score of 86.79%, and an ROC-AUC Score of 88.36%.</strong></p>
+<h3 id="efficientnetb3">EfficientNetB3</h3>
+<p>The EfficientNetB3 model was initialized with pre-trained ImageNet weights, and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 18 epochs yielded an Accuracy of 92.72%, F1-Score of 91.76%, and an ROC-AUC Score of 96.92%.</strong></p>
+<h2 id="results">Results</h2>
+<p><strong>The best results were obtained using a fine-tuned EfficientNetB3 model, which achieved an Accuracy of 92.72%, F1-Score of 91.76%, and an ROC-AUC Score of 96.92%.</strong> The results from all the models have been summarized in the table below:</p>
+<table>
 <thead>
 <tr>
-<th style="text-align: center"><strong>Model</strong></th>
-<th style="text-align: center"><strong>Accuracy</strong></th>
-<th style="text-align: center"><strong>F1-Score</strong></th>
+<th style="text-align:center"><strong>Model</strong></th>
+<th style="text-align:center"><strong>Accuracy</strong></th>
+<th style="text-align:center"><strong>F1-Score</strong></th>
 <th><strong>ROC-AUC Score</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center"><strong>Custom CNN</strong></td>
-<td style="text-align: center">56.44</td>
-<td style="text-align: center">48.48</td>
+<td style="text-align:center"><strong>Custom CNN</strong></td>
+<td style="text-align:center">56.44</td>
+<td style="text-align:center">48.48</td>
 <td>49.46</td>
 </tr>
 <tr>
-<td style="text-align: center"><strong>InceptionV3</strong> <em>(fine-tuned)</em></td>
-<td style="text-align: center">68.92</td>
-<td style="text-align: center">64.92</td>
+<td style="text-align:center"><strong>InceptionV3</strong> <em>(fine-tuned)</em></td>
+<td style="text-align:center">68.92</td>
+<td style="text-align:center">64.92</td>
 <td>66.64</td>
 </tr>
 <tr>
-<td style="text-align: center"><strong>ResNet50V2</strong> <em>(fine-tuned)</em></td>
-<td style="text-align: center">72.88</td>
-<td style="text-align: center">70.67</td>
+<td style="text-align:center"><strong>ResNet50V2</strong> <em>(fine-tuned)</em></td>
+<td style="text-align:center">72.88</td>
+<td style="text-align:center">70.67</td>
 <td>69.72</td>
 </tr>
 <tr>
-<td style="text-align: center"><strong>MobileNetV2</strong> <em>(fine-tuned)</em></td>
-<td style="text-align: center">86.68</td>
-<td style="text-align: center">86.79</td>
+<td style="text-align:center"><strong>MobileNetV2</strong> <em>(fine-tuned)</em></td>
+<td style="text-align:center">86.68</td>
+<td style="text-align:center">86.79</td>
 <td>88.36</td>
 </tr>
 <tr>
-<td style="text-align: center"><strong>EfficientNetB3</strong> <em>(fine-tuned)</em></td>
-<td style="text-align: center">92.72</td>
-<td style="text-align: center">91.76</td>
+<td style="text-align:center"><strong>EfficientNetB3</strong> <em>(fine-tuned)</em></td>
+<td style="text-align:center">92.72</td>
+<td style="text-align:center">91.76</td>
 <td>96.92</td>
 </tr>
 </tbody>
-</table><!--kg-card-end: html--><h2 id="run-locally">Run Locally</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/sports-image-classification?ref=localhost">Sports Image Classification Github</a>.</p><ol><li>Install required libraries:</li></ol><pre><code class="language-bash">  pip install -r streamlit/requirements.txt
-</code></pre><ol><li>Fine-tune models:</li></ol><pre><code class="language-bash">  python sports-clf-custom-cnn.py
+</table>
+<h2 id="deploying-the-model">Deploying the Model</h2>
+<p>A web app was made using Streamlit to make predictions for new images using the best model. The live app can be viewed <a href="https://huggingface.co/spaces/awinml/sports_classification?ref=localhost">here</a>.</p>
+<h2 id="run-locally">Run Locally</h2>
+<p>All the code for this project can be found in this <a href="https://github.com/awinml/sports-image-classification?ref=localhost">Github repository</a>. To run the app locally, you can follow the instructions provided in the repository.</p>
+<ol>
+<li>Install required libraries:<pre><code class="language-bash">  pip install -r streamlit/requirements.txt
+</code></pre>
+</li>
+<li>Fine-tune models:<pre><code class="language-bash">  python sports-clf-custom-cnn.py
   python sports-clf-inception.py
   python sports-clf-resnet.py
   python sports-clf-mobilenet.py
   python sports-clf-efficientnet.py
-</code></pre><ol><li>Generate predictions:</li></ol><pre><code class="language-bash">  python sports-clf-final-predictions.py
-</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>]]></content:encoded></item><item><title><![CDATA[An Introduction to GitHub and Git]]></title><description><![CDATA[Learn about the fundamentals of Git and GitHub in this introductory article, including what they are, how they work, and how they can benefit your development workflow.]]></description><link>https://awinml.github.io/an-introduction-to-github-and-git/</link><guid isPermaLink="false">6478f396edcff63646236c7d</guid><category><![CDATA[Blog]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 19:45:48 GMT</pubDate><media:content url="https://awinml.github.io/content/images/2023/06/cover.jpg" medium="image"/><content:encoded><![CDATA[<img src="https://awinml.github.io/content/images/2023/06/cover.jpg" alt="An Introduction to GitHub and Git"><p>If you are interested in software development, you have likely heard of GitHub and Git. GitHub is a web-based platform that provides hosting for version control using Git. Git, on the other hand, is a distributed version control system used by millions of developers worldwide to manage their codebases. This article aims to introduce you to both GitHub and Git, their purpose, and how they are used.</p><h2 id="what-is-git">What is Git?</h2><p>Git is a free, open-source distributed version control system designed to manage codebases of all sizes. It was created by Linus Torvalds in 2005 to help manage the Linux kernel&apos;s development. Git enables developers to track changes made to code, work collaboratively on projects, and manage multiple versions of codebases. With Git, developers can create branches to work on specific features or bug fixes and merge them back into the main branch once the changes are complete.</p><p>Git works by creating a local repository on the developer&apos;s machine, allowing them to make changes and commit them to the repository&apos;s history. Developers can then push these changes to a remote repository, such as one hosted on GitHub, where other developers can review and contribute to the codebase.</p><h2 id="what-is-github">What is GitHub?</h2><p>GitHub is a web-based platform that provides hosting for Git repositories. It was founded in 2008 by Chris Wanstrath, Tom Preston-Werner, and PJ Hyett. GitHub allows developers to host their Git repositories for free or at a cost, depending on the features they need. It provides a web-based interface for managing code, issues, pull requests, and more.</p><p>GitHub is not just a hosting platform. It also offers a suite of tools and services to help developers collaborate and manage their codebases. For example, GitHub provides a feature called &quot;forking,&quot; which allows developers to create a copy of a repository and make changes without affecting the original codebase. They can then submit a pull request to the original repository owner, asking them to merge their changes.</p><p>GitHub also provides an issue tracking system, enabling developers to create, assign, and prioritize tasks and bugs. Additionally, GitHub offers a wiki feature, which can be used to create documentation for a project.</p><h2 id="how-are-git-and-github-used-together">How are Git and GitHub used together?</h2><p>Git and GitHub are often used together to manage codebases collaboratively. Developers create a local Git repository on their machine, make changes, and commit them to the repository&apos;s history. They can then push these changes to a remote Git repository hosted on GitHub, where other developers can review and contribute to the codebase.</p><p>Developers can collaborate on code changes by creating branches and merging them back into the main branch once the changes are complete. They can also use pull requests to propose changes to the original repository owner and ask them to merge the changes.<br>Conclusion</p><p>Git and GitHub are essential tools for developers working collaboratively on codebases. Git provides a distributed version control system that allows developers to track changes and manage multiple versions of codebases. GitHub provides a web-based platform for hosting Git repositories and offers a suite of tools and services to help developers collaborate on code, track issues, and manage documentation. If you are interested in software development, learning Git and GitHub is a must.</p><h2 id="important-git-commands">Important Git Commands</h2><p>Here are some important Git commands with examples:</p><!--kg-card-begin: markdown--><ul>
-<li>
-<p><code>git init</code> - Initializes a new Git repository.</p>
-<p>Example: <code>git init</code></p>
+</code></pre>
 </li>
-<li>
-<p><code>git clone</code> - Creates a copy of an existing Git repository.</p>
-<p>Example: <code>git clone https://github.com/user/repo.git</code></p>
+<li>Generate predictions:<pre><code class="language-bash">  python sports-clf-final-predictions.py
+</code></pre>
 </li>
-<li>
-<p><code>git add</code> - Adds changes to the staging area.</p>
-<p>Example: <code>git add filename.txt</code></p>
-</li>
-<li>
-<p><code>git commit</code> - Commits changes to the repository with a message.</p>
-<p>Example: <code>git commit -m &quot;added new feature&quot;</code></p>
-</li>
-<li>
-<p><code>git push</code> - Pushes committed changes to a remote repository.</p>
-<p>Example: <code>git push origin main</code></p>
-</li>
-<li>
-<p><code>git pull</code> - Pulls changes from a remote repository to a local one.</p>
-<p>Example: <code>git pull origin main</code></p>
-</li>
-<li>
-<p><code>git branch</code> - Lists existing branches or creates a new one.</p>
-<p>Example: <code>git branch new-feature</code></p>
-</li>
-<li>
-<p><code>git checkout</code> - Switches to a different branch or commit.</p>
-<p>Example: <code>git checkout new-feature</code></p>
-</li>
-<li>
-<p><code>git merge</code> - Merges changes from one branch into another.</p>
-<p>Example: <code>git merge new-feature</code></p>
-</li>
-<li>
-<p><code>git status</code> - Shows the current status of the repository.</p>
-<p>Example: <code>git status</code></p>
-</li>
-</ul>
-<!--kg-card-end: markdown--><p>These are just a few of the many Git commands available. Learning and mastering these commands can help you effectively manage your Git repositories and collaborate with other developers.</p>]]></content:encoded></item></channel></rss>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, we have seen how CNNs can be used to classify sports images with high accuracy. We compared the performance of five different CNN architectures and found that the EfficientNetB3 model achieved the best results. This model can be used to classify sports images in real-time, which can be useful in various applications such as sports analytics, sports broadcasting, and sports betting.</p>
+<!--kg-card-end: markdown-->]]></content:encoded></item><item><title><![CDATA[An Introduction to GitHub and Git]]></title><description><![CDATA[Learn about the fundamentals of Git and GitHub in this introductory article, including what they are, how they work, and how they can benefit your development workflow.]]></description><link>https://awinml.github.io/an-introduction-to-github-and-git/</link><guid isPermaLink="false">6478f396edcff63646236c7d</guid><category><![CDATA[Blog]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Thu, 01 Jun 2023 19:45:48 GMT</pubDate><media:content url="https://awinml.github.io/content/images/2023/06/cover.jpg" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><img src="https://awinml.github.io/content/images/2023/06/cover.jpg" alt="An Introduction to GitHub and Git"><p>Git and GitHub are two of the most popular tools used by developers worldwide. Git is a distributed version control system that allows developers to track changes in their codebase, while GitHub is a web-based platform that provides a centralized location for hosting Git repositories. In this article, we will explore the fundamentals of using Git and GitHub, including how to set up a repository, commit changes, and collaborate with other developers. We will also explore some of the most important Git commands that every developer should know.</p>
+<h1 id="how-are-git-and-github-used-together">How are Git and GitHub used together?</h1>
+<p>Git and GitHub are often used together to manage codebases collaboratively. Developers create a local Git repository on their machine, make changes, and commit them to the repository&apos;s history. They can then push these changes to a remote Git repository hosted on GitHub, where other developers can review and contribute to the codebase.<br>
+Developers can collaborate on code changes by creating branches and merging them back into the main branch once the changes are complete. They can also use pull requests to propose changes to the original repository owner and ask them to merge the changes.Conclusion<br>
+Git and GitHub are essential tools for developers working collaboratively on codebases. Git provides a distributed version control system that allows developers to track changes and manage multiple versions of codebases. GitHub provides a web-based platform for hosting Git repositories and offers a suite of tools and services to help developers collaborate on code, track issues, and manage documentation. If you are interested in software development, learning Git and GitHub is a must.</p>
+<h2 id="setting-up-a-git-repository">Setting up a Git repository</h2>
+<p>Before we can start using Git, we need to set up a repository. A repository is a directory that contains all the files and folders for a project. To create a new repository, we can use the <code>git init</code> command. For example, let&apos;s say we want to create a new repository for a project called &quot;MyApp.&quot; We can do this by running the following command in our terminal:</p>
+<pre><code class="language-bash">$ mkdir MyApp
+$ cd MyApp
+$ git init
+</code></pre>
+<p>This will create a new directory called &quot;MyApp&quot; and initialize a new Git repository inside it. We can now start adding files to our repository.</p>
+<h2 id="adding-files-to-a-git-repository">Adding files to a Git repository</h2>
+<p>To add files to our Git repository, we use the <code>git add</code> command. For example, let&apos;s say we want to add a file called &quot;index.html&quot; to our repository. We can do this by running the following command:</p>
+<pre><code class="language-bash">$ git add index.html
+</code></pre>
+<p>This will add the &quot;index.html&quot; file to our Git repository. We can now commit our changes.</p>
+<h2 id="committing-changes-to-a-git-repository">Committing changes to a Git repository</h2>
+<p>To commit changes to our Git repository, we use the <code>git commit</code> command. For example, let&apos;s say we made some changes to our &quot;index.html&quot; file and want to commit those changes. We can do this by running the following command:</p>
+<pre><code class="language-bash">$ git commit -m &quot;Updated index.html&quot;
+</code></pre>
+<p>This will commit our changes to the Git repository with a message that describes the changes we made. We can now push our changes to GitHub.</p>
+<h2 id="pushing-changes-to-github">Pushing changes to GitHub</h2>
+<p>To push our changes to GitHub, we need to first create a new repository on GitHub. Once we have created a new repository, we can push our changes to it using the <code>git push</code> command. For example, let&apos;s say we created a new repository on GitHub called &quot;MyApp.&quot; We can push our changes to this repository by running the following command:</p>
+<pre><code class="language-bash">$ git remote add origin https://github.com/username/MyApp.git
+$ git push -u origin master
+</code></pre>
+<p>This will push our changes to the &quot;MyApp&quot; repository on GitHub. We can now collaborate with other developers.</p>
+<h2 id="collaborating-with-other-developers">Collaborating with other developers</h2>
+<p>GitHub makes it easy to collaborate with other developers on a project. To collaborate with other developers, we can use the <code>git clone</code> command to clone a repository to our local machine. For example, let&apos;s say we want to clone the &quot;MyApp&quot; repository to our local machine. We can do this by running the following command:</p>
+<pre><code class="language-bash">$ git clone https://github.com/username/MyApp.git
+</code></pre>
+<p>This will clone the &quot;MyApp&quot; repository to our local machine. We can now make changes to the repository and push those changes back to GitHub.</p>
+<h2 id="git-init">Git Init</h2>
+<p>The <code>git init</code> command is used to initialize a new Git repository. This command creates a new directory called <code>.git</code> in the root of the project directory. This directory contains all the necessary files and folders for Git to track changes in the project. To use this command, navigate to the project directory in your terminal and run the following command:</p>
+<pre><code class="language-bash">$ git init
+</code></pre>
+<h2 id="git-add">Git Add</h2>
+<p>The <code>git add</code> command is used to add files to the staging area. The staging area is a temporary storage area where Git keeps track of changes before committing them to the repository. To add a file to the staging area, run the following command:</p>
+<pre><code class="language-bash">$ git add &lt;file&gt;
+</code></pre>
+<p>For example, to add a file called <code>index.html</code> to the staging area, run the following command:</p>
+<pre><code class="language-bash">$ git add index.html
+</code></pre>
+<h2 id="git-commit">Git Commit</h2>
+<p>The <code>git commit</code> command is used to commit changes to the repository. When you commit changes, Git creates a new snapshot of the project&apos;s current state. To commit changes, run the following command:</p>
+<pre><code class="language-bash">$ git commit -m &quot;Commit message&quot;
+</code></pre>
+<p>The <code>-m</code> flag is used to add a commit message. The commit message should be a brief description of the changes you made.</p>
+<h2 id="git-status">Git Status</h2>
+<p>The <code>git status</code> command is used to check the status of the repository. This command shows which files have been modified, which files are in the staging area, and which files are not tracked by Git. To check the status of the repository, run the following command:</p>
+<pre><code class="language-bash">$ git status
+</code></pre>
+<h2 id="git-log">Git Log</h2>
+<p>The <code>git log</code> command is used to view the commit history of the repository. This command shows a list of all the commits that have been made, along with their commit messages, author, and date. To view the commit history, run the following command:</p>
+<pre><code class="language-bash">$ git log
+</code></pre>
+<h2 id="git-branch">Git Branch</h2>
+<p>The <code>git branch</code> command is used to create, list, and delete branches. A branch is a separate line of development that allows you to work on different features or versions of the project simultaneously. To create a new branch, run the following command:</p>
+<pre><code class="language-bash">$ git branch &lt;branch-name&gt;
+</code></pre>
+<p>For example, to create a new branch called <code>feature-branch</code>, run the following command:</p>
+<pre><code class="language-bash">$ git branch feature-branch
+</code></pre>
+<p>To list all the branches in the repository, run the following command:</p>
+<pre><code class="language-bash">$ git branch
+</code></pre>
+<p>To delete a branch, run the following command:</p>
+<pre><code class="language-bash">$ git branch -d &lt;branch-name&gt;
+</code></pre>
+<p>For example, to delete the <code>feature-branch</code> branch, run the following command:</p>
+<pre><code class="language-bash">$ git branch -d feature-branch
+</code></pre>
+<h2 id="git-checkout">Git Checkout</h2>
+<p>The <code>git checkout</code> command is used to switch between branches or restore files to a previous state. To switch to a different branch, run the following command:</p>
+<pre><code class="language-bash">$ git checkout &lt;branch-name&gt;
+</code></pre>
+<p>For example, to switch to the <code>feature-branch</code> branch, run the following command:</p>
+<pre><code class="language-bash">$ git checkout feature-branch
+</code></pre>
+<p>To restore a file to a previous state, run the following command:</p>
+<pre><code class="language-bash">$ git checkout &lt;commit-hash&gt; &lt;file&gt;
+</code></pre>
+<p>For example, to restore the <code>index.html</code> file to a previous commit, run the following command:</p>
+<pre><code class="language-bash">$ git checkout 123abc index.html
+</code></pre>
+<h2 id="git-merge">Git Merge</h2>
+<p>The <code>git merge</code> command is used to merge changes from one branch into another. To merge changes from the <code>feature-branch</code> branch into the <code>master</code> branch, run the following command:</p>
+<pre><code class="language-bash">$ git checkout master
+$ git merge feature-branch
+</code></pre>
+<h2 id="git-pull">Git Pull</h2>
+<p>The <code>git pull</code> command is used to fetch and merge changes from a remote repository. To pull changes from the remote repository, run the following command:</p>
+<pre><code class="language-bash">$ git pull
+</code></pre>
+<h2 id="git-push">Git Push</h2>
+<p>The <code>git push</code> command is used to push changes to a remote repository. To push changes to the remote repository, run the following command:</p>
+<pre><code class="language-bash">$ git push
+</code></pre>
+<h1 id="conclusion">Conclusion</h1>
+<p>In conclusion, Git and GitHub are powerful tools that can help developers track changes in their codebase and collaborate with other developers. In this article, we explored the fundamentals of using Git and GitHub, including how to set up a repository, add files, commit changes, push changes to GitHub, and collaborate with other developers. We also explored some of the most important Git commands that every developer should know, including <code>git init</code>, <code>git add</code>, <code>git commit</code>, <code>git status</code>, <code>git log</code>, <code>git branch</code>, <code>git checkout</code>, <code>git merge</code>, <code>git pull</code>, and <code>git push</code>. By mastering these fundamentals and commands, developers can become more productive and efficient in their work.</p>
+<!--kg-card-end: markdown-->]]></content:encoded></item></channel></rss>

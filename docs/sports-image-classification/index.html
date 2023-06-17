@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=fd82e523d0" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=c81dcb4f3f" />
 
     <meta name="description" content="Built a image classification model to predict the sport that is being represented in the image.">
     <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://awinml.github.io/sports-image-classification/">
     <meta property="og:image" content="https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png">
     <meta property="article:published_time" content="2023-06-01T20:10:03.000Z">
-    <meta property="article:modified_time" content="2023-06-01T20:10:03.000Z">
+    <meta property="article:modified_time" content="2023-06-17T08:01:08.000Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sports Image Classification">
     <meta name="twitter:description" content="Built a image classification model to predict the sport that is being represented in the image.">
@@ -58,7 +58,7 @@
     "headline": "Sports Image Classification",
     "url": "https://awinml.github.io/sports-image-classification/",
     "datePublished": "2023-06-01T20:10:03.000Z",
-    "dateModified": "2023-06-01T20:10:03.000Z",
+    "dateModified": "2023-06-17T08:01:08.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png",
@@ -139,9 +139,9 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://awinml.github.io/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://awinml.github.io/" data-api-url="https://awinml.github.io/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://awinml.github.io/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=fd82e523d0"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=fd82e523d0">
-    <script defer src="/public/member-attribution.min.js?v=fd82e523d0"></script>
+    <script defer src="/public/cards.min.js?v=c81dcb4f3f"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=c81dcb4f3f">
+    <script defer src="/public/member-attribution.min.js?v=c81dcb4f3f"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8005664633543622"
      crossorigin="anonymous"></script>
 
@@ -288,55 +288,88 @@
     </header>
 
     <section class="gh-content gh-canvas">
-        <ul><li>Built a <strong>image classification model</strong> to predict the sport that is being represented in the image.</li><li>Compared five different CNN architectures ie. a <strong>custom CNN, InceptionV3, ResNet50V2, MobileNetV2 and EfficientNetB3</strong> based on model performance on this dataset.</li><li>A fine-tuned <strong>EfficientNetB3</strong> model was used for generating the final predictions which yielded an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></li><li>A <strong>web app was made using Streamlit</strong> to make predict the sport for new images using the best model.</li></ul><h2 id="streamlit-app">Streamlit App</h2><p>The live app can be viewed <a href="https://huggingface.co/spaces/awinml/sports_classification?ref=localhost">here</a>.</p><h2 id="data">Data</h2><p>The dataset is a collection of images representing <strong>100 different types of Sports and activities</strong>. The sports range from traditional sports like "archery", "arm wrestling", "bowling", "football", "water polo", "weightlifting" to non-traditional ones like "wingsuit flying" and "nascar racing". The goal is the predict the correct sport based on the image.</p><p>Each image is of size 224 x 224 pixels.</p><p>The images have been segregated into train, test and valid directories.</p><p>There are 13572 train, 500 test, 500 validation images.</p><p>The dataset can be downloaded from <a href="https://www.kaggle.com/datasets/gpiosenka/sports-classification?ref=localhost">Kaggle</a>.</p><h2 id="experiments">Experiments:</h2><h4 id="custom-cnn">Custom CNN:</h4><ul><li>A baseline was created using a custom CNN model with 3 convolution layers and 3 dense layers. A <strong>kernel of size 3 x 3</strong> was used for all the convolution layers. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>47 epochs</strong> yielded an <strong>Accuracy of 56.44%, F1-Score of 48.48% and an ROC-AUC Score of 49.46%.</strong></li></ul><h4 id="inceptionv3">InceptionV3:</h4><ul><li>The <strong>InceptionV3</strong> model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>22 epochs</strong> yielded an <strong>Accuracy of 68.92%, F1-Score of 64.92% and an ROC-AUC Score of 66.64.</strong></li></ul><h4 id="resnet50v2">ResNet50V2:</h4><ul><li>The <strong>ResNet50V2</strong> model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>16 epochs</strong> yielded an <strong>Accuracy of 72.88%, F1-Score of 70.67% and an ROC-AUC Score of 69.72.</strong></li></ul><h4 id="mobilenetv2">MobileNetV2:</h4><ul><li>The <strong>MobileNetV2</strong> model was initialized with pre-trained ImageNet weights and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>8 epochs</strong> yielded an <strong>Accuracy of 86.68%, F1-Score of 86.79% and an ROC-AUC Score of 88.36.</strong></li></ul><h4 id="efficientnetb3">EfficientNetB3:</h4><ul><li>The <strong>EfficientNetB3</strong> model was initialized with pre-trained ImageNet weights and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with learning rate of 0.001</strong> for <strong>18 epochs</strong> yielded an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></li></ul><p>For all the models that were fine-tuned:</p><ul><li>Two hidden layers of 256 and 128 neurons respectively were added with leaky-relu activations.</li><li>Dropout Layers with p=0.1 were added to prevent overfitting.</li><li>Number of epochs was 50 with Early stopping with patience parameter as 2 epochs.</li><li>Batch size of 32 was used for training.</li><li>Sparse Categorical Cross-Entropy was used as the loss function.</li></ul><h2 id="results">Results:</h2><p>The best results were obtained using a fine-tuned EfficientNetB3 model. It was used for generating the final predictions. It achieved an <strong>Accuracy of 92.72%, F1-Score of 91.76% and an ROC-AUC Score of 96.92%.</strong></p><p>The results from all the models have been summarized below:</p><!--kg-card-begin: html--><table>
+        <!--kg-card-begin: markdown--><p>Have you ever wondered how machines can recognize sports just by looking at images? Well, it's all thanks to the power of Convolutional Neural Networks (CNNs). In this article, we will explore how CNNs can be used to classify sports images and compare the performance of different CNN architectures.</p>
+<h2 id="dataset">Dataset</h2>
+<p>The dataset used for this project is a collection of images representing 100 different types of sports and activities. The sports range from traditional sports like &quot;archery&quot;, &quot;arm wrestling&quot;, &quot;bowling&quot;, &quot;football&quot;, &quot;water polo&quot;, &quot;weightlifting&quot; to non-traditional ones like &quot;wingsuit flying&quot; and &quot;nascar racing&quot;. The goal is to predict the correct sport based on the image.</p>
+<p>The dataset consists of 13572 train, 500 test, and 500 validation images. Each image is of size 224 x 224 pixels and has been segregated into train, test, and valid directories. The dataset can be downloaded from <a href="https://www.kaggle.com/datasets/gpiosenka/sports-classification?ref=localhost">Kaggle</a>.</p>
+<h2 id="experiments">Experiments</h2>
+<p>To classify the sports images, we compared the performance of five different CNN architectures: a custom CNN, InceptionV3, ResNet50V2, MobileNetV2, and EfficientNetB3. For each model, we fine-tuned the pre-trained ImageNet weights and added two hidden layers of 256 and 128 neurons respectively with leaky-relu activations. Dropout layers with p=0.1 were added to prevent overfitting. The number of epochs was 50 with early stopping with a patience parameter of 2 epochs. A batch size of 32 was used for training, and Sparse Categorical Cross-Entropy was used as the loss function.</p>
+<h3 id="custom-cnn">Custom CNN</h3>
+<p>We started with a baseline custom CNN model with 3 convolution layers and 3 dense layers. A kernel of size 3 x 3 was used for all the convolution layers. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 47 epochs yielded an Accuracy of 56.44%, F1-Score of 48.48%, and an ROC-AUC Score of 49.46%.</strong></p>
+<h3 id="inceptionv3">InceptionV3</h3>
+<p>The InceptionV3 model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 22 epochs yielded an Accuracy of 68.92%, F1-Score of 64.92%, and an ROC-AUC Score of 66.64%.</strong></p>
+<h3 id="resnet50v2">ResNet50V2</h3>
+<p>The ResNet50V2 model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 16 epochs yielded an Accuracy of 72.88%, F1-Score of 70.67%, and an ROC-AUC Score of 69.72%.</strong></p>
+<h3 id="mobilenetv2">MobileNetV2</h3>
+<p>The MobileNetV2 model was initialized with pre-trained ImageNet weights, and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 8 epochs yielded an Accuracy of 86.68%, F1-Score of 86.79%, and an ROC-AUC Score of 88.36%.</strong></p>
+<h3 id="efficientnetb3">EfficientNetB3</h3>
+<p>The EfficientNetB3 model was initialized with pre-trained ImageNet weights, and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 18 epochs yielded an Accuracy of 92.72%, F1-Score of 91.76%, and an ROC-AUC Score of 96.92%.</strong></p>
+<h2 id="results">Results</h2>
+<p><strong>The best results were obtained using a fine-tuned EfficientNetB3 model, which achieved an Accuracy of 92.72%, F1-Score of 91.76%, and an ROC-AUC Score of 96.92%.</strong> The results from all the models have been summarized in the table below:</p>
+<table>
 <thead>
 <tr>
-<th style="text-align: center"><strong>Model</strong></th>
-<th style="text-align: center"><strong>Accuracy</strong></th>
-<th style="text-align: center"><strong>F1-Score</strong></th>
+<th style="text-align:center"><strong>Model</strong></th>
+<th style="text-align:center"><strong>Accuracy</strong></th>
+<th style="text-align:center"><strong>F1-Score</strong></th>
 <th><strong>ROC-AUC Score</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center"><strong>Custom CNN</strong></td>
-<td style="text-align: center">56.44</td>
-<td style="text-align: center">48.48</td>
+<td style="text-align:center"><strong>Custom CNN</strong></td>
+<td style="text-align:center">56.44</td>
+<td style="text-align:center">48.48</td>
 <td>49.46</td>
 </tr>
 <tr>
-<td style="text-align: center"><strong>InceptionV3</strong> <em>(fine-tuned)</em></td>
-<td style="text-align: center">68.92</td>
-<td style="text-align: center">64.92</td>
+<td style="text-align:center"><strong>InceptionV3</strong> <em>(fine-tuned)</em></td>
+<td style="text-align:center">68.92</td>
+<td style="text-align:center">64.92</td>
 <td>66.64</td>
 </tr>
 <tr>
-<td style="text-align: center"><strong>ResNet50V2</strong> <em>(fine-tuned)</em></td>
-<td style="text-align: center">72.88</td>
-<td style="text-align: center">70.67</td>
+<td style="text-align:center"><strong>ResNet50V2</strong> <em>(fine-tuned)</em></td>
+<td style="text-align:center">72.88</td>
+<td style="text-align:center">70.67</td>
 <td>69.72</td>
 </tr>
 <tr>
-<td style="text-align: center"><strong>MobileNetV2</strong> <em>(fine-tuned)</em></td>
-<td style="text-align: center">86.68</td>
-<td style="text-align: center">86.79</td>
+<td style="text-align:center"><strong>MobileNetV2</strong> <em>(fine-tuned)</em></td>
+<td style="text-align:center">86.68</td>
+<td style="text-align:center">86.79</td>
 <td>88.36</td>
 </tr>
 <tr>
-<td style="text-align: center"><strong>EfficientNetB3</strong> <em>(fine-tuned)</em></td>
-<td style="text-align: center">92.72</td>
-<td style="text-align: center">91.76</td>
+<td style="text-align:center"><strong>EfficientNetB3</strong> <em>(fine-tuned)</em></td>
+<td style="text-align:center">92.72</td>
+<td style="text-align:center">91.76</td>
 <td>96.92</td>
 </tr>
 </tbody>
-</table><!--kg-card-end: html--><h2 id="run-locally">Run Locally</h2><p>The code to run the project can be found here: <a href="https://github.com/awinml/sports-image-classification?ref=localhost">Sports Image Classification Github</a>.</p><ol><li>Install required libraries:</li></ol><pre><code class="language-bash">  pip install -r streamlit/requirements.txt
-</code></pre><ol><li>Fine-tune models:</li></ol><pre><code class="language-bash">  python sports-clf-custom-cnn.py
+</table>
+<h2 id="deploying-the-model">Deploying the Model</h2>
+<p>A web app was made using Streamlit to make predictions for new images using the best model. The live app can be viewed <a href="https://huggingface.co/spaces/awinml/sports_classification?ref=localhost">here</a>.</p>
+<h2 id="run-locally">Run Locally</h2>
+<p>All the code for this project can be found in this <a href="https://github.com/awinml/sports-image-classification?ref=localhost">Github repository</a>. To run the app locally, you can follow the instructions provided in the repository.</p>
+<ol>
+<li>Install required libraries:<pre><code class="language-bash">  pip install -r streamlit/requirements.txt
+</code></pre>
+</li>
+<li>Fine-tune models:<pre><code class="language-bash">  python sports-clf-custom-cnn.py
   python sports-clf-inception.py
   python sports-clf-resnet.py
   python sports-clf-mobilenet.py
   python sports-clf-efficientnet.py
-</code></pre><ol><li>Generate predictions:</li></ol><pre><code class="language-bash">  python sports-clf-final-predictions.py
-</code></pre><h2 id="feedback">Feedback</h2><p>If you have any feedback, please reach out to me.</p>
+</code></pre>
+</li>
+<li>Generate predictions:<pre><code class="language-bash">  python sports-clf-final-predictions.py
+</code></pre>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, we have seen how CNNs can be used to classify sports images with high accuracy. We compared the performance of five different CNN architectures and found that the EfficientNetB3 model achieved the best results. This model can be used to classify sports images in real-time, which can be useful in various applications such as sports analytics, sports broadcasting, and sports betting.</p>
+<!--kg-card-end: markdown-->
     </section>
 
 
@@ -357,6 +390,46 @@
 
             <aside class="read-more-wrap outer">
                 <div class="read-more inner">
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/ml-model-deployment/">
+
+        <img class="post-card-image"
+            srcset="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                    https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                    https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1000 1000w,
+                    https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+            alt="Machine Learning Model Deployment: From Jupyter Notebook to the Cloud"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/ml-model-deployment/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Machine Learning Model Deployment: From Jupyter Notebook to the Cloud
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-17">Jun 17, 2023</time>
+                <span class="post-card-meta-length">4 min read</span>
+        </footer>
+
+    </div>
+
+</article>
                         
 <article class="post-card post">
 
@@ -437,46 +510,6 @@
     </div>
 
 </article>
-                        
-<article class="post-card post">
-
-    <a class="post-card-image-link" href="/h-m-personalized-product-recommendations/">
-
-        <img class="post-card-image"
-            srcset="/content/images/size/w300/2023/06/hm_recsys_cover-1.jpg 300w,
-                    /content/images/size/w600/2023/06/hm_recsys_cover-1.jpg 600w,
-                    /content/images/size/w1000/2023/06/hm_recsys_cover-1.jpg 1000w,
-                    /content/images/size/w2000/2023/06/hm_recsys_cover-1.jpg 2000w"
-            sizes="(max-width: 1000px) 400px, 800px"
-            src="/content/images/size/w600/2023/06/hm_recsys_cover-1.jpg"
-            alt="H&amp;M Personalized Product Recommendations"
-            loading="lazy"
-        />
-
-
-    </a>
-
-    <div class="post-card-content">
-
-        <a class="post-card-content-link" href="/h-m-personalized-product-recommendations/">
-            <header class="post-card-header">
-                <div class="post-card-tags">
-                </div>
-                <h2 class="post-card-title">
-                    H&amp;M Personalized Product Recommendations
-                </h2>
-            </header>
-                <div class="post-card-excerpt">Built a product recommendation system to recommend products based on previous transactions, as well as from customer and product meta data using the data provided by H&M.</div>
-        </a>
-
-        <footer class="post-card-meta">
-            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
-                <span class="post-card-meta-length">5 min read</span>
-        </footer>
-
-    </div>
-
-</article>
                 </div>
             </aside>
 
@@ -505,7 +538,7 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-<script src="/assets/built/casper.js?v=fd82e523d0"></script>
+<script src="/assets/built/casper.js?v=c81dcb4f3f"></script>
 <script>
 $(document).ready(function () {
     // Mobile Menu Trigger

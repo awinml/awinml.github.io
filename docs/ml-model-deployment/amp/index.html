@@ -4,30 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
-    <title>Sports Image Classification</title>
+    <title>Machine Learning Model Deployment: From Jupyter Notebook to the Cloud</title>
 
-    <meta name="description" content="Built a image classification model to predict the sport that is being represented in the image.">
+    <meta name="description" content="Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.">
     <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
-    <link rel="canonical" href="https://awinml.github.io/sports-image-classification/">
+    <link rel="canonical" href="https://awinml.github.io/ml-model-deployment/">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="Ashwin Mathur">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Sports Image Classification">
-    <meta property="og:description" content="Built a image classification model to predict the sport that is being represented in the image.">
-    <meta property="og:url" content="https://awinml.github.io/sports-image-classification/">
-    <meta property="og:image" content="https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png">
-    <meta property="article:published_time" content="2023-06-01T20:10:03.000Z">
-    <meta property="article:modified_time" content="2023-06-17T08:01:08.000Z">
+    <meta property="og:title" content="Machine Learning Model Deployment: From Jupyter Notebook to the Cloud">
+    <meta property="og:description" content="Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.">
+    <meta property="og:url" content="https://awinml.github.io/ml-model-deployment/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2023-06-17T08:46:10.000Z">
+    <meta property="article:modified_time" content="2023-06-17T08:46:10.000Z">
+    <meta property="article:tag" content="Blog">
+    
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sports Image Classification">
-    <meta name="twitter:description" content="Built a image classification model to predict the sport that is being represented in the image.">
-    <meta name="twitter:url" content="https://awinml.github.io/sports-image-classification/">
-    <meta name="twitter:image" content="https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png">
+    <meta name="twitter:title" content="Machine Learning Model Deployment: From Jupyter Notebook to the Cloud">
+    <meta name="twitter:description" content="Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.">
+    <meta name="twitter:url" content="https://awinml.github.io/ml-model-deployment/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Ashwin Mathur">
-    <meta property="og:image:width" content="1477">
-    <meta property="og:image:height" content="1011">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Blog">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1333">
     
     <script type="application/ld+json">
 {
@@ -50,18 +54,19 @@
         "url": "https://awinml.github.io/author/ashwin/",
         "sameAs": []
     },
-    "headline": "Sports Image Classification",
-    "url": "https://awinml.github.io/sports-image-classification/",
-    "datePublished": "2023-06-01T20:10:03.000Z",
-    "dateModified": "2023-06-17T08:01:08.000Z",
+    "headline": "Machine Learning Model Deployment: From Jupyter Notebook to the Cloud",
+    "url": "https://awinml.github.io/ml-model-deployment/",
+    "datePublished": "2023-06-17T08:46:10.000Z",
+    "dateModified": "2023-06-17T08:46:10.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png",
-        "width": 1477,
-        "height": 1011
+        "url": "https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 2000,
+        "height": 1333
     },
-    "description": "Built a image classification model to predict the sport that is being represented in the image.",
-    "mainEntityOfPage": "https://awinml.github.io/sports-image-classification/"
+    "keywords": "Blog",
+    "description": "Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.",
+    "mainEntityOfPage": "https://awinml.github.io/ml-model-deployment/"
 }
     </script>
 
@@ -1062,101 +1067,122 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Sports Image Classification</h1>
+                <h1 class="post-title">Machine Learning Model Deployment: From Jupyter Notebook to the Cloud</h1>
                 <section class="post-meta">
                     Ashwin Mathur -
-                    <time class="post-date" datetime="2023-06-02">02 Jun 2023</time>
+                    <time class="post-date" datetime="2023-06-17">17 Jun 2023</time>
                 </section>
             </header>
             <figure class="post-image">
-                <amp-img src="https://awinml.github.io/content/images/2023/06/sports_img_clf_cover.png" width="600" height="340" layout="responsive" 
-                alt="Sports Image Classification"
+                <amp-img src="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" width="600" height="340" layout="responsive" 
+                alt="Machine Learning Model Deployment: From Jupyter Notebook to the Cloud"
                 ></amp-img>
             </figure>
             <section class="post-content">
 
-                <p>Have you ever wondered how machines can recognize sports just by looking at images? Well, it's all thanks to the power of Convolutional Neural Networks (CNNs). In this article, we will explore how CNNs can be used to classify sports images and compare the performance of different CNN architectures.</p>
-<h2 id="dataset">Dataset</h2>
-<p>The dataset used for this project is a collection of images representing 100 different types of sports and activities. The sports range from traditional sports like "archery", "arm wrestling", "bowling", "football", "water polo", "weightlifting" to non-traditional ones like "wingsuit flying" and "nascar racing". The goal is to predict the correct sport based on the image.</p>
-<p>The dataset consists of 13572 train, 500 test, and 500 validation images. Each image is of size 224 x 224 pixels and has been segregated into train, test, and valid directories. The dataset can be downloaded from <a href="https://www.kaggle.com/datasets/gpiosenka/sports-classification?ref=localhost">Kaggle</a>.</p>
-<h2 id="experiments">Experiments</h2>
-<p>To classify the sports images, we compared the performance of five different CNN architectures: a custom CNN, InceptionV3, ResNet50V2, MobileNetV2, and EfficientNetB3. For each model, we fine-tuned the pre-trained ImageNet weights and added two hidden layers of 256 and 128 neurons respectively with leaky-relu activations. Dropout layers with p=0.1 were added to prevent overfitting. The number of epochs was 50 with early stopping with a patience parameter of 2 epochs. A batch size of 32 was used for training, and Sparse Categorical Cross-Entropy was used as the loss function.</p>
-<h3 id="custom-cnn">Custom CNN</h3>
-<p>We started with a baseline custom CNN model with 3 convolution layers and 3 dense layers. A kernel of size 3 x 3 was used for all the convolution layers. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 47 epochs yielded an Accuracy of 56.44%, F1-Score of 48.48%, and an ROC-AUC Score of 49.46%.</strong></p>
-<h3 id="inceptionv3">InceptionV3</h3>
-<p>The InceptionV3 model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 22 epochs yielded an Accuracy of 68.92%, F1-Score of 64.92%, and an ROC-AUC Score of 66.64%.</strong></p>
-<h3 id="resnet50v2">ResNet50V2</h3>
-<p>The ResNet50V2 model was initialized with pre-trained ImageNet weights. Only the Dense layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 16 epochs yielded an Accuracy of 72.88%, F1-Score of 70.67%, and an ROC-AUC Score of 69.72%.</strong></p>
-<h3 id="mobilenetv2">MobileNetV2</h3>
-<p>The MobileNetV2 model was initialized with pre-trained ImageNet weights, and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 8 epochs yielded an Accuracy of 86.68%, F1-Score of 86.79%, and an ROC-AUC Score of 88.36%.</strong></p>
-<h3 id="efficientnetb3">EfficientNetB3</h3>
-<p>The EfficientNetB3 model was initialized with pre-trained ImageNet weights, and all the layers were fine-tuned. Training the model with an <strong>Adam optimizer with a learning rate of 0.001 for 18 epochs yielded an Accuracy of 92.72%, F1-Score of 91.76%, and an ROC-AUC Score of 96.92%.</strong></p>
-<h2 id="results">Results</h2>
-<p><strong>The best results were obtained using a fine-tuned EfficientNetB3 model, which achieved an Accuracy of 92.72%, F1-Score of 91.76%, and an ROC-AUC Score of 96.92%.</strong> The results from all the models have been summarized in the table below:</p>
-<table>
-<thead>
-<tr>
-<th><strong>Model</strong></th>
-<th><strong>Accuracy</strong></th>
-<th><strong>F1-Score</strong></th>
-<th><strong>ROC-AUC Score</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Custom CNN</strong></td>
-<td>56.44</td>
-<td>48.48</td>
-<td>49.46</td>
-</tr>
-<tr>
-<td><strong>InceptionV3</strong> <em>(fine-tuned)</em></td>
-<td>68.92</td>
-<td>64.92</td>
-<td>66.64</td>
-</tr>
-<tr>
-<td><strong>ResNet50V2</strong> <em>(fine-tuned)</em></td>
-<td>72.88</td>
-<td>70.67</td>
-<td>69.72</td>
-</tr>
-<tr>
-<td><strong>MobileNetV2</strong> <em>(fine-tuned)</em></td>
-<td>86.68</td>
-<td>86.79</td>
-<td>88.36</td>
-</tr>
-<tr>
-<td><strong>EfficientNetB3</strong> <em>(fine-tuned)</em></td>
-<td>92.72</td>
-<td>91.76</td>
-<td>96.92</td>
-</tr>
-</tbody>
-</table>
-<h2 id="deploying-the-model">Deploying the Model</h2>
-<p>A web app was made using Streamlit to make predictions for new images using the best model. The live app can be viewed <a href="https://huggingface.co/spaces/awinml/sports_classification?ref=localhost">here</a>.</p>
-<h2 id="run-locally">Run Locally</h2>
-<p>All the code for this project can be found in this <a href="https://github.com/awinml/sports-image-classification?ref=localhost">Github repository</a>. To run the app locally, you can follow the instructions provided in the repository.</p>
-<ol>
-<li>Install required libraries:<pre><code class="language-bash">  pip install -r streamlit/requirements.txt
-</code></pre>
-</li>
-<li>Fine-tune models:<pre><code class="language-bash">  python sports-clf-custom-cnn.py
-  python sports-clf-inception.py
-  python sports-clf-resnet.py
-  python sports-clf-mobilenet.py
-  python sports-clf-efficientnet.py
-</code></pre>
-</li>
-<li>Generate predictions:<pre><code class="language-bash">  python sports-clf-final-predictions.py
-</code></pre>
-</li>
-</ol>
-<h2 id="conclusion">Conclusion</h2>
-<p>In conclusion, we have seen how CNNs can be used to classify sports images with high accuracy. We compared the performance of five different CNN architectures and found that the EfficientNetB3 model achieved the best results. This model can be used to classify sports images in real-time, which can be useful in various applications such as sports analytics, sports broadcasting, and sports betting.</p>
+                <p>Machine learning has become an essential tool for businesses and organizations to make data-driven decisions. However, building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.</p><h2 id="developing-the-model">Developing the Model</h2><p>The first step in deploying a machine learning model is to develop the model itself. This is typically done in a Jupyter Notebook, where data scientists can test various modeling strategies and fine-tune the model's parameters. Once the model is developed and tested, it's time to move on to the next step.</p><h2 id="migrating-the-code">Migrating the Code</h2><p>The second step in deploying a machine learning model is to migrate the code from the Jupyter Notebook into executable modules. The idea here is to have a way to automate the whole model building and prediction process, which cannot be done on Jupyter. This involves creating preprocess, train, and inference Python scripts.</p><pre><code class="language-python"># Example of a preprocess script using scikit-learn pipelines
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
 
+preprocess_pipeline = Pipeline([
+    ('imputer', SimpleImputer(strategy='median')),
+    ('scaler', StandardScaler())
+])
+
+preprocessed_data = preprocess_pipeline.fit_transform(data)
+</code></pre><pre><code class="language-python"># Example of a train script using scikit-learn pipelines
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier
+
+train_pipeline = Pipeline([
+    ('preprocess', preprocess_pipeline),
+    ('classifier', RandomForestClassifier())
+])
+
+trained_model = train_pipeline.fit(X_train, y_train)
+</code></pre><pre><code class="language-python"># Example of an inference script
+def predict(model, data):
+    # Model prediction code here
+    preprocessed_data = preprocess_pipeline.transform(data)
+    prediction = model.predict(preprocessed_data)
+    return prediction
+</code></pre><h2 id="saving-the-model-pipelines">Saving the Model Pipelines</h2><p>It is important to save the model pipelines after they have been trained. This is because the pipelines contain the preprocessing steps and the trained model, which are required for making predictions on new data. Saving the pipelines also allows for easy reusability of the model in other applications.</p><pre><code class="language-python"># Example of saving the trained model pipeline
+import joblib
+
+joblib.dump(train_pipeline, 'trained_model_pipeline.joblib')
+</code></pre><pre><code class="language-python"># Example of loading the trained model pipeline
+import joblib
+
+trained_model_pipeline = joblib.load('trained_model_pipeline.joblib')
+</code></pre><h2 id="building-an-api">Building an API</h2><p>The third step in deploying a machine learning model is to build an API that will take real-time inputs, usually in the form of JSON. This API could be user-facing, such as a mobile or web app, or an internal API that connects to another application to fetch the data.</p><pre><code class="language-python"># Example of a Flask API endpoint
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.get_json()
+    prediction = predict(trained_model, data)
+    return jsonify(prediction.tolist())
+</code></pre><h2 id="building-a-model-prediction-endpoint">Building a Model Prediction Endpoint</h2><p>The fourth step in deploying a machine learning model is to build a model prediction endpoint on the API that invokes the model's prediction API, something like the common <code>.predict()</code> or <code>.generate()</code> methods. The way the prediction works is when the input hits the <code>/predict</code> API (prediction endpoint), the inputs are passed to the model, and the API retrieves the model prediction (also usually in the form of JSON) like this: <code>{id: 0001, prediction_score: 55}</code>.</p><pre><code class="language-python"># Example of a model prediction endpoint
+class ModelPredictionEndpoint:
+    def __init__(self, model):
+        self.model = model
+
+    def predict(self, data):
+        preprocessed_data = preprocess_pipeline.transform(data)
+        prediction = self.model.predict(preprocessed_data)
+        return prediction.tolist()
+</code></pre><h2 id="wrapping-the-api">Wrapping the API</h2><p>The fifth step in deploying a machine learning model is to wrap the API using a container service like Docker so that the code is agnostic to the environment. This ensures that the API can be deployed on any platform without any issues.</p><pre><code class="language-dockerfile"># Example of a Dockerfile
+FROM python:3.8-slim-buster
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+</code></pre><h2 id="docker-and-kubernetes">Docker and Kubernetes</h2><p>Docker and Kubernetes are two popular tools used for deploying machine learning models to the cloud. Docker is a containerization platform that allows developers to package their applications and dependencies into a single container that can be run on any platform. Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.</p><p>Using Docker and Kubernetes can simplify the deployment process and make it more scalable. Instead of deploying the application on a single server, Docker and Kubernetes allow for the deployment of multiple instances of the application, which can be scaled up or down based on demand.</p><pre><code class="language-dockerfile"># Example of a Dockerfile for a machine learning model
+FROM python:3.8-slim-buster
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+</code></pre><pre><code class="language-yaml"># Example of a Kubernetes deployment file for a machine learning model
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: my-registry/my-app:latest
+        ports:
+        - containerPort: 5000
+</code></pre><h2 id="deploying-to-the-cloud">Deploying to the Cloud</h2><p>With the model API container, you can now push this same API to any cloud provider and their service offerings: AWS EC2, Sagemaker, Beanstalk, GCP Vertex AI, App Engine. Here's an example of deploying the Docker container on AWS Elastic Beanstalk:</p><ol><li>Create an Elastic Beanstalk environment with a Docker platform.</li><li>Upload the Docker image to a container registry like Docker Hub or Amazon ECR.</li><li>Configure the Elastic Beanstalk environment to use the Docker image.</li><li>Deploy the application to the Elastic Beanstalk environment.</li></ol><pre><code class="language-bash"># Example of deploying the Docker container on AWS Elastic Beanstalk
+# Build the Docker image
+docker build -t my-app .
+
+# Tag the Docker image
+docker tag my-app:latest my-registry/my-app:latest
+
+# Push the Docker image to the container registry
+docker push my-registry/my-app:latest
+
+# Create an Elastic Beanstalk environment with a Docker platform
+eb create my-environment --platform "Docker 20.10.7"
+
+# Configure the Elastic Beanstalk environment to use the Docker image
+eb setenv DOCKER_IMAGE=my-registry/my-app:latest
+
+# Deploy the application to the Elastic Beanstalk environment
+eb deploy
+</code></pre><h2 id="conclusion">Conclusion</h2><p>In conclusion, deploying a machine learning model to the cloud involves several steps, including developing the model, migrating the code, building an API, building a model prediction endpoint, wrapping the API using a container service like Docker, and deploying to the cloud. Saving the model pipelines and using Docker and Kubernetes can simplify the deployment process and make it more scalable.</p>
 
             </section>
 
