@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide</title>
+
+    <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
+    <link rel="canonical" href="https://awinml.github.io/llm-ggml-python/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Ashwin Mathur">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide">
+    <meta property="og:description" content="Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. There have been several advancements like the support for 4-bit and 8-bit loading of models on HuggingFace. But they require a GPU to work. This has limited their use to people with access to">
+    <meta property="og:url" content="https://awinml.github.io/llm-ggml-python/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2023-06-30T20:38:39.000Z">
+    <meta property="article:modified_time" content="2023-06-30T20:39:47.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide">
+    <meta name="twitter:description" content="Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. There have been several advancements like the support for 4-bit and 8-bit loading of models on HuggingFace. But they require a GPU to work. This has limited their use to people with access to">
+    <meta name="twitter:url" content="https://awinml.github.io/llm-ggml-python/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Ashwin Mathur">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1333">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ashwin Mathur",
+        "url": "https://awinml.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ashwin Mathur",
+        "url": "https://awinml.github.io/author/ashwin/",
+        "sameAs": []
+    },
+    "headline": "How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide",
+    "url": "https://awinml.github.io/llm-ggml-python/",
+    "datePublished": "2023-06-30T20:38:39.000Z",
+    "dateModified": "2023-06-30T20:39:47.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 2000,
+        "height": 1333
+    },
+    "description": "Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. There have been several advancements like the support for 4-bit and 8-bit loading of models on HuggingFace. But they require a GPU to work. This has limited their use to people with access to specialized hardware, such as GPUs. Even though it is possible to run these LLMs on CPUs, the performance is limited and hence restricts the usage of these models.\n\n\nRecent work by Georgi Gergan",
+    "mainEntityOfPage": "https://awinml.github.io/llm-ggml-python/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.49">
+    <link rel="alternate" type="application/rss+xml" title="Ashwin Mathur" href="https://awinml.github.io/rss/">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #023e8a;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://awinml.github.io">
+                <amp-img class="site-icon" src="https://awinml.github.io/content/images/2023/06/android-chrome-192x192.png" width="50" height="50" layout="fixed" alt="Ashwin Mathur"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide</h1>
+                <section class="post-meta">
+                    Ashwin Mathur -
+                    <time class="post-date" datetime="2023-07-01">01 Jul 2023</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" width="600" height="340" layout="responsive" 
+                alt="How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. There have been several advancements like the support for 4-bit and 8-bit loading of models on HuggingFace. But they require a GPU to work. This has limited their use to people with access to specialized hardware, such as GPUs. Even though it is possible to run these LLMs on CPUs, the performance is limited and hence restricts the usage of these models.</p>
+<p>Recent work by <a href="https://github.com/ggerganov?ref=localhost">Georgi Gerganov</a> has made it possible to run LLMs on CPUs with high performance. This is thanks to his implementation of the <a href="https://github.com/ggerganov/llama.cpp?ref=localhost">llama.cpp</a> library, which provides high-speed inference for a variety of LLMs.</p>
+<p>The original llama.cpp library focuses on running the models locally in a shell. This does not offer a lot of flexibility to the user and makes it hard for the user to leverage the vast range of python libraries to build applications. Recently LLM frameworks like <a href="https://python.langchain.com/docs/get_started/introduction.html?ref=localhost">LangChain</a> have added support for llama.cpp using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package.</p>
+<p>In this blog post, we will see how to use the llama.cpp library in Python using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package. This package provides Python bindings for llama.cpp, which makes it easy to use the library in Python.</p>
+<p>We will also see how to use the llama-cpp-python library to run the <a href="https://lmsys.org/blog/2023-03-30-vicuna/?ref=localhost">Vicuna  LLM</a>, which is an open-source model based on the <a href="https://ai.facebook.com/blog/large-language-model-llama-meta-ai/?ref=localhost">LLaMA</a> architecture that behaves like ChatGPT.</p>
+<h2 id="set-up-llama-cpp-python">Set up llama-cpp-python</h2>
+<p>Setting up the python bindings is as simple as running the following command:</p>
+<pre><code class="language-bash">pip install llama-cpp-python
+</code></pre>
+<p>For more detailed installation instructions, please see the llama-cpp-python documentation: <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost#installation-from-pypi-recommended">https://github.com/abetlen/llama-cpp-python#installation-from-pypi-recommended</a>.</p>
+<h2 id="using-a-llm-with-llama-cpp-python">Using a LLM with llama-cpp-python</h2>
+<p>Once you have installed the llama-cpp-python package, you can start using it to run LLMs.</p>
+<p>You can use any language model with llama.cpp provided that it has been converted to the GGML format. There are already GGML versions available for most popular LLMs and the required GGML can be easily found on HuggingFace.</p>
+<p>An important thing to note is that the original LLMs have been quantized when converting them to GGML format. This helps reduce the memory requirement for running these large models, without a significant loss in performance. For example, this helps us load a 7 billion parameter model of size 13GB in less than 4GB of RAM.</p>
+<p>In this article we use the GGML version of Vicuna-7B which is available on the Hugging Face Hub.</p>
+<p>The model can be downloaded from here: <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized</a>.</p>
+<h3 id="downloading-the-ggml-file-and-loading-the-llm">Downloading the GGML file and Loading the LLM</h3>
+<p>The following code can be used to download the model. The code downloads the required GGML file, in this case the <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">Vicuna-7b-Q4.1 GGML</a>, from the Hugging Face Hub. The code also checks if the file is already present before attempting to download it.</p>
+<pre><code class="language-python">import os
+import urllib.request
+
+
+def download_file(file_link, filename):
+    # Checks if the file already exists before downloading
+    if not os.path.isfile(filename):
+        urllib.request.urlretrieve(file_link, filename)
+        print("File downloaded successfully.")
+    else:
+        print("File already exists.")
+
+# Dowloading GGML model from HuggingFace
+ggml_model_path = "https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized/resolve/main/ggml-vicuna-7b-1.1-q4_1.bin"
+filename = "ggml-vicuna-7b-1.1-q4_1.bin"
+
+download_file(ggml_model_path, filename)
+</code></pre>
+<p>The next step is to load the model that you want to use. This can be done using the following code:</p>
+<pre><code class="language-python">from llama_cpp import Llama
+
+llm = Llama(model_path="ggml-vicuna-7b-1.1-q4_1.bin", n_ctx=512, n_batch=126)
+</code></pre>
+<p>There are two important parameters that should be set when loading the model.</p>
+<ul>
+<li><code>n_ctx</code>: This is used to set the maximum context size of the model. The default value is 512 tokens.</li>
+</ul>
+<p>The context size is the sum of the number of tokens in the input prompt and the max number of tokens that can be generated by the model. A model with smaller context size generates text much quicker than a model with a larger context size. If the use case does not demand very long generations or prompts, it is better to reduce the context length for better performance.</p>
+<p>The number of tokens in the prompt and generated text can be checked using the free <a href="https://platform.openai.com/tokenizer?ref=localhost">Tokenizer tool by OpenAI</a>.</p>
+<ul>
+<li><code>n_batch</code>: This is used to set the maximum number of prompt tokens to batch together when generating the text. The default value is 512 tokens.</li>
+</ul>
+<p>The <code>n_batch</code> parameter should be set carefully. Lowering the <code>n_batch</code> helps speed up text generation over multithreaded CPUs. Reducing it too much may cause the text generation to deteriorate significantly.</p>
+<p>The complete list of parameters can be viewed here: <a href="https://llama-cpp-python.readthedocs.io/en/latest/api-reference/?ref=localhost#llama_cpp.Llama">https://llama-cpp-python.readthedocs.io/en/latest/api-reference/#llama_cpp.Llama</a></p>
+<h3 id="generating-text-using-the-llm">Generating Text using the LLM</h3>
+<p>The following code writes a simple wrapper function to generate text using the LLM.</p>
+<pre><code class="language-python">def generate_text(
+    prompt="Who is the CEO of Apple?",
+    max_tokens=256,
+    temperature=0.1,
+    top_p=0.5,
+    echo=False,
+    stop=["#"],
+):
+    output = llm(
+        prompt,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        top_p=top_p,
+        echo=echo,
+        stop=stop,
+    )
+    output_text = output["choices"][0]["text"].strip()
+    return output_text
+</code></pre>
+<p>The <code>llm</code> object has several important parameters that are used while generating text:</p>
+<ul>
+<li>
+<p><code>prompt</code>: The input prompt to the model. This text is tokenized and passed to the model.</p>
+</li>
+<li>
+<p><code>max_tokens</code>: The parameter is used to set the maximum number of tokens the model can generate. This parameter controls the length of text generation. Default value is 128 tokens.</p>
+</li>
+<li>
+<p><code>temperature</code>: The token sampling temperature to use, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. Default value is 1.</p>
+</li>
+<li>
+<p><code>top_p</code>: An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.</p>
+</li>
+<li>
+<p><code>echo</code>: Boolean parameter to control whether the model returns (echoes) the model prompt at the beginning of the generated text.</p>
+</li>
+<li>
+<p><code>stop</code>: A list of strings that is used to stop text generation. If the model encounters any of the strings, the text generation will be stopped at that token. Used to control model hallucination and prevent the model from generating unnecessary text.</p>
+</li>
+</ul>
+<p>The <code>llm</code> object returns a dictionary object of the form:</p>
+<pre><code class="language-python">{
+  "id": "xxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",  # text generation id 
+  "object": "text_completion",              # object name
+  "created": 1679561337,                    # time stamp
+  "model": "./models/7B/ggml-model.bin",    # model path
+  "choices": [
+    {
+      "text": "Q: Name the planets in the solar system? A: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.", # generated text
+      "index": 0,
+      "logprobs": None,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 14,       # Number of tokens present in the prompt
+    "completion_tokens": 28,   # Number of tokens present in the generated text
+    "total_tokens": 42
+  }
+}
+</code></pre>
+<p>The generated text can be easily extracted from the dictionary object using <code>output["choices"][0]["text"]</code>.</p>
+<h3 id="example-text-generation-using-vicuna-7b">Example text generation using Vicuna-7B</h3>
+<pre><code class="language-python">import os
+import urllib.request
+from llama_cpp import Llama
+
+
+def download_file(file_link, filename):
+    # Checks if the file already exists before downloading
+    if not os.path.isfile(filename):
+        urllib.request.urlretrieve(file_link, filename)
+        print("File downloaded successfully.")
+    else:
+        print("File already exists.")
+
+
+# Dowloading GGML model from HuggingFace
+ggml_model_path = "https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized/resolve/main/ggml-vicuna-7b-1.1-q4_1.bin"
+filename = "ggml-vicuna-7b-1.1-q4_1.bin"
+
+download_file(ggml_model_path, filename)
+
+
+llm = Llama(model_path="ggml-vicuna-7b-1.1-q4_1.bin", n_ctx=512, n_batch=126)
+
+
+def generate_text(
+    prompt="Who is the CEO of Apple?",
+    max_tokens=256,
+    temperature=0.1,
+    top_p=0.5,
+    echo=False,
+    stop=["#"],
+):
+    output = llm(
+        prompt,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        top_p=top_p,
+        echo=echo,
+        stop=stop,
+    )
+    output_text = output["choices"][0]["text"].strip()
+    return output_text
+
+
+generate_text(
+    "Compose an engaging travel blog post about a recent trip to Hawaii, highlighting cultural experiences and must-see attractions.",
+    max_tokens=356,
+)
+</code></pre>
+<p>Generated text:</p>
+<pre><code>Hawaii is a state located in the United States of America that is known for its beautiful beaches, lush landscapes, and rich culture. It is made up of six islands: Oahu, Maui, Kauai, Lanai, Molokai, and Hawaii (also known as the Big Island). Each island has its own unique attractions and experiences to offer visitors.
+One of the most interesting cultural experiences in Hawaii is visiting a traditional Hawaiian village or ahupuaa. An ahupuaa is a system of land use that was used by ancient Hawaiians to manage their resources sustainably. It consists of a coastal area, a freshwater stream, and the surrounding uplands and forests. Visitors can learn about this traditional way of life at the Polynesian Cultural Center in Oahu or by visiting a traditional Hawaiian village on one of the other islands.
+Another must-see attraction in Hawaii is the Pearl Harbor Memorial. This historic site commemorates the attack on Pearl Harbor on December 7, 1941, which led to the United States' entry into World War II. Visitors can see the USS Arizona Memorial, a memorial that sits above the sunken battleship USS Arizona and provides an overview of the attack. They can also visit other museums and exhibits on the site to learn more about this important event in American history.
+Hawaii is also known for its beautiful beaches and crystal clear waters, which are perfect for swimming, snorkeling, and sunbathing.
+</code></pre>
+<p>The notebook with the example can be viewed <a href="https://nbviewer.org/github/awinml/llama-cpp-python-bindings/blob/main/vicuna-7b-example-ggml.ipynb?ref=localhost">here</a>.</p>
+<p>The complete code for running the examples can be found on <a href="https://github.com/awinml/llama-cpp-python-bindings?ref=localhost">GitHub</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this blog post, we explored how to use the llama.cpp library in Python with the llama-cpp-python package. These tools enable high-performance CPU-based execution of LLMs.</p>
+<p>llama.cpp is updated almost every day. The speed of inference is getting better, and the community regularly adds support for new models. You can also convert your own Pytorch language models into the ggml format. llama.cpp has a “convert.py” that will do that for you.</p>
+<p>The llama.cpp library and llama-cpp-python package provide robust solutions for running LLMs efficiently on CPUs. If you're interested in incorporating LLMs into your applications, I recommend exploring these resources.</p>
+
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://awinml.github.io/content/images/2023/06/android-chrome-192x192.png" width="50" height="50" layout="fixed" alt="Ashwin Mathur"></amp-img>
+        <h3>Ashwin Mathur</h3>
+            <p>AI Research, NLP, Open-Source</p>
+        <p><a href="https://awinml.github.io">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+            <amp-analytics type="gtag" data-credentials="include">
+                <script type="application/json">
+                    {
+                        "vars" : {
+                            "gtag_id": "G-TQJMQLKYQ9",
+                            "config" : {
+                                "G-TQJMQLKYQ9": { "groups": "default" }
+                            }
+                        }
+                    }
+                </script>
+            </amp-analytics>
+        
+</body>
+</html>

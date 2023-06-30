@@ -1,4 +1,182 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Ashwin Mathur]]></title><description><![CDATA[AI Research, NLP, Open-Source]]></description><link>https://awinml.github.io/</link><image><url>https://awinml.github.io/favicon.png</url><title>Ashwin Mathur</title><link>https://awinml.github.io/</link></image><generator>Ghost 5.49</generator><lastBuildDate>Wed, 28 Jun 2023 18:51:02 GMT</lastBuildDate><atom:link href="https://awinml.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Machine Learning Model Deployment: From Jupyter Notebook to the Cloud]]></title><description><![CDATA[Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.]]></description><link>https://awinml.github.io/ml-model-deployment/</link><guid isPermaLink="false">648d7155fdfec6286dfa89d9</guid><category><![CDATA[Blog]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Sat, 17 Jun 2023 08:46:10 GMT</pubDate><media:content url="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" medium="image"/><content:encoded><![CDATA[<img src="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="Machine Learning Model Deployment: From Jupyter Notebook to the Cloud"><p>Machine learning has become an essential tool for businesses and organizations to make data-driven decisions. However, building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.</p><h2 id="developing-the-model">Developing the Model</h2><p>The first step in deploying a machine learning model is to develop the model itself. This is typically done in a Jupyter Notebook, where data scientists can test various modeling strategies and fine-tune the model&apos;s parameters. Once the model is developed and tested, it&apos;s time to move on to the next step.</p><h2 id="migrating-the-code">Migrating the Code</h2><p>The second step in deploying a machine learning model is to migrate the code from the Jupyter Notebook into executable modules. The idea here is to have a way to automate the whole model building and prediction process, which cannot be done on Jupyter. This involves creating preprocess, train, and inference Python scripts.</p><pre><code class="language-python"># Example of a preprocess script using scikit-learn pipelines
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Ashwin Mathur]]></title><description><![CDATA[AI Research, NLP, Open-Source]]></description><link>https://awinml.github.io/</link><image><url>https://awinml.github.io/favicon.png</url><title>Ashwin Mathur</title><link>https://awinml.github.io/</link></image><generator>Ghost 5.49</generator><lastBuildDate>Fri, 30 Jun 2023 20:40:32 GMT</lastBuildDate><atom:link href="https://awinml.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide]]></title><description><![CDATA[<!--kg-card-begin: markdown--><p>Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. There have been several advancements like the support for 4-bit and 8-bit loading of models on HuggingFace. But they require a GPU to work. This has limited their use to people with access to</p>]]></description><link>https://awinml.github.io/llm-ggml-python/</link><guid isPermaLink="false">649f3b71e27a34833e9d3930</guid><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Fri, 30 Jun 2023 20:38:39 GMT</pubDate><media:content url="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" medium="image"/><content:encoded><![CDATA[<!--kg-card-begin: markdown--><img src="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide"><p>Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. There have been several advancements like the support for 4-bit and 8-bit loading of models on HuggingFace. But they require a GPU to work. This has limited their use to people with access to specialized hardware, such as GPUs. Even though it is possible to run these LLMs on CPUs, the performance is limited and hence restricts the usage of these models.</p>
+<p>Recent work by <a href="https://github.com/ggerganov?ref=localhost">Georgi Gerganov</a> has made it possible to run LLMs on CPUs with high performance. This is thanks to his implementation of the <a href="https://github.com/ggerganov/llama.cpp?ref=localhost">llama.cpp</a> library, which provides high-speed inference for a variety of LLMs.</p>
+<p>The original llama.cpp library focuses on running the models locally in a shell. This does not offer a lot of flexibility to the user and makes it hard for the user to leverage the vast range of python libraries to build applications. Recently LLM frameworks like <a href="https://python.langchain.com/docs/get_started/introduction.html?ref=localhost">LangChain</a> have added support for llama.cpp using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package.</p>
+<p>In this blog post, we will see how to use the llama.cpp library in Python using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package. This package provides Python bindings for llama.cpp, which makes it easy to use the library in Python.</p>
+<p>We will also see how to use the llama-cpp-python library to run the <a href="https://lmsys.org/blog/2023-03-30-vicuna/?ref=localhost">Vicuna &#xA0;LLM</a>, which is an open-source model based on the <a href="https://ai.facebook.com/blog/large-language-model-llama-meta-ai/?ref=localhost">LLaMA</a> architecture that behaves like ChatGPT.</p>
+<h2 id="set-up-llama-cpp-python">Set up llama-cpp-python</h2>
+<p>Setting up the python bindings is as simple as running the following command:</p>
+<pre><code class="language-bash">pip install llama-cpp-python
+</code></pre>
+<p>For more detailed installation instructions, please see the llama-cpp-python documentation: <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost#installation-from-pypi-recommended">https://github.com/abetlen/llama-cpp-python#installation-from-pypi-recommended</a>.</p>
+<h2 id="using-a-llm-with-llama-cpp-python">Using a LLM with llama-cpp-python</h2>
+<p>Once you have installed the llama-cpp-python package, you can start using it to run LLMs.</p>
+<p>You can use any language model with llama.cpp provided that it has been converted to the GGML format. There are already GGML versions available for most popular LLMs and the required GGML can be easily found on HuggingFace.</p>
+<p>An important thing to note is that the original LLMs have been quantized when converting them to GGML format. This helps reduce the memory requirement for running these large models, without a significant loss in performance. For example, this helps us load a 7 billion parameter model of size 13GB in less than 4GB of RAM.</p>
+<p>In this article we use the GGML version of Vicuna-7B which is available on the Hugging Face Hub.</p>
+<p>The model can be downloaded from here: <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized</a>.</p>
+<h3 id="downloading-the-ggml-file-and-loading-the-llm">Downloading the GGML file and Loading the LLM</h3>
+<p>The following code can be used to download the model. The code downloads the required GGML file, in this case the <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">Vicuna-7b-Q4.1 GGML</a>, from the Hugging Face Hub. The code also checks if the file is already present before attempting to download it.</p>
+<pre><code class="language-python">import os
+import urllib.request
+
+
+def download_file(file_link, filename):
+&#xA0; &#xA0; # Checks if the file already exists before downloading
+&#xA0; &#xA0; if not os.path.isfile(filename):
+&#xA0; &#xA0; &#xA0; &#xA0; urllib.request.urlretrieve(file_link, filename)
+&#xA0; &#xA0; &#xA0; &#xA0; print(&quot;File downloaded successfully.&quot;)
+&#xA0; &#xA0; else:
+&#xA0; &#xA0; &#xA0; &#xA0; print(&quot;File already exists.&quot;)
+
+# Dowloading GGML model from HuggingFace
+ggml_model_path = &quot;https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized/resolve/main/ggml-vicuna-7b-1.1-q4_1.bin&quot;
+filename = &quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;
+
+download_file(ggml_model_path, filename)
+</code></pre>
+<p>The next step is to load the model that you want to use. This can be done using the following code:</p>
+<pre><code class="language-python">from llama_cpp import Llama
+
+llm = Llama(model_path=&quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;, n_ctx=512, n_batch=126)
+</code></pre>
+<p>There are two important parameters that should be set when loading the model.</p>
+<ul>
+<li><code>n_ctx</code>: This is used to set the maximum context size of the model. The default value is 512 tokens.</li>
+</ul>
+<p>The context size is the sum of the number of tokens in the input prompt and the max number of tokens that can be generated by the model. A model with smaller context size generates text much quicker than a model with a larger context size. If the use case does not demand very long generations or prompts, it is better to reduce the context length for better performance.</p>
+<p>The number of tokens in the prompt and generated text can be checked using the free <a href="https://platform.openai.com/tokenizer?ref=localhost">Tokenizer tool by OpenAI</a>.</p>
+<ul>
+<li><code>n_batch</code>: This is used to set the maximum number of prompt tokens to batch together when generating the text. The default value is 512 tokens.</li>
+</ul>
+<p>The <code>n_batch</code> parameter should be set carefully. Lowering the <code>n_batch</code> helps speed up text generation over multithreaded CPUs. Reducing it too much may cause the text generation to deteriorate significantly.</p>
+<p>The complete list of parameters can be viewed here: <a href="https://llama-cpp-python.readthedocs.io/en/latest/api-reference/?ref=localhost#llama_cpp.Llama">https://llama-cpp-python.readthedocs.io/en/latest/api-reference/#llama_cpp.Llama</a></p>
+<h3 id="generating-text-using-the-llm">Generating Text using the LLM</h3>
+<p>The following code writes a simple wrapper function to generate text using the LLM.</p>
+<pre><code class="language-python">def generate_text(
+&#xA0; &#xA0; prompt=&quot;Who is the CEO of Apple?&quot;,
+&#xA0; &#xA0; max_tokens=256,
+&#xA0; &#xA0; temperature=0.1,
+&#xA0; &#xA0; top_p=0.5,
+&#xA0; &#xA0; echo=False,
+&#xA0; &#xA0; stop=[&quot;#&quot;],
+):
+&#xA0; &#xA0; output = llm(
+&#xA0; &#xA0; &#xA0; &#xA0; prompt,
+&#xA0; &#xA0; &#xA0; &#xA0; max_tokens=max_tokens,
+&#xA0; &#xA0; &#xA0; &#xA0; temperature=temperature,
+&#xA0; &#xA0; &#xA0; &#xA0; top_p=top_p,
+&#xA0; &#xA0; &#xA0; &#xA0; echo=echo,
+&#xA0; &#xA0; &#xA0; &#xA0; stop=stop,
+&#xA0; &#xA0; )
+&#xA0; &#xA0; output_text = output[&quot;choices&quot;][0][&quot;text&quot;].strip()
+&#xA0; &#xA0; return output_text
+</code></pre>
+<p>The <code>llm</code> object has several important parameters that are used while generating text:</p>
+<ul>
+<li>
+<p><code>prompt</code>: The input prompt to the model. This text is tokenized and passed to the model.</p>
+</li>
+<li>
+<p><code>max_tokens</code>: The parameter is used to set the maximum number of tokens the model can generate. This parameter controls the length of text generation. Default value is 128 tokens.</p>
+</li>
+<li>
+<p><code>temperature</code>: The token sampling temperature to use, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. Default value is 1.</p>
+</li>
+<li>
+<p><code>top_p</code>: An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.</p>
+</li>
+<li>
+<p><code>echo</code>: Boolean parameter to control whether the model returns (echoes) the model prompt at the beginning of the generated text.</p>
+</li>
+<li>
+<p><code>stop</code>: A list of strings that is used to stop text generation. If the model encounters any of the strings, the text generation will be stopped at that token. Used to control model hallucination and prevent the model from generating unnecessary text.</p>
+</li>
+</ul>
+<p>The <code>llm</code> object returns a dictionary object of the form:</p>
+<pre><code class="language-python">{
+&#xA0; &quot;id&quot;: &quot;xxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;, &#xA0;# text generation id 
+&#xA0; &quot;object&quot;: &quot;text_completion&quot;, &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;# object name
+&#xA0; &quot;created&quot;: 1679561337, &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;# time stamp
+&#xA0; &quot;model&quot;: &quot;./models/7B/ggml-model.bin&quot;, &#xA0; &#xA0;# model path
+&#xA0; &quot;choices&quot;: [
+&#xA0; &#xA0; {
+&#xA0; &#xA0; &#xA0; &quot;text&quot;: &quot;Q: Name the planets in the solar system? A: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.&quot;, # generated text
+&#xA0; &#xA0; &#xA0; &quot;index&quot;: 0,
+&#xA0; &#xA0; &#xA0; &quot;logprobs&quot;: None,
+&#xA0; &#xA0; &#xA0; &quot;finish_reason&quot;: &quot;stop&quot;
+&#xA0; &#xA0; }
+&#xA0; ],
+&#xA0; &quot;usage&quot;: {
+&#xA0; &#xA0; &quot;prompt_tokens&quot;: 14, &#xA0; &#xA0; &#xA0; # Number of tokens present in the prompt
+&#xA0; &#xA0; &quot;completion_tokens&quot;: 28, &#xA0; # Number of tokens present in the generated text
+&#xA0; &#xA0; &quot;total_tokens&quot;: 42
+&#xA0; }
+}
+</code></pre>
+<p>The generated text can be easily extracted from the dictionary object using <code>output[&quot;choices&quot;][0][&quot;text&quot;]</code>.</p>
+<h3 id="example-text-generation-using-vicuna-7b">Example text generation using Vicuna-7B</h3>
+<pre><code class="language-python">import os
+import urllib.request
+from llama_cpp import Llama
+
+
+def download_file(file_link, filename):
+&#xA0; &#xA0; # Checks if the file already exists before downloading
+&#xA0; &#xA0; if not os.path.isfile(filename):
+&#xA0; &#xA0; &#xA0; &#xA0; urllib.request.urlretrieve(file_link, filename)
+&#xA0; &#xA0; &#xA0; &#xA0; print(&quot;File downloaded successfully.&quot;)
+&#xA0; &#xA0; else:
+&#xA0; &#xA0; &#xA0; &#xA0; print(&quot;File already exists.&quot;)
+
+
+# Dowloading GGML model from HuggingFace
+ggml_model_path = &quot;https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized/resolve/main/ggml-vicuna-7b-1.1-q4_1.bin&quot;
+filename = &quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;
+
+download_file(ggml_model_path, filename)
+
+
+llm = Llama(model_path=&quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;, n_ctx=512, n_batch=126)
+
+
+def generate_text(
+&#xA0; &#xA0; prompt=&quot;Who is the CEO of Apple?&quot;,
+&#xA0; &#xA0; max_tokens=256,
+&#xA0; &#xA0; temperature=0.1,
+&#xA0; &#xA0; top_p=0.5,
+&#xA0; &#xA0; echo=False,
+&#xA0; &#xA0; stop=[&quot;#&quot;],
+):
+&#xA0; &#xA0; output = llm(
+&#xA0; &#xA0; &#xA0; &#xA0; prompt,
+&#xA0; &#xA0; &#xA0; &#xA0; max_tokens=max_tokens,
+&#xA0; &#xA0; &#xA0; &#xA0; temperature=temperature,
+&#xA0; &#xA0; &#xA0; &#xA0; top_p=top_p,
+&#xA0; &#xA0; &#xA0; &#xA0; echo=echo,
+&#xA0; &#xA0; &#xA0; &#xA0; stop=stop,
+&#xA0; &#xA0; )
+&#xA0; &#xA0; output_text = output[&quot;choices&quot;][0][&quot;text&quot;].strip()
+&#xA0; &#xA0; return output_text
+
+
+generate_text(
+&#xA0; &#xA0; &quot;Compose an engaging travel blog post about a recent trip to Hawaii, highlighting cultural experiences and must-see attractions.&quot;,
+&#xA0; &#xA0; max_tokens=356,
+)
+</code></pre>
+<p>Generated text:</p>
+<pre><code>Hawaii is a state located in the United States of America that is known for its beautiful beaches, lush landscapes, and rich culture. It is made up of six islands: Oahu, Maui, Kauai, Lanai, Molokai, and Hawaii (also known as the Big Island). Each island has its own unique attractions and experiences to offer visitors.
+One of the most interesting cultural experiences in Hawaii is visiting a traditional Hawaiian village or ahupuaa. An ahupuaa is a system of land use that was used by ancient Hawaiians to manage their resources sustainably. It consists of a coastal area, a freshwater stream, and the surrounding uplands and forests. Visitors can learn about this traditional way of life at the Polynesian Cultural Center in Oahu or by visiting a traditional Hawaiian village on one of the other islands.
+Another must-see attraction in Hawaii is the Pearl Harbor Memorial. This historic site commemorates the attack on Pearl Harbor on December 7, 1941, which led to the United States&apos; entry into World War II. Visitors can see the USS Arizona Memorial, a memorial that sits above the sunken battleship USS Arizona and provides an overview of the attack. They can also visit other museums and exhibits on the site to learn more about this important event in American history.
+Hawaii is also known for its beautiful beaches and crystal clear waters, which are perfect for swimming, snorkeling, and sunbathing.
+</code></pre>
+<p>The notebook with the example can be viewed <a href="https://nbviewer.org/github/awinml/llama-cpp-python-bindings/blob/main/vicuna-7b-example-ggml.ipynb?ref=localhost">here</a>.</p>
+<p>The complete code for running the examples can be found on <a href="https://github.com/awinml/llama-cpp-python-bindings?ref=localhost">GitHub</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this blog post, we explored how to use the llama.cpp library in Python with the llama-cpp-python package. These tools enable high-performance CPU-based execution of LLMs.</p>
+<p>llama.cpp is updated almost every day. The speed of inference is getting better, and the community regularly adds support for new models. You can also convert your own Pytorch language models into the ggml format. llama.cpp has a &#x201C;convert.py&#x201D; that will do that for you.</p>
+<p>The llama.cpp library and llama-cpp-python package provide robust solutions for running LLMs efficiently on CPUs. If you&apos;re interested in incorporating LLMs into your applications, I recommend exploring these resources.</p>
+<!--kg-card-end: markdown-->]]></content:encoded></item><item><title><![CDATA[Machine Learning Model Deployment: From Jupyter Notebook to the Cloud]]></title><description><![CDATA[Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.]]></description><link>https://awinml.github.io/ml-model-deployment/</link><guid isPermaLink="false">648d7155fdfec6286dfa89d9</guid><category><![CDATA[Blog]]></category><dc:creator><![CDATA[Ashwin Mathur]]></dc:creator><pubDate>Sat, 17 Jun 2023 08:46:10 GMT</pubDate><media:content url="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" medium="image"/><content:encoded><![CDATA[<img src="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="Machine Learning Model Deployment: From Jupyter Notebook to the Cloud"><p>Machine learning has become an essential tool for businesses and organizations to make data-driven decisions. However, building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.</p><h2 id="developing-the-model">Developing the Model</h2><p>The first step in deploying a machine learning model is to develop the model itself. This is typically done in a Jupyter Notebook, where data scientists can test various modeling strategies and fine-tune the model&apos;s parameters. Once the model is developed and tested, it&apos;s time to move on to the next step.</p><h2 id="migrating-the-code">Migrating the Code</h2><p>The second step in deploying a machine learning model is to migrate the code from the Jupyter Notebook into executable modules. The idea here is to have a way to automate the whole model building and prediction process, which cannot be done on Jupyter. This involves creating preprocess, train, and inference Python scripts.</p><pre><code class="language-python"># Example of a preprocess script using scikit-learn pipelines
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
