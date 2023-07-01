@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=c19c96af6c" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=3d968471c2" />
 
     <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
     <link rel="canonical" href="https://awinml.github.io/tag/projects/">
@@ -53,8 +53,8 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://awinml.github.io/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://awinml.github.io/" data-api-url="https://awinml.github.io/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://awinml.github.io/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=c19c96af6c"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=c19c96af6c">
+    <script defer src="/public/cards.min.js?v=3d968471c2"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=3d968471c2">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8005664633543622"
      crossorigin="anonymous"></script>
 
@@ -78,6 +78,7 @@
 <style>
     .gh-head-menu .nav-email a,
     .gh-head-menu .nav-github a,
+    .gh-head-menu .nav-medium a,
     .gh-head-menu .nav-linkedin a {
         font-size: 0 !important;
     }
@@ -92,7 +93,8 @@
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
     }
- 
+ 	
+    .gh-head-menu .nav-medium a::before,
     .gh-head-menu .nav-github a::before,
     .gh-head-menu .nav-linkedin a::before {
         font-family: "Font Awesome 6 Brands";
@@ -108,6 +110,8 @@
     .gh-head-menu .nav-email a::before {content: "\f0e0"}
     .gh-head-menu .nav-github a::before {content: "\f09b"}
     .gh-head-menu .nav-linkedin a::before {content: "\f08c"}
+    .gh-head-menu .nav-medium a::before {content: "\f23a"}
+    
 </style>
 
 <style>:root {--ghost-accent-color: #023e8a;}</style>
@@ -135,6 +139,7 @@
     <li class="nav-email"><a href="mailto:ashwinmathur.business@gmail.com">Email</a></li>
     <li class="nav-github"><a href="https://github.com/awinml">GitHub</a></li>
     <li class="nav-linkedin"><a href="https://www.linkedin.com/in/ashwin-mathur-ds/">LinkedIn</a></li>
+    <li class="nav-medium"><a href="https://awinml.medium.com/">Medium</a></li>
     <li class="nav-contact"><a href="https://awinml.github.io/contact/">Contact</a></li>
 </ul>
 
@@ -161,7 +166,7 @@
                     <h2 class="post-card-title">Projects</h2>
                 </header>
                 <div class="post-card-excerpt">
-                        A collection of 4 posts
+                        A collection of 5 posts
                 </div>
             </div>
             </div>
@@ -332,6 +337,47 @@
     </div>
 
 </article>
+            
+<article class="post-card post tag-projects">
+
+    <a class="post-card-image-link" href="/sports-image-classification/">
+
+        <img class="post-card-image"
+            srcset="/content/images/size/w300/2023/06/sports_img_clf_cover.png 300w,
+                    /content/images/size/w600/2023/06/sports_img_clf_cover.png 600w,
+                    /content/images/size/w1000/2023/06/sports_img_clf_cover.png 1000w,
+                    /content/images/size/w2000/2023/06/sports_img_clf_cover.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/content/images/size/w600/2023/06/sports_img_clf_cover.png"
+            alt="Sports Image Classification"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/sports-image-classification/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                        <span class="post-card-primary-tag">Projects</span>
+                </div>
+                <h2 class="post-card-title">
+                    Sports Image Classification
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Built a image classification model to predict the sport that is being represented in the image.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                <span class="post-card-meta-length">3 min read</span>
+        </footer>
+
+    </div>
+
+</article>
 
     </div>
 
@@ -354,6 +400,7 @@
     <li class="nav-github"><a href="https://github.com/awinml">GitHub</a></li>
     <li class="nav-linkedin"><a href="https://www.linkedin.com/in/ashwin-mathur-ds/">LinkedIn</a></li>
     <li class="nav-email"><a href="mailto:ashwinmathur.business@gmail.com">Email</a></li>
+    <li class="nav-medium"><a href="https://awinml.medium.com/">Medium</a></li>
     <li class="nav-contact"><a href="https://awinml.github.io/contact/">Contact</a></li>
 </ul>
 
@@ -370,7 +417,7 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-<script src="/assets/built/casper.js?v=c19c96af6c"></script>
+<script src="/assets/built/casper.js?v=3d968471c2"></script>
 <script>
 $(document).ready(function () {
     // Mobile Menu Trigger
