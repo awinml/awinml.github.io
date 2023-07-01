@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" class="auto-color">
+<head>
+
+    <title>No More Paid Endpoints: How to Create Your Own Free Text Generation Endpoints with Ease</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=c19c96af6c" />
+
+    <meta name="description" content="One of the biggest challenges of using LLMs is the cost of accessing them. Many LLMs, such as OpenAI&#x27;s GPT-3, are only available through paid APIs. In this article, we see how to deploy any open-source LLM as a free API endpoint using HuggingFace and Gradio.">
+    <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
+    <link rel="canonical" href="https://awinml.github.io/llm-text-gen-api/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://awinml.github.io/llm-text-gen-api/amp/">
+    
+    <meta property="og:site_name" content="Ashwin Mathur">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="No More Paid Endpoints: How to Create Your Own Free Text Generation Endpoints with Ease">
+    <meta property="og:description" content="One of the biggest challenges of using LLMs is the cost of accessing them. Many LLMs, such as OpenAI&#x27;s GPT-3, are only available through paid APIs. In this article, we see how to deploy any open-source LLM as a free API endpoint using HuggingFace and Gradio.">
+    <meta property="og:url" content="https://awinml.github.io/llm-text-gen-api/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2023-07-01T10:14:41.000Z">
+    <meta property="article:modified_time" content="2023-07-01T10:18:10.000Z">
+    <meta property="article:tag" content="Blog">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="No More Paid Endpoints: How to Create Your Own Free Text Generation Endpoints with Ease">
+    <meta name="twitter:description" content="One of the biggest challenges of using LLMs is the cost of accessing them. Many LLMs, such as OpenAI&#x27;s GPT-3, are only available through paid APIs. In this article, we see how to deploy any open-source LLM as a free API endpoint using HuggingFace and Gradio.">
+    <meta name="twitter:url" content="https://awinml.github.io/llm-text-gen-api/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Ashwin Mathur">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Blog">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1500">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ashwin Mathur",
+        "url": "https://awinml.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Ashwin Mathur",
+        "url": "https://awinml.github.io/author/ashwin/",
+        "sameAs": []
+    },
+    "headline": "No More Paid Endpoints: How to Create Your Own Free Text Generation Endpoints with Ease",
+    "url": "https://awinml.github.io/llm-text-gen-api/",
+    "datePublished": "2023-07-01T10:14:41.000Z",
+    "dateModified": "2023-07-01T10:18:10.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 2000,
+        "height": 1500
+    },
+    "keywords": "Blog",
+    "description": "One of the biggest challenges of using LLMs is the cost of accessing them. Many LLMs, such as OpenAI&#x27;s GPT-3, are only available through paid APIs. In this article, we see how to deploy any open-source LLM as a free API endpoint using HuggingFace and Gradio.",
+    "mainEntityOfPage": "https://awinml.github.io/llm-text-gen-api/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.49">
+    <link rel="alternate" type="application/rss+xml" title="Ashwin Mathur" href="https://awinml.github.io/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://awinml.github.io/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://awinml.github.io/" data-api-url="https://awinml.github.io/members/api/announcement/" crossorigin="anonymous"></script>
+    <link href="https://awinml.github.io/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=c19c96af6c"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=c19c96af6c">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8005664633543622"
+     crossorigin="anonymous"></script>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FC0MGC2F3F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FC0MGC2F3F');
+</script>
+
+
+<!-- Social Media Icons -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .gh-head-menu .nav-email a,
+    .gh-head-menu .nav-github a,
+    .gh-head-menu .nav-linkedin a {
+        font-size: 0 !important;
+    }
+
+    .gh-head-menu .nav-email a::before {
+        font-family: "Font Awesome 6 Free";
+        display: inline-block;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+ 
+    .gh-head-menu .nav-github a::before,
+    .gh-head-menu .nav-linkedin a::before {
+        font-family: "Font Awesome 6 Brands";
+        display: inline-block;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .gh-head-menu .nav-email a::before {content: "\f0e0"}
+    .gh-head-menu .nav-github a::before {content: "\f09b"}
+    .gh-head-menu .nav-linkedin a::before {content: "\f08c"}
+</style>
+
+<style>:root {--ghost-accent-color: #023e8a;}</style>
+
+</head>
+<body class="post-template tag-blog is-head-left-logo has-cover">
+<div class="viewport">
+
+    <header id="gh-head" class="gh-head outer">
+        <div class="gh-head-inner inner">
+            <div class="gh-head-brand">
+                <a class="gh-head-logo no-image" href="https://awinml.github.io">
+                        Ashwin Mathur
+                </a>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="https://awinml.github.io/">Home</a></li>
+    <li class="nav-about"><a href="https://awinml.github.io/about/">About</a></li>
+    <li class="nav-blog"><a href="https://awinml.github.io/tag/blog/">Blog</a></li>
+    <li class="nav-projects"><a href="https://awinml.github.io/tag/projects/">Projects</a></li>
+    <li class="nav-email"><a href="mailto:ashwinmathur.business@gmail.com">Email</a></li>
+    <li class="nav-github"><a href="https://github.com/awinml">GitHub</a></li>
+    <li class="nav-linkedin"><a href="https://www.linkedin.com/in/ashwin-mathur-ds/">LinkedIn</a></li>
+    <li class="nav-contact"><a href="https://awinml.github.io/contact/">Contact</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                        <button class="gh-search gh-icon-btn" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-content">
+        
+
+
+
+<main id="site-main" class="site-main">
+<article class="article post tag-blog featured image-small">
+
+    <header class="article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+                <span class="post-card-primary-tag">
+                    <a href="/tag/blog/">Blog</a>
+                </span>
+                <span class="post-card-featured"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.49365 4.58752C3.53115 6.03752 2.74365 7.70002 2.74365 9.25002C2.74365 10.6424 3.29678 11.9778 4.28134 12.9623C5.26591 13.9469 6.60127 14.5 7.99365 14.5C9.38604 14.5 10.7214 13.9469 11.706 12.9623C12.6905 11.9778 13.2437 10.6424 13.2437 9.25002C13.2437 6.00002 10.9937 3.50002 9.16865 1.68127L6.99365 6.25002L4.49365 4.58752Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg> Featured</span>
+        </div>
+
+        <h1 class="article-title">No More Paid Endpoints: How to Create Your Own Free Text Generation Endpoints with Ease</h1>
+
+            <p class="article-excerpt">One of the biggest challenges of using LLMs is the cost of accessing them. Many LLMs, such as OpenAI&#x27;s GPT-3, are only available through paid APIs. In this article, we see how to deploy any open-source LLM as a free API endpoint using HuggingFace and Gradio.</p>
+
+        <div class="article-byline">
+        <section class="article-byline-content">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="/author/ashwin/" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+</a>
+                </li>
+            </ul>
+
+            <div class="article-byline-meta">
+                <h4 class="author-name"><a href="/author/ashwin/">Ashwin Mathur</a></h4>
+                <div class="byline-meta-content">
+                    <time class="byline-meta-date" datetime="2023-07-01">Jul 1, 2023</time>
+                        <span class="byline-reading-time"><span class="bull">&bull;</span> 7 min read</span>
+                </div>
+            </div>
+
+        </section>
+        </div>
+
+            <figure class="article-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                            https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                            https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1000 1000w,
+                            https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
+                    src="https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    alt="No More Paid Endpoints: How to Create Your Own Free Text Generation Endpoints with Ease"
+                />
+                    <figcaption>Photo by <a href="https://unsplash.com/@emilianovittoriosi?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Emiliano Vittoriosi</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+            </figure>
+
+    </header>
+
+    <section class="gh-content gh-canvas">
+        <p><strong>Large language models (LLMs)</strong> are gaining popularity because of their capacity to produce text, translate between languages and produce various forms of creative content. However, one of the biggest challenges of using LLMs is the cost of accessing them. Many LLMs, such as OpenAI's GPT-3, are only available through paid APIs.</p><p>Luckily, there is a smart way to use any LLM for free. By deploying your own LLM on an API endpoint, you can access it from anywhere in the world without having to pay any fees. In this article, we will show you how to deploy any open-source LLM as a free API endpoint using HuggingFace and Gradio.</p><h3 id="benefits-of-creating-your-own-text-generation-endpoints">Benefits of Creating Your Own Text Generation Endpoints</h3><ul><li><strong>It can save you money.</strong> Paid APIs can be expensive, especially if you are using a large number of requests. By deploying your own LLM, you can avoid these costs.</li><li><strong>Control over your data.</strong> When you use a paid API, you are giving the API provider access to your data. By deploying your own endpoint, you can keep your data safe and secure.</li><li><strong>Access to the latest models.</strong> By deploying your own endpoint, you can choose the LLM you wish to use.</li><li><strong>Ability to use the LLM capabilities on any device.</strong> LLMs require significant resources to run. The API endpoint enables any device connected to the internet to harness the capabilities of the LLM.</li></ul><h3 id="why-use-gradio-and-huggingface-spaces">Why use Gradio and HuggingFace Spaces?</h3><p>While there are popular cloud hosting providers like AWS and GCP, their setup process can be complex, and you often need to build your own Flask API. Furthermore, these providers lack free tiers that can handle large language models (LLMs).</p><p>Gradio is a tool that makes it easy to create interactive web apps that can be used to interact with LLMs. Huggingface Spaces is a free hosting service that allows you to deploy your machine learning apps to the web.</p><p>With the help of a Gradio app's API functionality, we can easily access the Language Model (LLM). We deploy the Gradio app using the free tier of HuggingFace Spaces.</p><p>Before we can get started on how to deploy the LLMs, let's create a new space on HuggingFace.</p><h3 id="creating-a-new-space-on-huggingface">Creating a new Space on HuggingFace</h3><p>A "Space" on HuggingFace is a hosting environment that can be used to host your ML app. Spaces are priced based on CPU type, and the simplest one is free!</p><p>Create a new Space by:</p><ul><li>Go to <a href="https://huggingface.co/spaces?ref=localhost">https://huggingface.co/spaces</a> and click Create new Space.<br>(You will need to sign-up for a HuggingFace Account to create the space.)</li><li>Select the MIT license if you’re unsure.</li><li>Select Gradio as Space SDK.</li><li>Select Public since you want the API endpoint to be available at all times.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://awinml.github.io/content/images/2023/07/falcon-api-gradio-space-mockup.png" class="kg-image" alt loading="lazy" width="632" height="898" srcset="https://awinml.github.io/content/images/size/w600/2023/07/falcon-api-gradio-space-mockup.png 600w, https://awinml.github.io/content/images/2023/07/falcon-api-gradio-space-mockup.png 632w"><figcaption>Creating a new Space on HuggingFace | Image by Author</figcaption></figure><h3 id="creating-the-gradio-app-to-access-the-llm">Creating the Gradio app to access the LLM</h3><p>In this article, we create two Gradio apps to access two types of LLM formats:</p><ul><li>A LLM checkpoint available on HuggingFace (the usual PyTorch model)</li><li>A CPU-optimized version of the LLM (GGML format based on LLaMA.cpp)</li></ul><p>The basic format of the app is the same for both formats:</p><ol><li>Load the model.</li><li>Create a function that accepts an input prompt and uses the model to return the generated text.</li><li>Make a Gradio interface to display the generated text and accept user input.</li></ol><h3 id="llm-from-a-huggingface-checkpoint">LLM from a HuggingFace Checkpoint:</h3><p>In this example we deploy the newly launched <a href="https://huggingface.co/tiiuae/falcon-7b-instruct?ref=localhost">Falcon</a> model using its HuggingFace checkpoint.</p><p>To create the Gradio app, make a new file called <code>app.py</code>, and add the following code.</p><p><strong><em>app.py</em></strong></p><pre><code class="language-python">import gradio as gr
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
+model = AutoModelForCausalLM.from_pretrained(
+    "tiiuae/falcon-7b-instruct",
+    torch_dtype=torch.bfloat16,
+    trust_remote_code=True,
+    device_map="auto",
+    low_cpu_mem_usage=True,
+)
+tokenizer = AutoTokenizer.from_pretrained("tiiuae/falcon-7b-instruct")
+
+
+def generate_text(input_text):
+    input_ids = tokenizer.encode(input_text, return_tensors="pt")
+    attention_mask = torch.ones(input_ids.shape)
+
+    output = model.generate(
+        input_ids,
+        attention_mask=attention_mask,
+        max_length=200,
+        do_sample=True,
+        top_k=10,
+        num_return_sequences=1,
+        eos_token_id=tokenizer.eos_token_id,
+    )
+
+    output_text = tokenizer.decode(output[0], skip_special_tokens=True)
+    print(output_text)
+
+    # Remove Prompt Echo from Generated Text
+    cleaned_output_text = output_text.replace(input_text, "")
+    return cleaned_output_text
+
+
+text_generation_interface = gr.Interface(
+    fn=generate_text,
+    inputs=[
+        gr.inputs.Textbox(label="Input Text"),
+    ],
+    outputs=gr.inputs.Textbox(label="Generated Text"),
+    title="Falcon-7B Instruct",
+).launch()
+</code></pre><p>This Python script uses a HuggingFace Transformers library to load the <a href="https://huggingface.co/tiiuae/falcon-7b-instruct?ref=localhost">tiiuae/falcon-7b-instruct</a> model. The max generation length is set to 200 tokens and the top_k sampling of tokens is set to 10. These text generation parameters can be set as per your requirement. The prompt is removed from the generated text so that the model only returns the generated text and not the prompt plus the generated text.</p><p>A <code>requirements.txt</code> file is created to specify the dependencies for the app. The following libraries are included in the file:</p><p><em><strong>requirements.txt</strong></em></p><pre><code>datasets
+transformers
+accelerate
+einops
+safetensors
+</code></pre><p>The complete example can be viewed at: <a href="https://huggingface.co/spaces/awinml/falcon-7b-instruct-api?ref=localhost">https://huggingface.co/spaces/awinml/falcon-7b-instruct-api</a>.</p><p>The code for the app can be downloaded from: <a href="https://huggingface.co/spaces/awinml/falcon-7b-instruct-api/tree/main?ref=localhost">https://huggingface.co/spaces/awinml/falcon-7b-instruct-api/tree/main</a>.</p><h3 id="llm-from-a-cpu-optimized-ggml-format">LLM from a CPU-Optimized (GGML) format:</h3><p><a>LLaMA.cpp</a> is a C++ library that provides a high-performance inference engine for large language models (LLMs). It is based on the GGML (Graph Neural Network Machine Learning) library, which provides a fast and efficient way to represent and process graphs. LLAMA.cpp uses GGML to efficiently load and run LLMs, making it possible to run quick inference on large models.</p><p>In this example we load the <a href="https://lmsys.org/blog/2023-03-30-vicuna/?ref=localhost">Vicuna</a> model in GGML format and deploy it for inference. The inference time is significantly lower as compared to the model checkpoint available on HuggingFace.</p><p>To create the Gradio app, make a new file called <code>app.py</code>, and add the following code.</p><p><em><strong>app.py</strong></em></p><pre><code class="language-python">import os
+import urllib.request
+import gradio as gr
+from llama_cpp import Llama
+
+
+def download_file(file_link, filename):
+    # Checks if the file already exists before downloading
+    if not os.path.isfile(filename):
+        urllib.request.urlretrieve(file_link, filename)
+        print("File downloaded successfully.")
+    else:
+        print("File already exists.")
+
+
+# Dowloading GGML model from HuggingFace
+ggml_model_path = "https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized/resolve/main/ggml-vicuna-7b-1.1-q4_1.bin"
+filename = "ggml-vicuna-7b-1.1-q4_1.bin"
+
+download_file(ggml_model_path, filename)
+
+
+llm = Llama(model_path=filename, n_ctx=512, n_batch=126)
+
+
+def generate_text(prompt="Who is the CEO of Apple?"):
+    output = llm(
+        prompt,
+        max_tokens=256,
+        temperature=0.1,
+        top_p=0.5,
+        echo=False,
+        stop=["#"],
+    )
+    output_text = output["choices"][0]["text"].strip()
+
+    # Remove Prompt Echo from Generated Text
+    cleaned_output_text = output_text.replace(prompt, "")
+    return cleaned_output_text
+
+
+description = "Vicuna-7B"
+
+examples = [
+    ["What is the capital of France?", "The capital of France is Paris."],
+    [
+        "Who wrote the novel 'Pride and Prejudice'?",
+        "The novel 'Pride and Prejudice' was written by Jane Austen.",
+    ],
+    ["What is the square root of 64?", "The square root of 64 is 8."],
+]
+
+gradio_interface = gr.Interface(
+    fn=generate_text,
+    inputs="text",
+    outputs="text",
+    examples=examples,
+    title="Vicuna-7B",
+)
+gradio_interface.launch()
+</code></pre><p>The app first downloads the required GGML file, in this case the <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">Vicuna-7b-Q4.1 GGML</a>. The code checks if the file is already present before attempting to download it.</p><p>We leverage the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">python bindings for LLaMA.cpp</a> to load the model.</p><p>The context length of the model is set to 512 tokens. The maximum supported context length for the Vicuna model is 2048 tokens. A model with a smaller context length generates text much faster than a model with a larger context length. In most cases, a smaller context length is sufficient.</p><p>The number of tokens in the prompt and generated text can be checked using the free <a href="https://platform.openai.com/tokenizer?ref=localhost">Tokenizer tool by OpenAI</a></p><p>The batch size is set to 128 tokens. This helps speed up text generation over multithreaded CPUs.</p><p>The max generation length is set to 256 tokens, temperature to 0.1, and top-p sampling of tokens to 0.5. A list of tokens to stop generation is also added. These text generation parameters can be set as per your requirement.</p><p>A detailed guide on how to use GGML versions of popular open-source LLMs for fast inference can be found at <a href="https://awinml.github.io/llama-cpp-python?ref=localhost">https://awinml.github.io/llama-cpp-python</a>.</p><p>A <code>requirements.txt</code> file is created to specify the dependencies for the app. The following libraries are included in the file:</p><p><strong><em>requirements.txt</em></strong></p><pre><code>llama-cpp-python==0.1.62
+</code></pre><p>The complete example can be viewed at: <a href="https://huggingface.co/spaces/awinml/vicuna-7b-ggml-api?ref=localhost">https://huggingface.co/spaces/awinml/vicuna-7b-ggml-api</a>.</p><p>The code for the app can be downloaded from: <a href="https://huggingface.co/spaces/awinml/vicuna-7b-ggml-api/tree/main?ref=localhost">https://huggingface.co/spaces/awinml/vicuna-7b-ggml-api/tree/main</a>.</p><h3 id="deploying-the-gradio-app-on-huggingface-spaces">Deploying the Gradio app on HuggingFace Spaces:</h3><p>Deploying a Gradio app on HuggingFace Spaces is as simple as uploading the following files on your HuggingFace Space:</p><ul><li><code>app.py</code> - This file contains the code of the app.</li><li><code>requirements.txt</code> - This file lists the dependencies for the app.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://awinml.github.io/content/images/2023/07/upload_files-mockup.png" class="kg-image" alt loading="lazy" width="1294" height="825" srcset="https://awinml.github.io/content/images/size/w600/2023/07/upload_files-mockup.png 600w, https://awinml.github.io/content/images/size/w1000/2023/07/upload_files-mockup.png 1000w, https://awinml.github.io/content/images/2023/07/upload_files-mockup.png 1294w" sizes="(min-width: 720px) 720px"><figcaption>Upload the files for the Gradio app on HuggingFace Spaces | Image by Author</figcaption></figure><p>The deployed app will expect you to pass in the input text or prompt, which it’ll then use to generate an appropriate response.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://awinml.github.io/content/images/2023/07/example-generation-mockup.png" class="kg-image" alt loading="lazy" width="1121" height="681" srcset="https://awinml.github.io/content/images/size/w600/2023/07/example-generation-mockup.png 600w, https://awinml.github.io/content/images/size/w1000/2023/07/example-generation-mockup.png 1000w, https://awinml.github.io/content/images/2023/07/example-generation-mockup.png 1121w" sizes="(min-width: 720px) 720px"><figcaption>Gradio app with the Vicuna model | Image by Author</figcaption></figure><h3 id="accessing-the-llm-as-an-api-endpoint">Accessing the LLM as an API Endpoint:</h3><p>The deployed Gradio app is already running a Prediction (Inference) API endpoint in the background.<br>The endpoint can be easily accessed through the <a href="https://gradio.app/getting-started-with-the-python-client/?ref=localhost">Gradio Python Client</a>.</p><p>At the bottom of the deployed app, you will see a link called "Use via API". Click this link to view the instructions on how to call your app with the API.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://awinml.github.io/content/images/2023/07/api-instructions-mockup.png" class="kg-image" alt loading="lazy" width="815" height="802" srcset="https://awinml.github.io/content/images/size/w600/2023/07/api-instructions-mockup.png 600w, https://awinml.github.io/content/images/2023/07/api-instructions-mockup.png 815w" sizes="(min-width: 720px) 720px"><figcaption>Using the API Endpoints to access the LLM | Image by Author</figcaption></figure><p>To use the API, you will need to install the Gradio Client Python library. You can do this by running the following command in your terminal:</p><pre><code class="language-bash">pip install gradio_client
+</code></pre><p>Once you have installed the library, you can use any of the deployed apps for generating text similar to the OpenAI completion endpoints in the following manner:</p><pre><code class="language-python">from gradio_client import Client
+
+# Pass the link to your HuggingFace Space here
+client = Client("https://awinml-falcon-7b-instruct-api.hf.space/")
+
+# Pass the Input Prompt to the model
+result = client.predict(
+    "What is the capital of USA?",
+    api_name="/predict"
+)
+print(result)
+</code></pre><p>This code will first create a Client object and pass the link to your HuggingFace Space to it. Then, it will pass the input prompt to the model and call the <code>predict()</code> method. The <code>predict()</code> method will return the generated text, which you can then print to the console.</p><h2 id="conclusion">Conclusion</h2><p>Now, you can deploy any large language model (LLM) as an API endpoint with just a few lines of code, thanks to Gradio and HuggingFace Spaces. These tools make it simple to build your own free text generation endpoints. By deploying your own LLM on an API endpoint, you can save money by avoiding costly paid APIs while still benefiting from the remarkable capabilities of these powerful language models.</p>
+    </section>
+
+
+</article>
+</main>
+
+
+
+
+            <aside class="read-more-wrap outer">
+                <div class="read-more inner">
+                        
+<article class="post-card post featured">
+
+    <a class="post-card-image-link" href="/llm-ggml-python/">
+
+        <img class="post-card-image"
+            srcset="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                    https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                    https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1000 1000w,
+                    https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+            alt="How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/llm-ggml-python/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                        <span class="post-card-featured"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.49365 4.58752C3.53115 6.03752 2.74365 7.70002 2.74365 9.25002C2.74365 10.6424 3.29678 11.9778 4.28134 12.9623C5.26591 13.9469 6.60127 14.5 7.99365 14.5C9.38604 14.5 10.7214 13.9469 11.706 12.9623C12.6905 11.9778 13.2437 10.6424 13.2437 9.25002C13.2437 6.00002 10.9937 3.50002 9.16865 1.68127L6.99365 6.25002L4.49365 4.58752Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg> Featured</span>
+                </div>
+                <h2 class="post-card-title">
+                    How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. In this blog post, we will see how to use the llama.cpp library in Python to run LLMs on CPUs with high performance.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-07-01">Jul 1, 2023</time>
+                <span class="post-card-meta-length">7 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/ml-model-deployment/">
+
+        <img class="post-card-image"
+            srcset="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;300 300w,
+                    https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600 600w,
+                    https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1000 1000w,
+                    https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://images.unsplash.com/photo-1554306274-f23873d9a26c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDgyfHxjb2RlfGVufDB8fHx8MTY4Njk5MTM3MXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;600"
+            alt="Machine Learning Model Deployment: From Jupyter Notebook to the Cloud"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/ml-model-deployment/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Machine Learning Model Deployment: From Jupyter Notebook to the Cloud
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Building a machine learning model is only half the battle. Deploying the model into a production environment where it can be used to make predictions is equally important. In this article, we will explore the steps involved in deploying a machine learning model from a Jupyter Notebook to the cloud.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-17">Jun 17, 2023</time>
+                <span class="post-card-meta-length">4 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/financial-dashboard-for-market-intelligence/">
+
+        <img class="post-card-image"
+            srcset="/content/images/size/w300/2023/06/fin_dash_cover.png 300w,
+                    /content/images/size/w600/2023/06/fin_dash_cover.png 600w,
+                    /content/images/size/w1000/2023/06/fin_dash_cover.png 1000w,
+                    /content/images/size/w2000/2023/06/fin_dash_cover.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/content/images/size/w600/2023/06/fin_dash_cover.png"
+            alt="Financial Dashboard for Market Intelligence"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/financial-dashboard-for-market-intelligence/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Financial Dashboard for Market Intelligence
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Built a end-to-end financial dashboard that collects and consolidates all of a business's critical observations in one place using the information obtained from the annual 10-K SEC Filings of 12 companies.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
+                <span class="post-card-meta-length">3 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                </div>
+            </aside>
+
+
+
+    </div>
+
+    <footer class="site-footer outer">
+        <div class="inner">
+            <section class="copyright"><a href="https://awinml.github.io">Ashwin Mathur</a> &copy; 2023</section>
+            <nav class="site-footer-nav">
+                <ul class="nav">
+    <li class="nav-linktree"><a href="https://awinml.github.io/linktree/">LinkTree</a></li>
+    <li class="nav-github"><a href="https://github.com/awinml">GitHub</a></li>
+    <li class="nav-linkedin"><a href="https://www.linkedin.com/in/ashwin-mathur-ds/">LinkedIn</a></li>
+    <li class="nav-email"><a href="mailto:ashwinmathur.business@gmail.com">Email</a></li>
+    <li class="nav-contact"><a href="https://awinml.github.io/contact/">Contact</a></li>
+</ul>
+
+            </nav>
+            <div class="gh-powered-by"><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </div>
+    </footer>
+
+</div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="/assets/built/casper.js?v=c19c96af6c"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
+    });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
+</script>
+
+
+
+</body>
+</html>
