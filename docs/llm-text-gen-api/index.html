@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=29c90eb8f0" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=f22d45375d" />
 
     <meta name="description" content="One of the biggest challenges of using LLMs is the cost of accessing them. Many LLMs, such as OpenAI&#x27;s GPT-3, are only available through paid APIs. In this article, we see how to deploy any open-source LLM as a free API endpoint using HuggingFace and Gradio.">
     <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://awinml.github.io/llm-text-gen-api/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta property="article:published_time" content="2023-07-01T10:14:41.000Z">
-    <meta property="article:modified_time" content="2023-07-01T10:18:10.000Z">
+    <meta property="article:modified_time" content="2023-07-02T11:36:27.000Z">
     <meta property="article:tag" content="Blog">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -62,7 +62,7 @@
     "headline": "No More Paid Endpoints: How to Create Your Own Free Text Generation Endpoints with Ease",
     "url": "https://awinml.github.io/llm-text-gen-api/",
     "datePublished": "2023-07-01T10:14:41.000Z",
-    "dateModified": "2023-07-01T10:18:10.000Z",
+    "dateModified": "2023-07-02T11:36:27.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1676573409967-986dcf64d35a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDUyfHxncHR8ZW58MHx8fHwxNjg4MjA2NDA4fDA&ixlib=rb-4.0.3&q=80&w=2000",
@@ -81,8 +81,8 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://awinml.github.io/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://awinml.github.io/" data-api-url="https://awinml.github.io/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://awinml.github.io/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=29c90eb8f0"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=29c90eb8f0">
+    <script defer src="/public/cards.min.js?v=f22d45375d"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=f22d45375d">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8005664633543622"
      crossorigin="anonymous"></script>
 
@@ -216,7 +216,7 @@
                 <h4 class="author-name"><a href="/author/ashwin/">Ashwin Mathur</a></h4>
                 <div class="byline-meta-content">
                     <time class="byline-meta-date" datetime="2023-07-01">Jul 1, 2023</time>
-                        <span class="byline-reading-time"><span class="bull">&bull;</span> 7 min read</span>
+                        <span class="byline-reading-time"><span class="bull">&bull;</span> 11 min read</span>
                 </div>
             </div>
 
@@ -348,7 +348,7 @@ gradio_interface = gr.Interface(
     title="Vicuna-7B",
 )
 gradio_interface.launch()
-</code></pre><p>The app first downloads the required GGML file, in this case the <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">Vicuna-7b-Q4.1 GGML</a>. The code checks if the file is already present before attempting to download it.</p><p>We leverage the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">python bindings for LLaMA.cpp</a> to load the model.</p><p>The context length of the model is set to 512 tokens. The maximum supported context length for the Vicuna model is 2048 tokens. A model with a smaller context length generates text much faster than a model with a larger context length. In most cases, a smaller context length is sufficient.</p><p>The number of tokens in the prompt and generated text can be checked using the free <a href="https://platform.openai.com/tokenizer?ref=localhost">Tokenizer tool by OpenAI</a></p><p>The batch size is set to 128 tokens. This helps speed up text generation over multithreaded CPUs.</p><p>The max generation length is set to 256 tokens, temperature to 0.1, and top-p sampling of tokens to 0.5. A list of tokens to stop generation is also added. These text generation parameters can be set as per your requirement.</p><p>A detailed guide on how to use GGML versions of popular open-source LLMs for fast inference can be found at <a href="https://awinml.github.io/llama-cpp-python?ref=localhost">https://awinml.github.io/llama-cpp-python</a>.</p><p>A <code>requirements.txt</code> file is created to specify the dependencies for the app. The following libraries are included in the file:</p><p><strong><em>requirements.txt</em></strong></p><pre><code>llama-cpp-python==0.1.62
+</code></pre><p>The app first downloads the required GGML file, in this case the <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">Vicuna-7b-Q4.1 GGML</a>. The code checks if the file is already present before attempting to download it.</p><p>We leverage the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">python bindings for LLaMA.cpp</a> to load the model.</p><p>The context length of the model is set to 512 tokens. The maximum supported context length for the Vicuna model is 2048 tokens. A model with a smaller context length generates text much faster than a model with a larger context length. In most cases, a smaller context length is sufficient.</p><p>The number of tokens in the prompt and generated text can be checked using the free <a href="https://platform.openai.com/tokenizer?ref=localhost">Tokenizer tool by OpenAI</a></p><p>The batch size is set to 128 tokens. This helps speed up text generation over multithreaded CPUs.</p><p>The max generation length is set to 256 tokens, temperature to 0.1, and top-p sampling of tokens to 0.5. A list of tokens to stop generation is also added. These text generation parameters can be set as per your requirement.</p><blockquote>A detailed guide on how to use GGML versions of popular open-source LLMs for fast inference can be found at <a href="https://awinml.github.io/llm-ggml-python/?ref=localhost"><strong>How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide</strong></a>.</blockquote><p>A <code>requirements.txt</code> file is created to specify the dependencies for the app. The following libraries are included in the file:</p><p><strong><em>requirements.txt</em></strong></p><pre><code>llama-cpp-python==0.1.62
 </code></pre><p>The complete example can be viewed at: <a href="https://huggingface.co/spaces/awinml/vicuna-7b-ggml-api?ref=localhost">https://huggingface.co/spaces/awinml/vicuna-7b-ggml-api</a>.</p><p>The code for the app can be downloaded from: <a href="https://huggingface.co/spaces/awinml/vicuna-7b-ggml-api/tree/main?ref=localhost">https://huggingface.co/spaces/awinml/vicuna-7b-ggml-api/tree/main</a>.</p><h3 id="deploying-the-gradio-app-on-huggingface-spaces">Deploying the Gradio app on HuggingFace Spaces:</h3><p>Deploying a Gradio app on HuggingFace Spaces is as simple as uploading the following files on your HuggingFace Space:</p><ul><li><code>app.py</code> - This file contains the code of the app.</li><li><code>requirements.txt</code> - This file lists the dependencies for the app.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://awinml.github.io/content/images/2023/07/upload_files-mockup.png" class="kg-image" alt loading="lazy" width="1294" height="825" srcset="https://awinml.github.io/content/images/size/w600/2023/07/upload_files-mockup.png 600w, https://awinml.github.io/content/images/size/w1000/2023/07/upload_files-mockup.png 1000w, https://awinml.github.io/content/images/2023/07/upload_files-mockup.png 1294w" sizes="(min-width: 720px) 720px"><figcaption>Upload the files for the Gradio app on HuggingFace Spaces | Image by Author</figcaption></figure><p>The deployed app will expect you to pass in the input text or prompt, which it’ll then use to generate an appropriate response.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://awinml.github.io/content/images/2023/07/example-generation-mockup.png" class="kg-image" alt loading="lazy" width="1121" height="681" srcset="https://awinml.github.io/content/images/size/w600/2023/07/example-generation-mockup.png 600w, https://awinml.github.io/content/images/size/w1000/2023/07/example-generation-mockup.png 1000w, https://awinml.github.io/content/images/2023/07/example-generation-mockup.png 1121w" sizes="(min-width: 720px) 720px"><figcaption>Gradio app with the Vicuna model | Image by Author</figcaption></figure><h3 id="accessing-the-llm-as-an-api-endpoint">Accessing the LLM as an API Endpoint:</h3><p>The deployed Gradio app is already running a Prediction (Inference) API endpoint in the background.<br>The endpoint can be easily accessed through the <a href="https://gradio.app/getting-started-with-the-python-client/?ref=localhost">Gradio Python Client</a>.</p><p>At the bottom of the deployed app, you will see a link called "Use via API". Click this link to view the instructions on how to call your app with the API.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://awinml.github.io/content/images/2023/07/api-instructions-mockup.png" class="kg-image" alt loading="lazy" width="815" height="802" srcset="https://awinml.github.io/content/images/size/w600/2023/07/api-instructions-mockup.png 600w, https://awinml.github.io/content/images/2023/07/api-instructions-mockup.png 815w" sizes="(min-width: 720px) 720px"><figcaption>Using the API Endpoints to access the LLM | Image by Author</figcaption></figure><p>To use the API, you will need to install the Gradio Client Python library. You can do this by running the following command in your terminal:</p><pre><code class="language-bash">pip install gradio_client
 </code></pre><p>Once you have installed the library, you can use any of the deployed apps for generating text similar to the OpenAI completion endpoints in the following manner:</p><pre><code class="language-python">from gradio_client import Client
 
@@ -361,7 +361,89 @@ result = client.predict(
     api_name="/predict"
 )
 print(result)
-</code></pre><p>This code will first create a Client object and pass the link to your HuggingFace Space to it. Then, it will pass the input prompt to the model and call the <code>predict()</code> method. The <code>predict()</code> method will return the generated text, which you can then print to the console.</p><h2 id="conclusion">Conclusion</h2><p>Now, you can deploy any large language model (LLM) as an API endpoint with just a few lines of code, thanks to Gradio and HuggingFace Spaces. These tools make it simple to build your own free text generation endpoints. By deploying your own LLM on an API endpoint, you can save money by avoiding costly paid APIs while still benefiting from the remarkable capabilities of these powerful language models.</p>
+</code></pre><p>This code will first create a Client object and pass the link to your HuggingFace Space to it. Then, it will pass the input prompt to the model and call the <code>predict()</code> method. The <code>predict()</code> method will return the generated text, which you can then print to the console.</p><!--kg-card-begin: markdown--><h2 id="latency-analysis">Latency Analysis:</h2>
+<p>We measure the time taken by the endpoints to generate text based on different prompts. The testing was done on two private endpoints created based on the instructions in the post.</p>
+<p>The <a href="https://huggingface.co/tiiuae/falcon-7b-instruct?ref=localhost">Falcon-7B</a> model has been loaded using <em>torch.bfloat16</em> weights using HuggingFace Transformers. The <a href="https://lmsys.org/blog/2023-03-30-vicuna/?ref=localhost">Vicuna-7B</a> model has been loaded using the <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized/resolve/main/ggml-vicuna-7b-1.1-q4_1.bin?ref=localhost">Q4.1 GGML</a> file using Llama.cpp. The model has been loaded with a context length of 512 tokens instead of the full 2048 tokens.</p>
+<p>For both the models, the max generation tokens was set to 256 tokens.The temperature, top_p and top_k values were chosen based on the article and were not the same for both the models. This post is not to compare the text generation performance of both the models.</p>
+<p><strong>The following prompts were used to test the latencies of the endpoints:</strong></p>
+<ul>
+<li>What is the capital of Greece?</li>
+<li>Can you help me write a formal email to a potential business partner proposing a joint venture?</li>
+<li>What are the two main differences between Python and JavaScript programming languages?</li>
+<li>Extract five important keywords from the following text: How can governments utilize fiscal and monetary policies to combat economic recessions?</li>
+</ul>
+<h4 id="vicuna-7b">Vicuna-7B:</h4>
+<ul>
+<li>
+<p><strong>Question: What is the capital of Greece?</strong><br>
+<em>Generated Text: The capital of Greece is Athens.</em><br>
+<strong>Time taken: 6.1s.</strong><br>
+<br></p>
+</li>
+<li>
+<p><strong>Question: Can you help me write a formal email to a potential business partner proposing a joint venture?</strong><br>
+<em>Generated Text:<br>
+I am writing to express my interest in forming a joint venture with your company. I believe that our complementary strengths and shared vision for the future make this an ideal opportunity for both of us. Our company has extensive experience in [insert relevant industry or field], and we have developed a unique product line that is well-positioned to meet the needs of our customers. We are confident that your company's expertise in [insert relevant area] would be a valuable asset to our partnership, and we believe that together we could create something truly special. I am particularly excited about the potential for collaboration on [insert specific project or initiative], which I believe has the potential to revolutionize the industry. Our teams have already begun discussing the details of this project, and we are confident that it will be a huge success. In addition to our shared goals and complementary strengths, I am also impressed by your company's commitment to [insert relevant social or environmental issue]. As someone who shares these values, I believe that our partnership could make a real difference in the world.</em><br>
+<strong>Time Taken: 126.2s</strong><br>
+<br></p>
+</li>
+<li>
+<p><strong>Question: What are the two main differences between Python and JavaScript programming languages?</strong><br>
+<em>Generated Text:<br>
+Python is a general-purpose, high-level language that is easy to learn and use. It has a syntax that is similar to English and supports multiple data types such as integers, strings, and lists. JavaScript, on the other hand, is a client-side scripting language used for web development. It is primarily used to add interactive elements to websites.<br>
+Python is an interpreted language while JavaScript is compiled. Python code is executed by an interpreter, which converts the code into machine code that can be run directly by the computer's processor. In contrast, JavaScript code is first compiled into bytecode and then run by a JavaScript engine.</em><br>
+<strong>Time Taken: 72.4s</strong><br>
+<br></p>
+</li>
+<li>
+<p><strong>Question: Make a list of the top three Morgan Freeman movies. Only specify the movie names.</strong><br>
+<em>Generated Text:</em><br>
+<em>1. The Shawshank Redemption (1994)</em><br>
+<em>2. Driving Miss Daisy (1989)</em><br>
+<em>3. Glory (1989)</em><br>
+<strong>Time Taken: 16.1s</strong></p>
+</li>
+</ul>
+<h4 id="falcon-7b">Falcon-7B:</h4>
+<ul>
+<li><strong>Question: What is the capital of Greece?</strong><br>
+<em>Generated Text: Athens is the capital of Greece.</em><br>
+<strong>Time taken: 61.2s.</strong></li>
+</ul>
+<br>
+<ul>
+<li><strong>Question: Can you help me write a formal email to a potential business partner proposing a joint venture?</strong><br>
+<em>Generated Text:<br>
+--------- Did not capture generation. Took too long! ----------</em><br>
+<strong>Time Taken: 2650s+</strong></li>
+</ul>
+<br>
+<ul>
+<li><strong>Question: What are the two main differences between Python and JavaScript programming languages?</strong><br>
+<em>Generated Text:</em><br>
+<em>1. Syntactical differences: Python is a higher-level language and has a more structured syntax compared to JavaScript, which is a lower-level language with less strict syntax rules.</em><br>
+<em>2. Use of brackets for function calls: While Python uses the 'def' keyword to define functions, JavaScript functions are defined using brackets or named function literals.</em><br>
+<strong>Time Taken: 1524.3s</strong></li>
+</ul>
+<br>
+<ul>
+<li><strong>Question: Make a list of the top three Morgan Freeman movies. Only specify the movie names.</strong><br>
+<em>Generated Text:</em><br>
+<em>1. The Shawshank Redemption</em><br>
+<em>2. Forrest Gump</em><br>
+<em>3. Invincible</em><br>
+<strong>Time Taken: 371.3s</strong></li>
+</ul>
+<h4 id="verdict">Verdict:</h4>
+<p><strong>The Falcon-7B model</strong> is extremely slow to generate text, with the lowest latency being 61 seconds and the highest being over 2,650 seconds. This is clearly not very useful.</p>
+<p>I suspect that this is because HuggingFace recently added support for Falcon to Transformers and has not yet optimized the model implementation. This could be because the architecture of the model is still largely unknown. The HuggingFace implementation also relies on external code to run the model, which may be a bottleneck. We may have better luck with other, more mature generative models on HuggingFace.</p>
+<p><strong>The Vicuna GGML model</strong>, on the other hand, seems to perform extremely well, with latencies ranging from a mere 6 seconds to 126 seconds for the longest generation.</p>
+<p>Llama.cpp is being constantly improved, and using a smaller, quantized version may be able to reduce this latency even further. The LLM loading parameters also significantly affect the performance, so optimizing those may also lead to some speedup.</p>
+<p>The good thing is that HuggingFace provides no restrictions on the number of spaces that a user can create. This means that multiple spaces can be created and easily used to process requests in parallel.</p>
+<blockquote>
+<p><strong>Based on this, it is quite easy to recommend creating endpoints using the Vicuna GGML model and using it for prototyping applications instead of the expensive OpenAI GPT-3 API.</strong></p>
+</blockquote>
+<!--kg-card-end: markdown--><h2 id="conclusion">Conclusion</h2><p>Now, you can deploy any large language model (LLM) as an API endpoint with just a few lines of code, thanks to Gradio and HuggingFace Spaces. These tools make it simple to build your own free text generation endpoints. By deploying your own LLM on an API endpoint, you can save money by avoiding costly paid APIs while still benefiting from the remarkable capabilities of these powerful language models.</p>
     </section>
 
 
@@ -529,7 +611,7 @@ print(result)
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-<script src="/assets/built/casper.js?v=29c90eb8f0"></script>
+<script src="/assets/built/casper.js?v=f22d45375d"></script>
 <script>
 $(document).ready(function () {
     // Mobile Menu Trigger
