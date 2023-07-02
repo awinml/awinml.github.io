@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=3d968471c2" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=29c90eb8f0" />
 
     <meta name="description" content="Built a classification model to predict the probability that a customer does not pay back their credit card balance (defaults) based on their monthly customer statements using the data provided by American Express.">
     <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://awinml.github.io/american-express-default-prediction/">
     <meta property="og:image" content="https://awinml.github.io/content/images/2023/06/amex_cover.jpg">
     <meta property="article:published_time" content="2023-06-01T20:53:59.000Z">
-    <meta property="article:modified_time" content="2023-06-01T20:53:59.000Z">
+    <meta property="article:modified_time" content="2023-07-02T07:58:03.000Z">
     <meta property="article:tag" content="Projects">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -62,7 +62,7 @@
     "headline": "American Express - Default Prediction",
     "url": "https://awinml.github.io/american-express-default-prediction/",
     "datePublished": "2023-06-01T20:53:59.000Z",
-    "dateModified": "2023-06-01T20:53:59.000Z",
+    "dateModified": "2023-07-02T07:58:03.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://awinml.github.io/content/images/2023/06/amex_cover.jpg",
@@ -81,8 +81,8 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://awinml.github.io/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://awinml.github.io/" data-api-url="https://awinml.github.io/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://awinml.github.io/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=3d968471c2"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=3d968471c2">
+    <script defer src="/public/cards.min.js?v=29c90eb8f0"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=29c90eb8f0">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8005664633543622"
      crossorigin="anonymous"></script>
 
@@ -213,7 +213,7 @@
                 <h4 class="author-name"><a href="/author/ashwin/">Ashwin Mathur</a></h4>
                 <div class="byline-meta-content">
                     <time class="byline-meta-date" datetime="2023-06-02">Jun 2, 2023</time>
-                        <span class="byline-reading-time"><span class="bull">&bull;</span> 4 min read</span>
+                        <span class="byline-reading-time"><span class="bull">&bull;</span> 5 min read</span>
                 </div>
             </div>
 
@@ -259,33 +259,34 @@ B_* = Balance variables
 R_* = Risk variables
 </code></pre><p>with the following features being categorical:</p><p>'B_30', 'B_38', 'D_114', 'D_116', 'D_117', 'D_120', 'D_126', 'D_63', 'D_64', 'D_66', 'D_68'</p><p>The dataset can be downloaded from <a href="https://www.kaggle.com/competitions/amex-default-prediction?ref=localhost">here</a>.</p><h2 id="analysis">Analysis</h2><p>The complete analysis can be viewed <a href="https://nbviewer.org/github/awinml/amex-default-classification/blob/main/amex-eda.ipynb?ref=localhost">here</a>.</p><h3 id="target-distribution">Target Distribution</h3><ul><li>In the data present we observe that <strong>25.9% of records have defaulted</strong> on their credit card payments whereas <strong>74.1% have paid</strong> their bills on time.</li><li>This distribution shows us that there is <strong>severe class imbalance</strong> present.</li></ul><figure class="kg-card kg-image-card"><img src="https://awinml.github.io/content/images/2023/06/0_target_dist.png" class="kg-image" alt loading="lazy" width="452" height="343"></figure><h3 id="distribution-of-number-of-defaults-per-day-for-the-first-month">Distribution of Number of Defaults per day for the first Month:</h3><p>The <strong>proportion of customers that defualt is consistent across each day</strong> in the data, with a slight <strong>weekly seasonal trend</strong> influenced by the day when the customers receive their statements.</p><figure class="kg-card kg-image-card"><img src="https://awinml.github.io/content/images/2023/06/0.1_statements_default.png" class="kg-image" alt loading="lazy" width="1303" height="432" srcset="https://awinml.github.io/content/images/size/w600/2023/06/0.1_statements_default.png 600w, https://awinml.github.io/content/images/size/w1000/2023/06/0.1_statements_default.png 1000w, https://awinml.github.io/content/images/2023/06/0.1_statements_default.png 1303w" sizes="(min-width: 720px) 720px"></figure><h3 id="frequency-of-customer-statements-for-the-first-month">Frequency of Customer Statements for the first month:</h3><figure class="kg-card kg-image-card"><img src="https://awinml.github.io/content/images/2023/06/1_statements_over_time.png" class="kg-image" alt="Target Distribution" loading="lazy" width="725" height="458" srcset="https://awinml.github.io/content/images/size/w600/2023/06/1_statements_over_time.png 600w, https://awinml.github.io/content/images/2023/06/1_statements_over_time.png 725w" sizes="(min-width: 720px) 720px"></figure><ul><li>There is <strong>weekly seasonal pattern</strong> observed in the number of statements received per day.</li><li>As seen above this trend does not seem to be significantly affecting the proportion of default.</li></ul><h3 id="distribution-of-values-of-payment-variables">Distribution of values of Payment Variables:</h3><figure class="kg-card kg-image-card"><img src="https://awinml.github.io/content/images/2023/06/3_distribution_payment.png" class="kg-image" alt="Target Distribution" loading="lazy" width="1144" height="286" srcset="https://awinml.github.io/content/images/size/w600/2023/06/3_distribution_payment.png 600w, https://awinml.github.io/content/images/size/w1000/2023/06/3_distribution_payment.png 1000w, https://awinml.github.io/content/images/2023/06/3_distribution_payment.png 1144w" sizes="(min-width: 720px) 720px"></figure><ul><li>We notice that <strong>Payment 2 is heavily negatively skewed (left skewed).</strong></li><li>Even though Payment 4 have continuous values between 0 and 1, most of the density is <strong>clustered around 0 and 1</strong>.</li><li>This tells us that there may be some <strong>Gaussian Noise present</strong>. The noise can be removed and into a binary variable.</li></ul><h3 id="correlation-of-features-with-target-variable">Correlation of Features with Target Variable:</h3><ul><li><strong>Payment 2</strong> is <strong>negatively correlated</strong> with the target with a correlation of <strong>-0.67.</strong></li><li><strong>Delinquency 48</strong> is <strong>positively correlated</strong> with the target with a correlation of <strong>0.61.</strong></li></ul><h3 id="correlation-of-payment-variables-with-target">Correlation of Payment Variables with Target</h3><figure class="kg-card kg-image-card"><img src="https://awinml.github.io/content/images/2023/06/4_payment_corr.png" class="kg-image" alt="Target Distribution" loading="lazy" width="417" height="383"></figure><ul><li>We observe that Payment 2 and Target are <strong>highly negatively correlated</strong>.</li><li>This could be probably be due to the fact that people paying their bill have a less chance of default.</li></ul><h2 id="experiments">Experiments:</h2><!--kg-card-begin: markdown--><ul>
 <li>
-<p>There is a substantial number of missing values in the data. These cannot be imputed since the features are anonymized and there is no clear rationale behind imputation. This constraint forces us to choose models that can handle missing values.</p>
+<p>The dataset presents a significant challenge with a substantial number of missing values, making imputation impossible due to the anonymization of features and the lack of a clear rationale behind imputation. This unique constraint compels us to select models that are capable of handling missing values, pushing us to explore advanced techniques.</p>
 </li>
 <li>
-<p>There is a <strong>high cardinality of features ie. 191 features</strong> in the data. The presence of missing values restricts the usage of traditional dimensionality reduction techniques like PCA as well as feature selection methods like RFE.</p>
+<p>One notable characteristic of the dataset is its high cardinality, boasting an impressive 191 features. However, the presence of missing values poses limitations on the utilization of conventional dimensionality reduction techniques like Principal Component Analysis (PCA) and feature selection methods such as Recursive Feature Elimination (RFE). Thus, we must seek alternative approaches to tackle this challenge.</p>
 </li>
 <li>
-<p>Instead we have engineer new features using aggregations over the time dimension. As the aggregations ignore missing values, the engineered features are dense and can be used for modelling.</p>
+<p>In order to overcome the limitations imposed by missing values, we employ a creative strategy: engineering new features through aggregations over the time dimension. By disregarding missing values during the aggregation process, we generate dense and informative engineered features that can be effectively utilized for modeling purposes.</p>
 </li>
 <li>
-<p>Some of the prominent models that are used for classification and accept inputs with missing values are XGBoost, LightGBM, and CatBoost. They all internally impute the data depending on whatever imputation technique delivers the greatest performance benefit.</p>
+<p>Several prominent classification models that gracefully handle missing values have been considered for this task, including XGBoost, LightGBM, and CatBoost. Notably, these models internally incorporate imputation techniques, dynamically adapting them based on the approach that yields the greatest performance improvement. This ensures that missing values do not impede the model's ability to make accurate predictions.</p>
 </li>
 <li>
-<p>A baseline was created using a XGBoost model with default hyperparameters which yielded an <strong>Accuracy of 78.84%, an F1-Score of 54.64% and an ROC-AUC Score of 65.72%.</strong></p>
+<p>To establish a performance baseline, an XGBoost model with default hyperparameters was trained, yielding an impressive accuracy of 78.84%, an F1-Score of 54.64%, and an ROC-AUC Score of 65.72%. These results serve as a solid starting point for further improvement.</p>
 </li>
 <li>
-<p>The LightGBM model with default hyperparameters was tried after that and improved <strong>Accuracy by 1%, F1-Score by 12% and ROC-AUC Score by 6%.</strong></p>
+<p>Subsequently, the LightGBM model with default hyperparameters was employed, resulting in notable enhancements across performance metrics. Specifically, the LightGBM model boosted the accuracy by 1%, the F1-Score by 12%, and the ROC-AUC Score by 6%, further solidifying its effectiveness.</p>
 </li>
 <li>
-<p>A <strong>Randomized Grid Search</strong> with 5 Cross Validation folds was carried out to fine tune the XGBoost and LightGBM models.</p>
+<p>To fine-tune the XGBoost and LightGBM models, a Randomized Grid Search was conducted utilizing 5-fold cross-validation. This comprehensive search approach allowed us to explore a wide range of hyperparameter combinations efficiently.</p>
 </li>
 <li>
-<p>Hyperparameters of the XGBoost model such as <code>n_estimators</code>, <code>max_depth</code> and <code>learning_rate</code> were tuned to improve <strong>Accuracy by 9%, F1-Score by 18% and ROC-AUC Score by 3%.</strong></p>
+<p>Hyperparameters of the XGBoost model, such as <code>n_estimators</code>, <code>max_depth</code>, and <code>learning_rate</code>, were meticulously tuned, resulting in remarkable improvements. The accuracy was enhanced by 9%, the F1-Score by 18%, and the ROC-AUC Score by 3%, showcasing the model's capacity to capture more nuanced patterns in the data.</p>
 </li>
 <li>
-<p>Hyperparameters of the LightGBM model such as <code>n_estimators</code>, <code>feature_fraction</code> and <code>learning_rate</code> were tuned to improve <strong>Accuracy by 0.1%, F1-Score by 6% and ROC-AUC Score by 10%.</strong></p>
+<p>Similarly, the hyperparameters of the LightGBM model, including <code>n_estimators</code>, <code>feature_fraction</code>, and <code>learning_rate</code>, were fine-tuned through the Randomized Grid Search. This meticulous optimization process led to a marginal but meaningful accuracy improvement of 0.1%, an F1-Score boost of 6%, and an impressive 10% enhancement in the ROC-AUC Score.</p>
 </li>
 </ul>
+<p>By utilizing advanced techniques, engineering informative features, and fine-tuning the models through extensive hyperparameter optimization, we were able to elevate the performance of both the XGBoost and LightGBM models while gracefully handling the challenges imposed by missing values and high feature cardinality.</p>
 <!--kg-card-end: markdown--><h2 id="results">Results:</h2><p>A <strong>Soft Voting Classifier</strong> was used to create a ensemble of both the models and was used for generating the final predictions. It achieved an <strong>Accuracy of 94.48%, an F1-Score of 96.71% and an ROC-AUC Score of 96.40%.</strong></p><p>The results from all the models have been summarized below:</p><!--kg-card-begin: html--><table>
 <thead>
 <tr>
@@ -502,7 +503,7 @@ R_* = Risk variables
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-<script src="/assets/built/casper.js?v=3d968471c2"></script>
+<script src="/assets/built/casper.js?v=29c90eb8f0"></script>
 <script>
 $(document).ready(function () {
     // Mobile Menu Trigger
