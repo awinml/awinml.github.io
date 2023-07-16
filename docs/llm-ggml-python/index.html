@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=f22d45375d" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=d9a6c3efa5" />
 
     <meta name="description" content="Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. In this blog post, we will see how to use the llama.cpp library in Python to run LLMs on CPUs with high performance.">
     <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://awinml.github.io/llm-ggml-python/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta property="article:published_time" content="2023-06-30T20:38:39.000Z">
-    <meta property="article:modified_time" content="2023-07-01T10:24:26.000Z">
+    <meta property="article:modified_time" content="2023-07-16T18:04:26.000Z">
     <meta property="article:tag" content="Blog">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -62,7 +62,7 @@
     "headline": "How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide",
     "url": "https://awinml.github.io/llm-ggml-python/",
     "datePublished": "2023-06-30T20:38:39.000Z",
-    "dateModified": "2023-07-01T10:24:26.000Z",
+    "dateModified": "2023-07-16T18:04:26.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&ixlib=rb-4.0.3&q=80&w=2000",
@@ -81,8 +81,8 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://awinml.github.io/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://awinml.github.io/" data-api-url="https://awinml.github.io/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://awinml.github.io/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=f22d45375d"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=f22d45375d">
+    <script defer src="/public/cards.min.js?v=d9a6c3efa5"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=d9a6c3efa5">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8005664633543622"
      crossorigin="anonymous"></script>
 
@@ -241,7 +241,7 @@
     <section class="gh-content gh-canvas">
         <!--kg-card-begin: markdown--><p>Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. There have been several advancements like the support for 4-bit and 8-bit loading of models on HuggingFace. But they require a GPU to work. This has limited their use to people with access to specialized hardware, such as GPUs. Even though it is possible to run these LLMs on CPUs, the performance is limited and hence restricts the usage of these models.</p>
 <p>Recent work by <a href="https://github.com/ggerganov?ref=localhost">Georgi Gerganov</a> has made it possible to run LLMs on CPUs with high performance. This is thanks to his implementation of the <a href="https://github.com/ggerganov/llama.cpp?ref=localhost">llama.cpp</a> library, which provides high-speed inference for a variety of LLMs.</p>
-<p>The original llama.cpp library focuses on running the models locally in a shell. This does not offer a lot of flexibility to the user and makes it hard for the user to leverage the vast range of python libraries to build applications. Recently LLM frameworks like <a href="https://python.langchain.com/docs/get_started/introduction.html?ref=localhost">LangChain</a> have added support for llama.cpp using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package.</p>
+<p>The original llama.cpp library focuses on running the models locally in a shell. This does not offer a lot of flexibility to the user and makes it hard for the user to leverage the vast range of python libraries to build applications. Recently LLM frameworks like <a href="https://python.langchain.com/?ref=localhost">LangChain</a> have added support for llama.cpp using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package.</p>
 <p>In this blog post, we will see how to use the llama.cpp library in Python using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package. This package provides Python bindings for llama.cpp, which makes it easy to use the library in Python.</p>
 <p>We will also see how to use the llama-cpp-python library to run the <a href="https://lmsys.org/blog/2023-03-30-vicuna/?ref=localhost">Vicuna  LLM</a>, which is an open-source model based on the <a href="https://ai.facebook.com/blog/large-language-model-llama-meta-ai/?ref=localhost">LLaMA</a> architecture that behaves like ChatGPT.</p>
 <h2 id="set-up-llama-cpp-python">Set up llama-cpp-python</h2>
@@ -585,7 +585,7 @@ Hawaii is also known for its beautiful beaches and crystal clear waters, which a
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-<script src="/assets/built/casper.js?v=f22d45375d"></script>
+<script src="/assets/built/casper.js?v=d9a6c3efa5"></script>
 <script>
 $(document).ready(function () {
     // Mobile Menu Trigger
