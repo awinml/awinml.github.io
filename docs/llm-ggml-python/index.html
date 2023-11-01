@@ -2,15 +2,15 @@
 <html lang="en" class="auto-color">
 <head>
 
-    <title>How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide</title>
+    <title>Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=515d8fbcc4" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=c511ffc1c6" />
 
-    <meta name="description" content="Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. In this blog post, we will see how to use the llama.cpp library in Python to run LLMs on CPUs with high performance.">
+    <meta name="description" content="A comprehensive tutorial on using Llama-cpp in Python to generate text and use it as a free LLM API.">
     <link rel="icon" href="https://awinml.github.io/content/images/size/w256h256/2023/06/android-chrome-192x192.png" type="image/png">
     <link rel="canonical" href="https://awinml.github.io/llm-ggml-python/">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -18,17 +18,17 @@
     
     <meta property="og:site_name" content="Ashwin Mathur">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide">
-    <meta property="og:description" content="Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. In this blog post, we will see how to use the llama.cpp library in Python to run LLMs on CPUs with high performance.">
+    <meta property="og:title" content="Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide">
+    <meta property="og:description" content="A comprehensive tutorial on using Llama-cpp in Python to generate text and use it as a free LLM API.">
     <meta property="og:url" content="https://awinml.github.io/llm-ggml-python/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
-    <meta property="article:published_time" content="2023-06-30T20:38:39.000Z">
-    <meta property="article:modified_time" content="2023-07-18T18:14:47.000Z">
+    <meta property="article:published_time" content="2023-10-31T20:38:00.000Z">
+    <meta property="article:modified_time" content="2023-11-01T20:20:56.000Z">
     <meta property="article:tag" content="Blog">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide">
-    <meta name="twitter:description" content="Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. In this blog post, we will see how to use the llama.cpp library in Python to run LLMs on CPUs with high performance.">
+    <meta name="twitter:title" content="Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide">
+    <meta name="twitter:description" content="A comprehensive tutorial on using Llama-cpp in Python to generate text and use it as a free LLM API.">
     <meta name="twitter:url" content="https://awinml.github.io/llm-ggml-python/">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta name="twitter:label1" content="Written by">
@@ -59,10 +59,10 @@
         "url": "https://awinml.github.io/author/ashwin/",
         "sameAs": []
     },
-    "headline": "How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide",
+    "headline": "Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide",
     "url": "https://awinml.github.io/llm-ggml-python/",
-    "datePublished": "2023-06-30T20:38:39.000Z",
-    "dateModified": "2023-07-18T18:14:47.000Z",
+    "datePublished": "2023-10-31T20:38:00.000Z",
+    "dateModified": "2023-11-01T20:20:56.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&ixlib=rb-4.0.3&q=80&w=2000",
@@ -70,7 +70,7 @@
         "height": 1333
     },
     "keywords": "Blog",
-    "description": "Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. In this blog post, we will see how to use the llama.cpp library in Python to run LLMs on CPUs with high performance.",
+    "description": "A comprehensive tutorial on using Llama-cpp in Python to generate text and use it as a free LLM API.",
     "mainEntityOfPage": "https://awinml.github.io/llm-ggml-python/"
 }
     </script>
@@ -81,8 +81,8 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="3f8153ddbf039121b27e361e3a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://awinml.github.io/" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" data-announcement-bar="https://awinml.github.io/" data-api-url="https://awinml.github.io/members/api/announcement/" crossorigin="anonymous"></script>
     <link href="https://awinml.github.io/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=515d8fbcc4"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=515d8fbcc4">
+    <script defer src="/public/cards.min.js?v=c511ffc1c6"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=c511ffc1c6">
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FC0MGC2F3F"></script>
 <script>
@@ -195,9 +195,9 @@
 </svg> Featured</span>
         </div>
 
-        <h1 class="article-title">How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide</h1>
+        <h1 class="article-title">Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide</h1>
 
-            <p class="article-excerpt">Large language models (LLMs) are becoming increasingly popular, but they can be computationally expensive to run. In this blog post, we will see how to use the llama.cpp library in Python to run LLMs on CPUs with high performance.</p>
+            <p class="article-excerpt">A comprehensive tutorial on using Llama-cpp in Python to generate text and use it as a free LLM API.</p>
 
         <div class="article-byline">
         <section class="article-byline-content">
@@ -212,7 +212,7 @@
             <div class="article-byline-meta">
                 <h4 class="author-name"><a href="/author/ashwin/">Ashwin Mathur</a></h4>
                 <div class="byline-meta-content">
-                    <time class="byline-meta-date" datetime="2023-07-01">Jul 1, 2023</time>
+                    <time class="byline-meta-date" datetime="2023-11-01">Nov 1, 2023</time>
                         <span class="byline-reading-time"><span class="bull">&bull;</span> 7 min read</span>
                 </div>
             </div>
@@ -228,7 +228,7 @@
                             https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 2000w"
                     sizes="(min-width: 1400px) 1400px, 92vw"
                     src="https://images.unsplash.com/photo-1526308422422-6a57b9567eff?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxsbGFtYSUyMGF0JTIwYSUyMGRpc3RhbmNlfGVufDB8fHx8MTY4ODE1NzE0OXww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
-                    alt="How to Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide"
+                    alt="Run LLMs on Your CPU with Llama.cpp: A Step-by-Step Guide"
                 />
                     <figcaption>Photo by <a href="https://unsplash.com/@willianjusten?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Willian Justen de Vasconcellos</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
             </figure>
@@ -240,7 +240,7 @@
 <p>Recent work by <a href="https://github.com/ggerganov?ref=localhost">Georgi Gerganov</a> has made it possible to run LLMs on CPUs with high performance. This is thanks to his implementation of the <a href="https://github.com/ggerganov/llama.cpp?ref=localhost">llama.cpp</a> library, which provides high-speed inference for a variety of LLMs.</p>
 <p>The original llama.cpp library focuses on running the models locally in a shell. This does not offer a lot of flexibility to the user and makes it hard for the user to leverage the vast range of python libraries to build applications. Recently LLM frameworks like <a href="https://python.langchain.com/?ref=localhost">LangChain</a> have added support for llama.cpp using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package.</p>
 <p>In this blog post, we will see how to use the llama.cpp library in Python using the <a href="https://github.com/abetlen/llama-cpp-python?ref=localhost">llama-cpp-python</a> package. This package provides Python bindings for llama.cpp, which makes it easy to use the library in Python.</p>
-<p>We will also see how to use the llama-cpp-python library to run the <a href="https://lmsys.org/blog/2023-03-30-vicuna/?ref=localhost">Vicuna  LLM</a>, which is an open-source model based on the <a href="https://ai.facebook.com/blog/large-language-model-llama-meta-ai/?ref=localhost">LLaMA</a> architecture that behaves like ChatGPT.</p>
+<p>We will also see how to use the llama-cpp-python library to run the <a href="https://huggingface.co/HuggingFaceH4/zephyr-7b-beta?ref=localhost">Zephyr  LLM</a>, which is an open-source model based on the <a href="https://mistral.ai/news/announcing-mistral-7b/?ref=localhost">Mistral</a> model.</p>
 <h2 id="set-up-llama-cpp-python">Set up llama-cpp-python</h2>
 <p>Setting up the python bindings is as simple as running the following command:</p>
 <pre><code class="language-bash">pip install llama-cpp-python
@@ -250,10 +250,10 @@
 <p>Once you have installed the llama-cpp-python package, you can start using it to run LLMs.</p>
 <p>You can use any language model with llama.cpp provided that it has been converted to the GGML format. There are already GGML versions available for most popular LLMs and the required GGML can be easily found on HuggingFace.</p>
 <p>An important thing to note is that the original LLMs have been quantized when converting them to GGML format. This helps reduce the memory requirement for running these large models, without a significant loss in performance. For example, this helps us load a 7 billion parameter model of size 13GB in less than 4GB of RAM.</p>
-<p>In this article we use the GGML version of Vicuna-7B which is available on the Hugging Face Hub.</p>
-<p>The model can be downloaded from here: <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized</a>.</p>
-<h3 id="downloading-the-ggml-file-and-loading-the-llm">Downloading the GGML file and Loading the LLM</h3>
-<p>The following code can be used to download the model. The code downloads the required GGML file, in this case the <a href="https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized?ref=localhost">Vicuna-7b-Q4.1 GGML</a>, from the Hugging Face Hub. The code also checks if the file is already present before attempting to download it.</p>
+<p>In this article we use the GGUF version of Zephyr-7B-Beta which is available on the HuggingFace Hub.</p>
+<p>The model can be downloaded from here: <a href="https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF?ref=localhost">https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF</a>.</p>
+<h3 id="downloading-the-gguf-file-and-loading-the-llm">Downloading the GGUF file and Loading the LLM</h3>
+<p>The following code can be used to download the model. The code downloads the required GGML file, in this case the <a href="https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF/resolve/main/zephyr-7b-beta.Q4_0.gguf?ref=localhost">zephyr-7b-beta.Q4_0 GGUF</a>, from the Hugging Face Hub. The code also checks if the file is already present before attempting to download it.</p>
 <pre><code class="language-python">import os
 import urllib.request
 
@@ -267,15 +267,15 @@ def download_file(file_link, filename):
         print(&quot;File already exists.&quot;)
 
 # Dowloading GGML model from HuggingFace
-ggml_model_path = &quot;https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized/resolve/main/ggml-vicuna-7b-1.1-q4_1.bin&quot;
-filename = &quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;
+ggml_model_path = &quot;https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF/resolve/main/zephyr-7b-beta.Q4_0.gguf&quot;
+filename = &quot;zephyr-7b-beta.Q4_0.gguf&quot;
 
 download_file(ggml_model_path, filename)
 </code></pre>
 <p>The next step is to load the model that you want to use. This can be done using the following code:</p>
 <pre><code class="language-python">from llama_cpp import Llama
 
-llm = Llama(model_path=&quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;, n_ctx=512, n_batch=126)
+llm = Llama(model_path=&quot;zephyr-7b-beta.Q4_0.gguf&quot;, n_ctx=512, n_batch=126)
 </code></pre>
 <p>There are two important parameters that should be set when loading the model.</p>
 <ul>
@@ -291,23 +291,41 @@ llm = Llama(model_path=&quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;, n_ctx=512, n_bat
 <h3 id="generating-text-using-the-llm">Generating Text using the LLM</h3>
 <p>The following code writes a simple wrapper function to generate text using the LLM.</p>
 <pre><code class="language-python">def generate_text(
-    prompt=&quot;Who is the CEO of Apple?&quot;,
-    max_tokens=256,
-    temperature=0.1,
-    top_p=0.5,
-    echo=False,
-    stop=[&quot;#&quot;],
+    prompt=&quot;Who is the CEO of Apple?&quot;,
+    max_tokens=256,
+    temperature=0.1,
+    top_p=0.5,
+    echo=False,
+    stop=[&quot;#&quot;],
 ):
-    output = llm(
-        prompt,
-        max_tokens=max_tokens,
-        temperature=temperature,
-        top_p=top_p,
-        echo=echo,
-        stop=stop,
-    )
-    output_text = output[&quot;choices&quot;][0][&quot;text&quot;].strip()
-    return output_text
+    output = llm(
+        prompt,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        top_p=top_p,
+        echo=echo,
+        stop=stop,
+    )
+    output_text = output[&quot;choices&quot;][0][&quot;text&quot;].strip()
+    return output_text
+
+
+def generate_prompt_from_template(input):
+    chat_prompt_template = f&quot;&quot;&quot;&lt;|im_start|&gt;system
+You are a helpful chatbot.&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+{input}&lt;|im_end|&gt;&quot;&quot;&quot;
+    return chat_prompt_template
+
+
+prompt = generate_prompt_from_template(
+    &quot;Compose an engaging travel blog post about a recent trip to Hawaii, highlighting cultural experiences and must-see attractions.&quot;
+)
+
+generate_text(
+    prompt,
+    max_tokens=356,
+)
 </code></pre>
 <p>The <code>llm</code> object has several important parameters that are used while generating text:</p>
 <ul>
@@ -335,7 +353,7 @@ llm = Llama(model_path=&quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;, n_ctx=512, n_bat
   &quot;id&quot;: &quot;xxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,  # text generation id 
   &quot;object&quot;: &quot;text_completion&quot;,              # object name
   &quot;created&quot;: 1679561337,                    # time stamp
-  &quot;model&quot;: &quot;./models/7B/ggml-model.bin&quot;,    # model path
+  &quot;model&quot;: &quot;./models/7B/zephyr-7b-model.gguf&quot;,    # model path
   &quot;choices&quot;: [
     {
       &quot;text&quot;: &quot;Q: Name the planets in the solar system? A: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.&quot;, # generated text
@@ -352,67 +370,83 @@ llm = Llama(model_path=&quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;, n_ctx=512, n_bat
 }
 </code></pre>
 <p>The generated text can be easily extracted from the dictionary object using <code>output[&quot;choices&quot;][0][&quot;text&quot;]</code>.</p>
-<h3 id="example-text-generation-using-vicuna-7b">Example text generation using Vicuna-7B</h3>
+<h3 id="example-text-generation-using-zephyr-7b">Example text generation using Zephyr-7B</h3>
 <pre><code class="language-python">import os
 import urllib.request
 from llama_cpp import Llama
 
 
 def download_file(file_link, filename):
-    # Checks if the file already exists before downloading
-    if not os.path.isfile(filename):
-        urllib.request.urlretrieve(file_link, filename)
-        print(&quot;File downloaded successfully.&quot;)
-    else:
-        print(&quot;File already exists.&quot;)
+    # Checks if the file already exists before downloading
+    if not os.path.isfile(filename):
+        urllib.request.urlretrieve(file_link, filename)
+        print(&quot;File downloaded successfully.&quot;)
+    else:
+        print(&quot;File already exists.&quot;)
 
 
 # Dowloading GGML model from HuggingFace
-ggml_model_path = &quot;https://huggingface.co/CRD716/ggml-vicuna-1.1-quantized/resolve/main/ggml-vicuna-7b-1.1-q4_1.bin&quot;
-filename = &quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;
+ggml_model_path = &quot;https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF/resolve/main/zephyr-7b-beta.Q4_0.gguf&quot;
+filename = &quot;zephyr-7b-beta.Q4_0.gguf&quot;
 
 download_file(ggml_model_path, filename)
 
 
-llm = Llama(model_path=&quot;ggml-vicuna-7b-1.1-q4_1.bin&quot;, n_ctx=512, n_batch=126)
+llm = Llama(model_path=&quot;zephyr-7b-beta.Q4_0.gguf&quot;, n_ctx=512, n_batch=126)
 
 
 def generate_text(
-    prompt=&quot;Who is the CEO of Apple?&quot;,
-    max_tokens=256,
-    temperature=0.1,
-    top_p=0.5,
-    echo=False,
-    stop=[&quot;#&quot;],
+    prompt=&quot;Who is the CEO of Apple?&quot;,
+    max_tokens=256,
+    temperature=0.1,
+    top_p=0.5,
+    echo=False,
+    stop=[&quot;#&quot;],
 ):
-    output = llm(
-        prompt,
-        max_tokens=max_tokens,
-        temperature=temperature,
-        top_p=top_p,
-        echo=echo,
-        stop=stop,
-    )
-    output_text = output[&quot;choices&quot;][0][&quot;text&quot;].strip()
-    return output_text
+    output = llm(
+        prompt,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        top_p=top_p,
+        echo=echo,
+        stop=stop,
+    )
+    output_text = output[&quot;choices&quot;][0][&quot;text&quot;].strip()
+    return output_text
 
+
+def generate_prompt_from_template(input):
+    chat_prompt_template = f&quot;&quot;&quot;&lt;|im_start|&gt;system
+You are a helpful chatbot.&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+{input}&lt;|im_end|&gt;&quot;&quot;&quot;
+    return chat_prompt_template
+
+
+prompt = generate_prompt_from_template(
+    &quot;Compose an engaging travel blog post about a recent trip to Hawaii, highlighting cultural experiences and must-see attractions.&quot;
+)
 
 generate_text(
-    &quot;Compose an engaging travel blog post about a recent trip to Hawaii, highlighting cultural experiences and must-see attractions.&quot;,
-    max_tokens=356,
+    prompt,
+    max_tokens=356,
 )
 </code></pre>
 <p>Generated text:</p>
-<pre><code>Hawaii is a state located in the United States of America that is known for its beautiful beaches, lush landscapes, and rich culture. It is made up of six islands: Oahu, Maui, Kauai, Lanai, Molokai, and Hawaii (also known as the Big Island). Each island has its own unique attractions and experiences to offer visitors.
-One of the most interesting cultural experiences in Hawaii is visiting a traditional Hawaiian village or ahupuaa. An ahupuaa is a system of land use that was used by ancient Hawaiians to manage their resources sustainably. It consists of a coastal area, a freshwater stream, and the surrounding uplands and forests. Visitors can learn about this traditional way of life at the Polynesian Cultural Center in Oahu or by visiting a traditional Hawaiian village on one of the other islands.
-Another must-see attraction in Hawaii is the Pearl Harbor Memorial. This historic site commemorates the attack on Pearl Harbor on December 7, 1941, which led to the United States' entry into World War II. Visitors can see the USS Arizona Memorial, a memorial that sits above the sunken battleship USS Arizona and provides an overview of the attack. They can also visit other museums and exhibits on the site to learn more about this important event in American history.
-Hawaii is also known for its beautiful beaches and crystal clear waters, which are perfect for swimming, snorkeling, and sunbathing.
+<pre><code>As the sun began to set over the Pacific Ocean, I found myself standing on the shores of Waikiki Beach in Honolulu, Hawaii. The vibrant colors of the sky painted a breathtaking scene that left me speechless. This was just the beginning of my unforgettable journey through the Aloha State.
+
+Hawaii is a place like no other, where the lush green mountains meet the crystal-clear waters of the ocean. The culture and traditions of Hawaii are deeply rooted in its people, and I was eager to immerse myself in this unique experience.
+
+One of my first stops was the historic Pearl Harbor. As an American, it was a humbling experience to learn about the events that took place here during World War II. The USS Arizona Memorial is a powerful tribute to the men and women who lost their lives during the attack on December 7, 1941.
+
+Next, I headed to the North Shore of Oahu, where I was greeted by the stunning views of Turtle Bay Resort. Here, I had the opportunity to learn about Hawaiian culture through traditional activities such as lei making and ukulele lessons. The locals were incredibly welcoming and eager to share their heritage with me.
+
+One of my favorite experiences in Hawaii was attending a traditional Hawaiian luau. The feast was filled with delicious local cuisine, including poke (raw fish), kalua pig, and poi (a staple food made from taro root). The entertainment included hula dancing, fire knife dancing, and other cultural performances that left me in awe.
 </code></pre>
-<p>The notebook with the example can be viewed <a href="https://nbviewer.org/github/awinml/llama-cpp-python-bindings/blob/main/vicuna-7b-example-ggml.ipynb?ref=localhost">here</a>.</p>
-<p>The complete code for running the examples can be found on <a href="https://github.com/awinml/llama-cpp-python-bindings?ref=localhost">GitHub</a>.</p>
+<p>The notebook with the example can be viewed <a href="https://nbviewer.org/github/awinml/llama-cpp-python-bindings/blob/main/zephyr-7b-example-gguf.ipynb?ref=localhost">here</a>.<br>
+The complete code for running the examples can be found on <a href="https://github.com/awinml/llama-cpp-python-bindings?ref=localhost">GitHub</a>.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>In this blog post, we explored how to use the llama.cpp library in Python with the llama-cpp-python package. These tools enable high-performance CPU-based execution of LLMs.</p>
-<p>llama.cpp is updated almost every day. The speed of inference is getting better, and the community regularly adds support for new models. You can also convert your own Pytorch language models into the ggml format. llama.cpp has a “convert.py” that will do that for you.</p>
+<p>In this blog post, we explored how to use the llama.cpp library in Python with the llama-cpp-python package. These tools enable high-performance CPU-based execution of LLMs. llama.cpp is updated almost every day. The speed of inference is getting better, and the community regularly adds support for new models. You can also convert your own Pytorch language models into the GGUF format. llama.cpp has a “convert.py” that will do that for you.</p>
 <p>The llama.cpp library and llama-cpp-python package provide robust solutions for running LLMs efficiently on CPUs. If you're interested in incorporating LLMs into your applications, I recommend exploring these resources.</p>
 <!--kg-card-end: markdown-->
     </section>
@@ -583,7 +617,7 @@ Hawaii is also known for its beautiful beaches and crystal clear waters, which a
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-<script src="/assets/built/casper.js?v=515d8fbcc4"></script>
+<script src="/assets/built/casper.js?v=c511ffc1c6"></script>
 <script>
 $(document).ready(function () {
     // Mobile Menu Trigger
